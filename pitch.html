@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>oranday studio × re:ach studio — Propuesta</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700;800;900&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --cream:  #F4ECDD;
+    --cream2: #FAF6EE;
+    --ink:    #0E0B08;
+    --burg:   #6B0F1A;
+    --burg2:  #4A0A12;
+    --red:    #DC3528;
+    --coral:  #E8463A;
+    --nude:   #EFD3CB;
+    --mute:   #8A7F70;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    height: 100%;
+    background: #1a1714;
+    color: var(--ink);
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow: hidden;
+  }
+
+  /* Deck container */
+  .deck {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Slide */
+  .slide {
+    position: absolute;
+    width: min(94vw, calc(100vh * 16 / 9));
+    aspect-ratio: 16 / 9;
+    background: var(--cream);
+    border-radius: 12px;
+    box-shadow: 0 30px 80px -20px rgba(0,0,0,0.5);
+    overflow: hidden;
+    display: none;
+    flex-direction: column;
+    padding: 4.5% 5%;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity .5s ease, transform .5s ease;
+  }
+  .slide.active { display: flex; opacity: 1; transform: translateY(0); }
+  .slide[data-bg="ink"]   { background: var(--ink);   color: var(--cream); }
+  .slide[data-bg="burg"]  { background: var(--burg);  color: var(--cream); }
+  .slide[data-bg="cream2"]{ background: var(--cream2); color: var(--ink); }
+  .slide[data-bg="red"]   { background: var(--red);   color: var(--cream); }
+
+  /* Header / footer slide chrome */
+  .slide-head, .slide-foot {
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: 0.78rem; letter-spacing: 0.04em; text-transform: uppercase;
+    opacity: 0.65; font-weight: 500;
+  }
+  .slide-foot { margin-top: auto; padding-top: 2rem; }
+  .brand-mark { display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 700; opacity: 0.85; }
+  .brand-mark .dot {
+    width: 10px; height: 10px; background: var(--red); border-radius: 9999px;
+  }
+
+  /* Typography */
+  .display {
+    font-family: 'Instrument Serif', serif;
+    font-weight: 400;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+  }
+  .italic-accent { font-style: italic; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: .5rem;
+    background: var(--red); color: var(--cream);
+    padding: .4rem 1rem; border-radius: 9999px;
+    font-size: .82rem; font-weight: 600; letter-spacing: .04em;
+    text-transform: uppercase;
+  }
+  .eyebrow.burg { background: var(--burg); }
+  .eyebrow.ink  { background: var(--ink); color: var(--cream); }
+  .eyebrow.cream{ background: var(--cream); color: var(--ink); }
+  .eyebrow.outline { background: transparent; color: inherit; border: 1px solid currentColor; }
+
+  .hand { font-family: 'Caveat', cursive; color: var(--burg); }
+  [data-bg="ink"] .hand, [data-bg="burg"] .hand { color: var(--nude); }
+  .marquee-style { font-family: 'Fraunces', serif; font-weight: 400; }
+
+  /* Slide body grid */
+  .body { flex: 1; display: grid; align-items: center; }
+  .body.center { place-items: center; text-align: center; }
+
+  /* Two-col layout */
+  .two { display: grid; grid-template-columns: 1.1fr .9fr; gap: 4rem; align-items: center; }
+
+  /* Cards */
+  .cards { display: grid; gap: 1rem; }
+  .cards.c3 { grid-template-columns: repeat(3, 1fr); }
+  .cards.c4 { grid-template-columns: repeat(4, 1fr); }
+  .cards.c2 { grid-template-columns: repeat(2, 1fr); }
+  .card {
+    background: var(--cream2);
+    border: 1px solid rgba(14,11,8,.10);
+    border-radius: 16px;
+    padding: 1.3rem 1.4rem;
+  }
+  [data-bg="ink"] .card, [data-bg="burg"] .card {
+    background: rgba(244,236,221,0.06);
+    border-color: rgba(244,236,221,0.15);
+    color: var(--cream);
+  }
+  .card .num {
+    font-family: 'Instrument Serif', serif;
+    font-size: 2.2rem; line-height: 1; color: var(--red);
+  }
+  .card h4 { font-weight: 700; font-size: 1.05rem; margin-top: .4rem; }
+  .card p  { font-size: .92rem; line-height: 1.45; opacity: .75; margin-top: .35rem; }
+
+  /* Stat */
+  .stat-num {
+    font-family: 'Instrument Serif', serif;
+    font-size: 5.5rem; line-height: 1; color: var(--red);
+  }
+
+  /* Pricing card */
+  .price {
+    border-radius: 18px;
+    padding: 1.6rem;
+    background: var(--cream);
+    color: var(--ink);
+    border: 1px solid rgba(14,11,8,0.12);
+    display: flex; flex-direction: column; gap: .8rem;
+    position: relative;
+  }
+  .price.featured {
+    background: var(--ink); color: var(--cream); border-color: var(--ink);
+    transform: scale(1.03);
+  }
+  .price.featured .price-amount { color: var(--red); }
+  .price-tag {
+    position: absolute; top: -10px; right: 14px;
+    background: var(--red); color: var(--cream);
+    font-size: .65rem; font-weight: 700; letter-spacing: .08em;
+    padding: .3rem .7rem; border-radius: 9999px; text-transform: uppercase;
+  }
+  .price-name { font-size: .8rem; text-transform: uppercase; letter-spacing: .12em; opacity: .7; font-weight: 600; }
+  .price-amount { font-family: 'Instrument Serif', serif; font-size: 2.8rem; line-height: 1; }
+  .price-amount small { font-family: 'Inter', sans-serif; font-size: .8rem; opacity: .7; font-weight: 500; letter-spacing: .05em; }
+  .price ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: .35rem; font-size: .85rem; }
+  .price ul li::before { content: "+ "; color: var(--red); font-weight: 700; }
+
+  /* Numbered list */
+  .numlist { display: flex; flex-direction: column; gap: 1rem; }
+  .numlist > li {
+    display: grid; grid-template-columns: 2.4rem 1fr; gap: 1rem;
+    align-items: start; list-style: none;
+    padding-top: 1rem; border-top: 1px solid rgba(14,11,8,0.12);
+  }
+  [data-bg="ink"] .numlist > li, [data-bg="burg"] .numlist > li { border-top-color: rgba(244,236,221,.18); }
+  .numlist .n {
+    font-family: 'Instrument Serif', serif;
+    font-size: 1.4rem; color: var(--red); line-height: 1;
+  }
+  .numlist h5 { font-size: 1rem; font-weight: 700; }
+  .numlist p  { font-size: .88rem; opacity: .75; margin-top: .15rem; }
+
+  /* Background decor for portafolio-style slides */
+  .bg-watermark {
+    position: absolute; inset: 0; overflow: hidden; pointer-events: none;
+  }
+  .bg-watermark::before {
+    content: "re:ach";
+    position: absolute;
+    top: 50%; left: 50%; transform: translate(-50%, -52%);
+    font-family: 'Instrument Serif', serif;
+    font-style: italic; font-weight: 400;
+    font-size: 38vw; line-height: .85;
+    color: rgba(244,236,221,0.045);
+    white-space: nowrap; letter-spacing: -.04em;
+  }
+
+  /* Navigation */
+  .nav {
+    position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%);
+    display: flex; align-items: center; gap: .6rem;
+    background: rgba(14,11,8,.85); color: var(--cream);
+    padding: .55rem .9rem; border-radius: 9999px;
+    backdrop-filter: blur(8px);
+    font-size: .8rem; font-weight: 500;
+    z-index: 100;
+  }
+  .nav button {
+    background: transparent; color: inherit; border: 0;
+    width: 28px; height: 28px; border-radius: 9999px; cursor: pointer;
+    font-size: 1rem; display: grid; place-items: center;
+    transition: background .2s;
+  }
+  .nav button:hover { background: rgba(244,236,221,.12); }
+  .nav .count { font-variant-numeric: tabular-nums; opacity: .8; min-width: 3.5rem; text-align: center; }
+  .nav .full {
+    background: var(--red); width: auto; padding: 0 .9rem; height: 28px;
+    font-size: .72rem; font-weight: 600; text-transform: uppercase; letter-spacing: .06em;
+  }
+  .nav .full:hover { background: var(--burg); }
+
+  /* Hide nav in print */
+  @media print {
+    html, body { overflow: visible; background: #fff; }
+    .nav { display: none; }
+    .deck { display: block; width: 100%; height: auto; }
+    .slide {
+      display: flex !important; opacity: 1 !important; transform: none !important;
+      position: relative; width: 100%; height: 100vh;
+      page-break-after: always; border-radius: 0; box-shadow: none;
+      max-width: none;
+    }
+    @page { size: 16in 9in; margin: 0; }
+  }
+
+  /* Utility */
+  .muted { opacity: .7; }
+  .red   { color: var(--red); }
+  .burg-c{ color: var(--burg); }
+  .row { display: flex; align-items: center; gap: .8rem; flex-wrap: wrap; }
+  .pill {
+    display: inline-flex; align-items: center; gap: .4rem;
+    background: rgba(220,53,40,.12); color: var(--red);
+    padding: .3rem .8rem; border-radius: 9999px;
+    font-size: .78rem; font-weight: 600; letter-spacing: .03em;
+  }
+  [data-bg="ink"] .pill, [data-bg="burg"] .pill { background: rgba(220,53,40,.22); }
+
+  /* Logo dot */
+  .re-dot {
+    display: inline-flex; align-items: center; justify-content: center;
+    background: var(--ink); color: var(--cream);
+    border-radius: 9999px; font-weight: 800; letter-spacing: -.04em;
+  }
+  [data-bg="ink"] .re-dot { background: var(--cream); color: var(--ink); }
+
+  /* Sizes scale */
+  .h1 { font-size: clamp(2.4rem, 6vw, 4.6rem); }
+  .h2 { font-size: clamp(2rem, 4.8vw, 3.4rem); }
+  .h3 { font-size: clamp(1.4rem, 3vw, 2rem); }
+  .lead { font-size: clamp(1rem, 1.6vw, 1.2rem); line-height: 1.5; }
+  .small{ font-size: .9rem; line-height: 1.5; }
+</style>
+</head>
+<body>
+
+<div class="deck" id="deck">
+
+  <!-- ============ 1. PORTADA ============ -->
+  <section class="slide active" data-bg="ink">
+    <div class="slide-head">
+      <span class="brand-mark"><span class="dot"></span> oranday studio</span>
+      <span>Propuesta · Junio 2026</span>
+    </div>
+
+    <div class="body">
+      <div>
+        <span class="eyebrow">Para re:ach studio</span>
+        <h1 class="display h1" style="margin-top:1.2rem;">
+          Una web a la altura<br/>
+          de su <span class="italic-accent">marca.</span>
+        </h1>
+        <p class="lead" style="margin-top:1.5rem; max-width:36rem; opacity:.75;">
+          Propuesta de diseño y desarrollo de landing page premium
+          para re:ach studio — pensada para verse impecable y convertir.
+        </p>
+
+        <div class="row" style="margin-top:2rem;">
+          <span class="pill">Diseño</span>
+          <span class="pill">Desarrollo</span>
+          <span class="pill">Copy</span>
+          <span class="pill">Responsive</span>
+          <span class="pill">SEO base</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-foot">
+      <span>oranday studio × re:ach studio</span>
+      <span>01 / 14</span>
+    </div>
+  </section>
+
+
+  <!-- ============ 2. HOLA ============ -->
+  <section class="slide" data-bg="cream">
+    <div class="slide-head">
+      <span class="brand-mark"><span class="dot"></span> oranday studio</span>
+      <span>Quiénes somos</span>
+    </div>
+
+    <div class="body two">
+      <div>
+        <span class="eyebrow burg">Hola, somos oranday</span>
+        <h2 class="display h2" style="margin-top:1.2rem;">
+          Un estudio mexicano<br/>
+          de <span class="italic-accent">diseño web</span> &amp; desarrollo.
+        </h2>
+        <p class="lead" style="margin-top:1.3rem; max-width:32rem; opacity:.75;">
+          Diseñamos y construimos landing pages premium para marcas
+          que quieren verse profesionales y vender más por internet.
+        </p>
+        <p class="hand" style="font-size:1.6rem; margin-top:1rem;">
+          Web bonita, clara y enfocada en conversión.
+        </p>
+      </div>
+
+      <div class="cards" style="grid-template-columns: 1fr 1fr; gap:.8rem;">
+        <div class="card"><div class="num">01</div><h4>Diseño premium</h4><p>Editorial, moderno, hecho a medida — no plantillas.</p></div>
+        <div class="card"><div class="num">02</div><h4>Conversión</h4><p>Copy y CTAs pensados para que el visitante escriba.</p></div>
+        <div class="card"><div class="num">03</div><h4>Rápido</h4><p>Entregas en días, no en meses. Sin enredos.</p></div>
+        <div class="card"><div class="num">04</div><h4>Soporte real</h4><p>Trato directo con quien hace el trabajo.</p></div>
+      </div>
+    </div>
+
+    <div class="slide-foot">
+      <span>oranday studio × re:ach studio</span>
+      <span>02 / 14</span>
+    </div>
+  </section>
+
+
+  <!-- ============ 3. LO QUE VIMOS ============ -->
+  <section class="slide" data-bg="cream">
+    <div class="slide-head">
+      <span class="brand-mark"><span class="dot"></span> oranday studio</span>
+      <span>Por qué estamos aquí</span>
+    </div>
+
+    <div class="body">
+      <div style="margin-bottom: 1.4rem;">
+        <span class="eyebrow burg">Lo que vimos en su marca</span>
+        <h2 class="display h2" style="margin-top:1rem;">
+          Una marca con <span class="italic-accent">identidad</span> de verdad.
+        </h2>
+      </div>
+
+      <div class="cards c4">
+        <div class="card">
+          <div class="num">01</div>
+          <h4>Estética editorial</h4>
+          <p>Mockups, posters, badges rojos, paleta burgundy/cream — nivel revista.</p>
+        </div>
+        <div class="card">
+          <div class="num">02</div>
+          <h4>Mensaje claro</h4>
+          <p>"It is not just posting." "Not luck. Strategy." Copy con criterio.</p>
+        </div>
+        <div class="card">
+          <div class="num">03</div>
+          <h4>Bilingüe</h4>
+          <p>Español-inglés con naturalidad — abre puerta MX/US sin esfuerzo.</p>
+        </div>
+        <div class="card">
+          <div class="num">04</div>
+          <h4>Servicios premium</h4>
+          <p>Estrategia, branding, Meta Ads, contenido. Cartera completa.</p>
+        </div>
+      </div>
+
+      <p class="lead" style="margin-top: 1.8rem; max-width: 44rem; opacity:.7;">
+        En resumen: <strong>la marca ya está hecha</strong>. El feed comunica.
+        Las piezas se ven al nivel de un estudio de NY o Madrid.
+      </p>
+    </div>
+
+    <div class="slide-foot">
+      <span>oranday studio × re:ach studio</span>
+      <span>03 / 14</span>
+    </div>
+  </section>
+
+
+  <!-- ============ 4. EL GAP ============ -->
+  <section class="slide" data-bg="burg">
+    <div class="slide-head">
+      <span class="brand-mark"><span class="dot"></span> oranday studio</span>
+      <span>La oportunidad</span>
+    </div>
+
+    <div class="body two">
+      <div>
+        <span class="eyebrow cream">Lo único que falta</span>
+        <h2 class="display h2" style="margin-top:1.2rem;">
+          Instagram es <span class="italic-accent">renta.</span><br/>
+          La web es <span class="italic-accent">propiedad.</span>
+        </h2>
+        <p class="lead" style="margin-top:1.4rem; max-width:32rem; opacity:.8;">
+          Sin sitio propio, cada lead pasa por el feed. Cada cliente nuevo
+          pregunta "¿tienen web?". Cada anuncio de Meta pierde fuerza sin
+          una landing dedicada que convierta.
+        </p>
+      </div>
+
+      <ul class="numlist">
+        <li><span class="n">01</span><div><h5>Autoridad</h5><p>Una web seria comunica que la agencia es seria.</p></div></li>
+        <li><span class="n">02</span><div><h5>Captación 24/7</h5><p>Llega gente que no está en Instagram — Google, referencias, correos.</p></div></li>
+        <li><span class="n">03</span><div><h5>Conversión real</h5><p>Las landings de servicio cierran mejor que el bio link.</p></div></li>
+        <li><span class="n">04</span><div><h5>Activo permanente</h5><p>La web es de re:ach. Meta puede bajar tu cuenta mañana.</p></div></li>
+      </ul>
+    </div>
+
+    <div class="slide-foot">
+      <span>oranday studio × re:ach studio</span>
+      <span>04 / 14</span>
+    </div>
+  </section>
+
+
+  <!-- ============ 5. LA PROPUESTA ============ -->
+  <section class="slide" data-bg="cream">
+    <div class="slide-head">
+      <span class="brand-mark"><span class="dot"></span> oranday studio</span>
+      <span>La propuesta</span>
+    </div>
+
+    <div class="body center">
+      <div style="max-width: 56rem;">
+        <span class="eyebrow">Nuestra propuesta</span>
+        <h1 class="display h1" style="margin-top:1.2rem;">
+          Una landing page premium<br/>
+          hecha a la <span class="italic-accent">medida</span> de re:ach.
+        </h1>
+        <p class="lead" style="margin-top:1.6rem; opacity:.75; max-width:42rem; margin-left:auto; margin-right:auto;">
+          Diseñada con la misma estética editorial de su feed — cream, burgundy, rojo cinabrio, tipografía serif.
+          Optimizada para que el visitante entienda qué hacen, por qué confiar, y los lleve a WhatsApp.
+        </p>
+
+        <div class="row" style="margin-top:2rem; justify-content:center;">
+          <span class="pill">100% responsive</span>
+          <span class="pill">Carga rápida</span>
+          <span class="pill">SEO base</span>
+          <span class="pill">CTA WhatsApp</span>
+          <span class="pill">Integración Meta Pixel opcional</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-foot">
+      <span>oranday studio × re:ach studio</span>
+      <span>05 / 14</span>
+    </div>
+  </section>
+
+
+  <!-- ============ 6. ESTRUCTURA ============ -->
+  <section class="slide" data-bg="cream">
+    <div class="slide-head">
+      <span class="brand-mark"><span class="dot"></span> oranday studio</span>
+      <span>Estructura del sitio</span>
+    </div>
+
+    <div class="body">
+      <div style="margin-bottom: 1.4rem;">
+        <span class="eyebrow burg">Estructura propuesta</span>
+        <h2 class="display h2" style="margin-top:1rem;">
+          Cada sección, <span class="italic-accent">un objetivo.</span>
+        </h2>
+      </div>
+
+      <div class="cards c4" style="gap:.8rem;">
+        <div class="card"><div class="num">01</div><h4>Hero</h4><p>Tagline + CTA principal a WhatsApp.</p></div>
+        <div class="card"><div class="num">02</div><h4>Problema → Solución</h4><p>Por qué postear no es estrategia.</p></div>
+        <div class="card"><div class="num">03</div><h4>Servicios</h4><p>6 cards: estrategia, branding, redes, Ads, contenido, web.</p></div>
+        <div class="card"><div class="num">04</div><h4>Diferenciador</h4><p>Por qué re:ach. Estrategia + estética.</p></div>
+        <div class="card"><div class="num">05</div><h4>Proceso</h4><p>4 pasos: diagnóstico → optimización.</p></div>
+        <div class="card"><div class="num">06</div><h4>Portafolio</h4><p>Clientes y proyectos destacados.</p></div>
+        <div class="card"><div class="num">07</div><h4>Testimonios</h4><p>Prueba social real.</p></div>
+        <div class="card"><div class="num">08</div><h4>CTA + Footer</h4><p>WhatsApp, Instagram, correo.</p></div>
+      </div>
+    </div>
+
+    <div class="slide-foot">
+      <span>oranday studio × re:ach studio</span>
+      <span>06 / 14</span>
+    </div>
+  </section>
+
+
+  <!-- ============ 7. PREVIEW DEL ESTILO ============ -->
+  <section class="slide" data-bg="ink" style="position:relative;">
+    <div class="bg-watermark" aria-hidden="true"></div>
+    <div class="slide-head" style="position:relative; z-index:1;">
+      <span class="brand-mark"><span class="dot"></span> oranday studio</span>
+      <span>Dirección de diseño</span>
+    </div>
+
+    <div class="body" style="position:relative; z-index:1;">
+      <div style="max-width: 52rem;">
+        <span class="eyebrow cream">Dirección visual</span>
+        <h1 class="display h1" style="margin-top:1.2rem;">
+          We help brands <span class="italic-accent">re:ach</span><br/>
+          with purpose.
+        </h1>
+        <p class="lead" style="margin-top:1.4rem; max-width:38rem; opacity:.75;">
+          Tomamos su sistema visual existente — paleta, tipografías, badges, mensajes —
+          y lo traducimos a una experiencia web editorial, premium y enfocada en conversión.
+        </p>
+        <p class="hand" style="font-size:1.7rem; margin-top:1.2rem;">
+          Misma vibra del feed. En grande. Y que vende.
+        </p>
+
+        <div class="row" style="margin-top:1.6rem;">
+          <span class="pill">Instrument Serif</span>
+          <span class="pill">Inter</span>
+          <span class="pill">Fraunces</span>
+          <span class="pill">Cream · Burgundy · Red</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-foot" style="position:relative; z-index:1;">
+      <span>oranday studio × re:ach studio</span>
+      <span>07 / 14</span>
+    </div>
+  </section>
+
+
+  <!-- ============ 8. BENEFICIOS ============ -->
+  <section class="slide" data-bg="cream">
+    <div class="slide-head">
+      <span class="brand-mark"><span class="dot"></span> oranday studio</span>
+      <span>Beneficios</span>
+    </div>
+
+    <div class="body">
+      <div style="margin-bottom: 1.4rem;">
+        <span class="eyebrow burg">Lo que ganan</span>
+        <h2 class="display h2" style="margin-top:1rem;">
+          Resultados <span class="italic-accent">concretos.</span>
+        </h2>
+      </div>
+
+      <div class="cards c4">
+        <div class="card">
+          <div class="stat-num">+</div>
+          <h4 style="margin-top:.5rem;">Autoridad</h4>
+          <p>Una marca con web seria se cobra más caro y se cierra más rápido.</p>
+        </div>
+        <div class="card">
+          <div class="stat-num">24/7</div>
+          <h4 style="margin-top:.5rem;">Captación</h4>
+          <p>Una página que vende mientras ustedes duermen.</p>
+        </div>
+        <div class="card">
+          <div class="stat-num">SEO</div>
+          <h4 style="margin-top:.5rem;">Google</h4>
+          <p>Base optimizada para que aparezcan en búsquedas locales.</p>
+        </div>
+        <div class="card">
+          <div class="stat-num">∞</div>
+          <h4 style="margin-top:.5rem;">Activo propio</h4>
+          <p>Una pieza que escala campañas y vive más allá del feed.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-foot">
+      <span>oranday studio × re:ach studio</span>
+      <span>08 / 14</span>
+    </div>
+  </section>
+
+
+  <!-- ============ 9. PROCESO ============ -->
+  <section class="slide" data-bg="cream">
+    <div class="slide-head">
+      <span class="brand-mark"><span class="dot"></span> oranday studio</span>
+      <span>Cómo trabajamos</span>
+    </div>
+
+    <div class="body two">
+      <div>
+        <span class="eyebrow">Proceso</span>
+        <h2 class="display h2" style="margin-top:1.2rem;">
+          De la idea<br/>al <span class="italic-accent">go-live.</span>
+        </h2>
+        <p class="lead" style="margin-top:1.2rem; max-width:30rem; opacity:.75;">
+          Cuatro pasos claros. Aprobaciones rápidas, entregables limpios,
+          comunicación directa por WhatsApp.
+        </p>
+      </div>
+
+      <ul class="numlist">
+        <li><span class="n">01</span><div><h5>Briefing</h5><p>Llamada de 30 min para alinear objetivos, tono y referencias.</p></div></li>
+        <li><span class="n">02</span><div><h5>Diseño</h5><p>Mockup live navegable. Hasta 2 rondas de cambios incluidas.</p></div></li>
+        <li><span class="n">03</span><div><h5>Desarrollo</h5><p>Implementación responsive, optimización y revisión final.</p></div></li>
+        <li><span class="n">04</span><div><h5>Lanzamiento</h5><p>Publicación en dominio, conexión a WhatsApp y entrega.</p></div></li>
+      </ul>
+    </div>
+
+    <div class="slide-foot">
+      <span>oranday studio × re:ach studio</span>
+      <span>09 / 14</span>
+    </div>
+  </section>
+
+
+  <!-- ============ 10. TIEMPOS ============ -->
+  <section class="slide" data-bg="cream2">
+    <div class="slide-head">
+      <span class="brand-mark"><span class="dot"></span> oranday studio</span>
+      <span>Tiempos</span>
+    </div>
+
+    <div class="body two">
+      <div>
+        <span class="eyebrow burg">Entrega</span>
+        <h2 class="display h2" style="margin-top:1.2rem;">
+          En menos de<br/><span class="italic-accent">dos semanas.</span>
+        </h2>
+        <p class="lead" style="margin-top:1.2rem; max-width:28rem; opacity:.75;">
+          Desde el OK del briefing hasta la web en vivo —
+          sin meses de espera ni dependencias innecesarias.
+        </p>
+      </div>
+
+      <div class="cards" style="grid-template-columns:1fr; gap:.7rem;">
+        <div class="card row" style="justify-content:space-between; align-items:center;">
+          <div><h4>Días 1–2</h4><p style="margin:0;">Briefing y dirección de arte aprobada</p></div>
+          <span class="pill">Kick-off</span>
+        </div>
+        <div class="card row" style="justify-content:space-between; align-items:center;">
+          <div><h4>Días 3–6</h4><p style="margin:0;">Diseño completo del sitio (live preview)</p></div>
+          <span class="pill">Diseño</span>
+        </div>
+        <div class="card row" style="justify-content:space-between; align-items:center;">
+          <div><h4>Días 7–9</h4><p style="margin:0;">Desarrollo, ajustes y revisión</p></div>
+          <span class="pill">Build</span>
+        </div>
+        <div class="card row" style="justify-content:space-between; align-items:center;">
+          <div><h4>Día 10</h4><p style="margin:0;">Lanzamiento en vivo</p></div>
+          <span class="pill">Go-live</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-foot">
+      <span>oranday studio × re:ach studio</span>
+      <span>10 / 14</span>
+    </div>
+  </section>
+
+
+  <!-- ============ 11. INVERSIÓN ============ -->
+  <section class="slide" data-bg="burg">
+    <div class="slide-head">
+      <span class="brand-mark"><span class="dot"></span> oranday studio</span>
+      <span>Inversión</span>
+    </div>
+
+    <div class="body">
+      <div style="margin-bottom: 1.2rem;">
+        <span class="eyebrow cream">Inversión</span>
+        <h2 class="display h2" style="margin-top:1rem; color: var(--cream);">
+          Tres formas de <span class="italic-accent">trabajar juntos.</span>
+        </h2>
+      </div>
+
+      <div class="cards c3" style="gap:1rem; align-items:stretch;">
+        <!-- Plan A -->
+        <div class="price">
+          <span class="price-name">Plan único</span>
+          <div class="price-amount">$3,500 <small>MXN</small></div>
+          <p class="small muted">Diseño + desarrollo + entrega final, sin compromiso mensual.</p>
+          <ul>
+            <li>Landing premium a medida</li>
+            <li>Responsive + SEO base</li>
+            <li>Conexión a WhatsApp</li>
+            <li>2 rondas de cambios</li>
+            <li>Entrega en ≤ 10 días</li>
+          </ul>
+        </div>
+
+        <!-- Plan B (featured) -->
+        <div class="price featured">
+          <span class="price-tag">Recomendado</span>
+          <span class="price-name">Plan continuo</span>
+          <div class="price-amount">$3,500 <small>+ $1,200 / mes</small></div>
+          <p class="small" style="opacity:.75;">Todo lo anterior + cuidado continuo de su web.</p>
+          <ul>
+            <li>Hosting y dominio gestionados</li>
+            <li>Soporte prioritario</li>
+            <li>2 cambios menores al mes incluidos</li>
+            <li>Backups y monitoreo</li>
+            <li>Cambios extra con descuento</li>
+          </ul>
+        </div>
+
+        <!-- Plan C -->
+        <div class="price">
+          <span class="price-name">Cambios on-demand</span>
+          <div class="price-amount">$1,000 <small>MXN / cambio</small></div>
+          <p class="small muted">Para clientes sin plan continuo que necesitan ajustes puntuales.</p>
+          <ul>
+            <li>Cambios de copy o imágenes</li>
+            <li>Ajustes de diseño puntuales</li>
+            <li>Entrega en 48–72h</li>
+            <li>Pago por cambio realizado</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="small" style="margin-top:1.2rem; color: var(--nude); opacity:.7;">
+        Precios en pesos mexicanos. Pago: 50% al inicio · 50% al lanzamiento. Mantenimiento cancelable mes a mes.
+      </p>
+    </div>
+
+    <div class="slide-foot">
+      <span>oranday studio × re:ach studio</span>
+      <span>11 / 14</span>
+    </div>
+  </section>
+
+
+  <!-- ============ 12. POR QUÉ ORANDAY ============ -->
+  <section class="slide" data-bg="cream">
+    <div class="slide-head">
+      <span class="brand-mark"><span class="dot"></span> oranday studio</span>
+      <span>Por qué oranday</span>
+    </div>
+
+    <div class="body two">
+      <div>
+        <span class="eyebrow burg">Por qué oranday</span>
+        <h2 class="display h2" style="margin-top:1.2rem;">
+          Diseño bonito <span class="italic-accent">y</span><br/>
+          que vende.
+        </h2>
+        <p class="lead" style="margin-top:1.2rem; max-width:28rem; opacity:.75;">
+          No solo hacemos webs estéticas. Pensamos cada sección
+          como una pieza que tiene que llevar al visitante
+          a un objetivo claro: escribir, contratar, contactar.
+        </p>
+        <p class="hand" style="font-size:1.6rem; margin-top:1rem;">
+          oranday studio · diseño con propósito.
+        </p>
+      </div>
+
+      <div class="cards c2" style="gap:.8rem;">
+        <div class="card"><div class="num">01</div><h4>Velocidad real</h4><p>Entregamos en días, no en meses.</p></div>
+        <div class="card"><div class="num">02</div><h4>Estética premium</h4><p>Diseño editorial, no plantilla genérica.</p></div>
+        <div class="card"><div class="num">03</div><h4>Trato directo</h4><p>WhatsApp con quien diseña y programa.</p></div>
+        <div class="card"><div class="num">04</div><h4>Foco en conversión</h4><p>Cada CTA pensado para que sí cierre.</p></div>
+      </div>
+    </div>
+
+    <div class="slide-foot">
+      <span>oranday studio × re:ach studio</span>
+      <span>12 / 14</span>
+    </div>
+  </section>
+
+
+  <!-- ============ 13. PRÓXIMOS PASOS ============ -->
+  <section class="slide" data-bg="ink">
+    <div class="slide-head">
+      <span class="brand-mark"><span class="dot"></span> oranday studio</span>
+      <span>Próximos pasos</span>
+    </div>
+
+    <div class="body two">
+      <div>
+        <span class="eyebrow cream">Cómo arrancamos</span>
+        <h1 class="display h1" style="margin-top:1.2rem;">
+          Aprobamos hoy.<br/>
+          Lanzamos en <span class="italic-accent">10 días.</span>
+        </h1>
+        <p class="lead" style="margin-top:1.4rem; max-width:32rem; opacity:.75;">
+          Si seguimos adelante, mañana mismo agendamos el briefing
+          y entran al calendario. Una web seria, en su mejor versión, lista para junio.
+        </p>
+      </div>
+
+      <ul class="numlist">
+        <li><span class="n">01</span><div><h5>Confirmación</h5><p>Eligen plan (único o continuo). Firma simple.</p></div></li>
+        <li><span class="n">02</span><div><h5>Anticipo del 50%</h5><p>$1,750 MXN para entrar al calendario.</p></div></li>
+        <li><span class="n">03</span><div><h5>Briefing</h5><p>Llamada de kick-off. 30 minutos.</p></div></li>
+        <li><span class="n">04</span><div><h5>Lanzamiento</h5><p>Web en vivo en ≤ 10 días hábiles.</p></div></li>
+      </ul>
+    </div>
+
+    <div class="slide-foot">
+      <span>oranday studio × re:ach studio</span>
+      <span>13 / 14</span>
+    </div>
+  </section>
+
+
+  <!-- ============ 14. GRACIAS ============ -->
+  <section class="slide" data-bg="ink" style="position:relative;">
+    <div class="bg-watermark" aria-hidden="true"></div>
+    <div class="slide-head" style="position:relative; z-index:1;">
+      <span class="brand-mark"><span class="dot"></span> oranday studio</span>
+      <span>Gracias</span>
+    </div>
+
+    <div class="body center" style="position:relative; z-index:1;">
+      <div>
+        <h1 class="display" style="font-size: clamp(3rem, 8vw, 6rem);">
+          Gracias, <span class="italic-accent">re:ach.</span>
+        </h1>
+        <p class="lead" style="margin-top:1.4rem; opacity:.7; max-width:36rem; margin-left:auto; margin-right:auto;">
+          Cualquier duda la resolvemos por WhatsApp.
+          Si hoy decidimos seguir adelante, mañana arrancamos.
+        </p>
+
+        <div class="row" style="justify-content:center; margin-top:2rem;">
+          <span class="pill">oranday.studio</span>
+          <span class="pill">@oranday.studio</span>
+          <span class="pill">WhatsApp directo</span>
+        </div>
+
+        <p class="hand" style="font-size:1.9rem; margin-top:2rem;">
+          Hagamos una web a la altura.
+        </p>
+      </div>
+    </div>
+
+    <div class="slide-foot" style="position:relative; z-index:1;">
+      <span>oranday studio × re:ach studio · Propuesta 2026</span>
+      <span>14 / 14</span>
+    </div>
+  </section>
+
+</div>
+
+<!-- Navigation -->
+<nav class="nav" role="navigation" aria-label="Slide navigation">
+  <button id="prev" aria-label="Anterior">←</button>
+  <span class="count"><span id="cur">1</span> / <span id="total">14</span></span>
+  <button id="next" aria-label="Siguiente">→</button>
+  <button id="full" class="full" aria-label="Pantalla completa">Full</button>
+</nav>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const total = slides.length;
+  let i = 0;
+
+  document.getElementById('total').textContent = total;
+
+  function go(n) {
+    n = Math.max(0, Math.min(total - 1, n));
+    if (n === i) return;
+    slides[i].classList.remove('active');
+    slides[n].classList.add('active');
+    i = n;
+    document.getElementById('cur').textContent = i + 1;
+    history.replaceState(null, '', '#' + (i + 1));
+  }
+
+  document.getElementById('prev').addEventListener('click', () => go(i - 1));
+  document.getElementById('next').addEventListener('click', () => go(i + 1));
+  document.getElementById('full').addEventListener('click', () => {
+    if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+    else document.exitFullscreen();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); go(i + 1); }
+    if (e.key === 'ArrowLeft'  || e.key === 'PageUp')                   { e.preventDefault(); go(i - 1); }
+    if (e.key === 'Home') { e.preventDefault(); go(0); }
+    if (e.key === 'End')  { e.preventDefault(); go(total - 1); }
+    if (e.key === 'f' || e.key === 'F') document.getElementById('full').click();
+  });
+
+  // Tap nav on touch devices (left half = prev, right half = next)
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('.nav') || e.target.closest('button')) return;
+    const r = e.clientX / window.innerWidth;
+    if (r > 0.7) go(i + 1);
+    else if (r < 0.3) go(i - 1);
+  });
+
+  // Deep link
+  const h = parseInt(location.hash.replace('#',''));
+  if (!isNaN(h) && h >= 1 && h <= total) go(h - 1);
+</script>
+
+</body>
+</html>

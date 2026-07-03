@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>re:ach studio — Branding & Estrategia Digital · Monterrey</title>
+<meta name="description" content="Ayudamos a marcas en crecimiento a construir una identidad fuerte y comunicarla con estrategia. Branding, Social Media, Meta Ads, Producción de Contenido y más. Monterrey, MX.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800&family=Albert+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+/* ── TOKENS ─────────────────────────────────────────────── */
+:root {
+  --dark:    #191919;
+  --dark2:   #1f1f1f;
+  --dark3:   #252525;
+  --cream:   #fffced;
+  --cream2:  #fffefa;
+  --muted:   rgba(255,252,237,.52);
+  --dim:     rgba(255,252,237,.22);
+  --burg:    #56070e;
+  --red:     #e2361f;
+  --pink:    #dc5f86;
+  --border:  rgba(255,252,237,.09);
+  --border2: rgba(255,252,237,.05);
+  --ff:      'Outfit', sans-serif;
+  --fb:      'Albert Sans', sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{
+  background:var(--dark);
+  color:var(--cream);
+  font-family:var(--fb);
+  line-height:1.6;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+a{text-decoration:none}
+img{display:block;max-width:100%}
+
+/* ── LAYOUT ─────────────────────────────────────────────── */
+.wrap{max-width:1160px;margin:0 auto;padding:0 28px}
+
+/* ── BUTTONS ─────────────────────────────────────────────── */
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--ff);font-size:14px;font-weight:600;
+  letter-spacing:.2px;padding:12px 24px;border-radius:7px;
+  border:none;cursor:pointer;transition:all .2s ease;
+  white-space:nowrap;
+}
+.btn-red{background:var(--red);color:var(--cream)}
+.btn-red:hover{background:#c8301a;transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:var(--cream);border:1.5px solid var(--border)}
+.btn-ghost:hover{border-color:rgba(255,252,237,.3);background:rgba(255,252,237,.04)}
+.btn-wa{background:#25D366;color:#fff}
+.btn-wa:hover{background:#1fba56;transform:translateY(-1px)}
+.btn-lg{font-size:15px;padding:14px 30px;border-radius:8px}
+
+/* ── TAG ─────────────────────────────────────────────────── */
+.tag{
+  display:inline-block;font-family:var(--ff);
+  font-size:10px;font-weight:600;letter-spacing:2.2px;
+  text-transform:uppercase;padding:5px 14px;border-radius:20px;
+  border:1px solid var(--border);color:var(--muted);
+}
+.tag-r{border-color:rgba(226,54,31,.45);color:var(--red)}
+
+/* ── SECTION HELPERS ─────────────────────────────────────── */
+.sec-eyebrow{
+  display:flex;align-items:center;gap:14px;margin-bottom:52px;
+  font-family:var(--ff);font-size:10px;font-weight:600;
+  letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);
+}
+.sec-eyebrow::after{content:'';flex:1;height:1px;background:var(--border)}
+
+.sec-h2{
+  font-family:var(--ff);font-size:clamp(38px,5vw,66px);
+  font-weight:700;line-height:1.0;letter-spacing:-2px;color:var(--cream);
+}
+.sec-h2 em{color:var(--red);font-style:italic}
+.sec-h2 s{color:var(--dim);text-decoration:none}
+
+.sec-p{
+  font-size:16px;font-weight:300;color:var(--muted);
+  max-width:580px;line-height:1.65;margin-top:16px;
+}
+
+/* ── NAV ─────────────────────────────────────────────────── */
+#nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:0 28px;transition:background .4s,backdrop-filter .4s;
+}
+#nav.on{
+  background:rgba(25,25,25,.92);
+  backdrop-filter:blur(20px) saturate(1.4);
+  border-bottom:1px solid var(--border2);
+}
+.nav-i{
+  max-width:1160px;margin:0 auto;
+  height:70px;display:flex;align-items:center;justify-content:space-between;gap:32px;
+}
+.logo{
+  font-family:var(--ff);font-size:18px;font-weight:700;
+  color:var(--cream);letter-spacing:-.4px;flex-shrink:0;
+}
+.logo b{color:var(--red);font-weight:700}
+.nav-links{
+  display:flex;gap:32px;list-style:none;
+}
+.nav-links a{
+  font-family:var(--ff);font-size:13px;font-weight:400;
+  color:var(--muted);transition:color .2s;
+}
+.nav-links a:hover{color:var(--cream)}
+.nav-mob{display:none}
+
+/* ── HERO ─────────────────────────────────────────────────── */
+#hero{
+  min-height:100svh;display:flex;flex-direction:column;
+  justify-content:flex-end;padding-bottom:88px;
+  position:relative;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;pointer-events:none;user-select:none;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--ff);font-size:clamp(100px,19vw,300px);
+  font-weight:800;color:rgba(255,252,237,.018);
+  letter-spacing:-10px;line-height:1;white-space:nowrap;
+}
+.hero-glow{
+  position:absolute;bottom:-100px;right:-80px;
+  width:500px;height:500px;border-radius:50%;
+  background:radial-gradient(circle, rgba(86,7,14,.35) 0%, transparent 70%);
+  pointer-events:none;
+}
+.hero-content{position:relative;z-index:2}
+.hero-eyebrow{
+  font-family:var(--ff);font-size:11px;font-weight:500;
+  letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--red);margin-bottom:28px;
+  display:flex;align-items:center;gap:12px;
+}
+.hero-eyebrow::before{content:'';width:28px;height:1.5px;background:var(--red);display:block}
+.hero-h1{
+  font-family:var(--ff);font-size:clamp(54px,8vw,116px);
+  font-weight:700;line-height:.95;letter-spacing:-4px;
+  color:var(--cream);margin-bottom:30px;
+}
+.hero-h1 .re{color:var(--red)}
+.hero-window{
+  display:block;overflow:hidden;height:1.05em;
+}
+.hero-cycle{
+  display:block;
+  transition:opacity .55s ease, transform .55s cubic-bezier(.16,1,.3,1);
+}
+.hero-ghost{color:rgba(255,252,237,.14)}
+.hero-sub{
+  font-family:var(--fb);font-size:clamp(15px,1.8vw,19px);
+  font-weight:300;color:var(--muted);max-width:500px;
+  line-height:1.6;margin-bottom:44px;
+}
+.hero-ctas{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.hero-scroll{
+  position:absolute;bottom:30px;right:28px;
+  display:flex;align-items:center;gap:10px;
+  font-family:var(--ff);font-size:9.5px;font-weight:500;
+  letter-spacing:2.2px;text-transform:uppercase;color:var(--dim);
+}
+.hero-scroll span{width:36px;height:1px;background:var(--dim);display:block}
+
+/* ── DIVIDER ─────────────────────────────────────────────── */
+.sec-div{border-top:1px solid var(--border2)}
+
+/* ── PROBLEM ─────────────────────────────────────────────── */
+#problem{padding:120px 0}
+.problem-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;
+}
+.problem-h2{
+  font-family:var(--ff);font-size:clamp(32px,4.2vw,56px);
+  font-weight:600;line-height:1.1;letter-spacing:-1.5px;
+}
+.problem-h2 em{font-style:italic;color:var(--muted)}
+.problem-list{display:flex;flex-direction:column}
+.problem-item{
+  display:flex;gap:18px;align-items:flex-start;
+  padding:22px 0;border-bottom:1px solid var(--border2);
+}
+.problem-item:first-child{border-top:1px solid var(--border2)}
+.p-num{
+  font-family:var(--ff);font-size:10px;font-weight:600;
+  color:var(--red);letter-spacing:1px;margin-top:2px;min-width:18px;
+}
+.p-txt strong{
+  display:block;font-family:var(--ff);font-size:15px;
+  font-weight:500;color:var(--cream);margin-bottom:3px;
+}
+.p-txt span{font-size:13px;color:var(--muted);font-weight:300;line-height:1.55}
+
+/* ── SERVICES ───────────────────────────────────────────── */
+#services{padding:120px 0}
+.srv-head{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:40px;align-items:end;margin-bottom:56px;
+}
+.srv-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:var(--border2);
+  border:1px solid var(--border2);border-radius:12px;overflow:hidden;
+}
+.srv-card{
+  background:var(--dark);padding:36px 30px;
+  transition:background .25s;
+}
+.srv-card:hover{background:var(--dark2)}
+.srv-ico{
+  width:38px;height:38px;border-radius:8px;
+  background:rgba(226,54,31,.1);display:flex;
+  align-items:center;justify-content:center;
+  margin-bottom:22px;
+}
+.srv-ico svg{width:18px;height:18px;fill:var(--red)}
+.srv-name{
+  font-family:var(--ff);font-size:17px;font-weight:600;
+  color:var(--cream);margin-bottom:8px;letter-spacing:-.3px;
+}
+.srv-desc{
+  font-size:13px;font-weight:300;color:var(--muted);
+  line-height:1.6;margin-bottom:18px;
+}
+.srv-chips{display:flex;flex-wrap:wrap;gap:5px}
+.chip{
+  font-family:var(--ff);font-size:9.5px;font-weight:500;
+  color:var(--dim);letter-spacing:.4px;
+  padding:3px 9px;border:1px solid var(--border2);border-radius:4px;
+}
+
+/* ── ABOUT ───────────────────────────────────────────────── */
+#about{padding:120px 0}
+.about-grid{
+  display:grid;grid-template-columns:420px 1fr;gap:80px;align-items:start;
+}
+.about-words{display:flex;flex-direction:column;gap:6px;margin-top:40px}
+.aw{
+  font-family:var(--ff);font-size:clamp(44px,6vw,80px);
+  font-weight:700;letter-spacing:-2.5px;line-height:1.0;
+  color:var(--border);cursor:default;
+  transition:color .35s;
+}
+.aw b{color:var(--red)}
+.aw:hover,.aw.lit{color:var(--cream)}
+.about-right{}
+.about-body{
+  font-size:16px;font-weight:300;color:var(--muted);
+  line-height:1.72;margin-bottom:20px;
+}
+.about-body strong{color:var(--cream);font-weight:500}
+.about-pillars{
+  display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:36px;
+}
+.ap{
+  padding:20px 18px;border:1px solid var(--border2);border-radius:8px;
+}
+.ap .ap-lbl{
+  font-family:var(--ff);font-size:9.5px;font-weight:600;
+  color:var(--red);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;
+}
+.ap .ap-title{
+  font-family:var(--ff);font-size:14px;font-weight:600;
+  color:var(--cream);margin-bottom:4px;
+}
+.ap .ap-txt{font-size:12.5px;color:var(--muted);font-weight:300;line-height:1.45}
+
+/* ── PORTFOLIO ───────────────────────────────────────────── */
+#portfolio{padding:120px 0}
+.port-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:14px;
+  margin-top:16px;
+}
+.pc{
+  border-radius:10px;overflow:hidden;border:1px solid var(--border2);
+  position:relative;cursor:pointer;aspect-ratio:4/3;
+  background:var(--dark3);
+  transition:transform .3s ease,border-color .3s;
+}
+.pc:hover{transform:translateY(-5px);border-color:var(--border)}
+.pc.wide{grid-column:span 2;aspect-ratio:16/9}
+.pc-bg{
+  width:100%;height:100%;
+  display:flex;align-items:flex-end;
+}
+/* unique gradient per card */
+.pc:nth-child(1) .pc-bg{background:linear-gradient(145deg,#1d0d11 0%,#2e0d14 100%)}
+.pc:nth-child(2) .pc-bg{background:linear-gradient(145deg,#131520 0%,#1b2138 100%)}
+.pc:nth-child(3) .pc-bg{background:linear-gradient(145deg,#191912 0%,#26231a 100%)}
+.pc:nth-child(4) .pc-bg{background:linear-gradient(145deg,#1a1118 0%,#2a1828 100%)}
+.pc:nth-child(5) .pc-bg{background:linear-gradient(145deg,#0e1b1b 0%,#13282a 100%)}
+.pc:nth-child(6) .pc-bg{background:linear-gradient(145deg,#1a1012 0%,#291a1e 100%)}
+.pc:nth-child(7) .pc-bg{background:linear-gradient(145deg,#141414 0%,#1f1f1f 100%)}
+.pc-label{
+  padding:18px 20px;width:100%;
+}
+.pc-name{
+  font-family:var(--ff);font-size:15px;font-weight:600;
+  color:var(--cream);letter-spacing:-.2px;
+}
+.pc-type{font-size:11.5px;font-weight:300;color:var(--muted);margin-top:2px}
+.pc-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(25,25,25,.92) 0%,rgba(25,25,25,.1) 55%,transparent 100%);
+  display:flex;align-items:flex-end;padding:20px;
+  opacity:0;transition:opacity .35s;
+}
+.pc:hover .pc-overlay{opacity:1}
+.pc-hover-name{
+  font-family:var(--ff);font-size:17px;font-weight:600;color:var(--cream);
+}
+.pc-hover-type{font-size:12px;font-weight:300;color:var(--muted);margin-top:3px}
+
+/* ── PROCESS ─────────────────────────────────────────────── */
+#process{padding:120px 0}
+.proc-steps{
+  display:grid;grid-template-columns:repeat(5,1fr);
+  gap:0;margin-top:64px;position:relative;
+}
+.proc-steps::before{
+  content:'';position:absolute;top:27px;
+  left:calc(10% + 4px);right:calc(10% + 4px);
+  height:1px;background:var(--border);
+}
+.ps{
+  display:flex;flex-direction:column;
+  align-items:center;text-align:center;padding:0 10px;
+}
+.ps-num{
+  width:54px;height:54px;border-radius:50%;
+  background:var(--dark);border:1.5px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--ff);font-size:14px;font-weight:600;color:var(--cream);
+  margin-bottom:20px;position:relative;z-index:1;
+  transition:border-color .25s,color .25s,background .25s;
+}
+.ps:hover .ps-num{border-color:var(--red);color:var(--red);background:rgba(226,54,31,.07)}
+.ps-title{
+  font-family:var(--ff);font-size:13.5px;font-weight:600;
+  color:var(--cream);margin-bottom:6px;letter-spacing:-.2px;
+}
+.ps-desc{font-size:12px;font-weight:300;color:var(--muted);line-height:1.5}
+
+/* ── FAQ ─────────────────────────────────────────────────── */
+#faq{padding:120px 0}
+.faq-grid{
+  display:grid;grid-template-columns:380px 1fr;gap:80px;align-items:start;
+}
+.faq-list{display:flex;flex-direction:column}
+.fi{border-top:1px solid var(--border2);cursor:pointer}
+.fi:last-child{border-bottom:1px solid var(--border2)}
+.fi-q{
+  display:flex;justify-content:space-between;align-items:center;
+  gap:16px;padding:22px 0;
+}
+.fi-question{
+  font-family:var(--ff);font-size:15px;font-weight:500;
+  color:var(--cream);line-height:1.35;
+}
+.fi-tog{
+  width:26px;height:26px;border-radius:50%;flex-shrink:0;
+  border:1px solid var(--border);display:flex;align-items:center;
+  justify-content:center;font-size:17px;color:var(--muted);
+  transition:all .25s;
+}
+.fi.open .fi-tog{border-color:var(--red);color:var(--red);transform:rotate(45deg)}
+.fi-ans{
+  font-size:14px;font-weight:300;color:var(--muted);
+  line-height:1.65;max-height:0;overflow:hidden;
+  transition:max-height .4s ease,padding .3s;
+}
+.fi.open .fi-ans{max-height:180px;padding-bottom:20px}
+
+/* ── CTA ─────────────────────────────────────────────────── */
+#cta{padding:120px 0}
+.cta-box{
+  border:1px solid var(--border2);border-radius:16px;
+  padding:80px 60px;text-align:center;
+  background:linear-gradient(145deg,#1a1010 0%,#191919 60%);
+  position:relative;overflow:hidden;
+}
+.cta-box::before{
+  content:'';position:absolute;
+  bottom:-120px;right:-80px;width:480px;height:480px;border-radius:50%;
+  background:radial-gradient(circle,rgba(86,7,14,.4) 0%,transparent 70%);
+  pointer-events:none;
+}
+.cta-box::after{
+  content:'';position:absolute;
+  top:-100px;left:-60px;width:350px;height:350px;border-radius:50%;
+  background:radial-gradient(circle,rgba(226,54,31,.07) 0%,transparent 70%);
+  pointer-events:none;
+}
+.cta-inner{position:relative;z-index:1}
+.cta-h2{
+  font-family:var(--ff);font-size:clamp(40px,6vw,80px);
+  font-weight:700;line-height:1.0;letter-spacing:-2.5px;
+  color:var(--cream);margin-bottom:18px;
+}
+.cta-h2 span{color:var(--red)}
+.cta-sub{
+  font-size:17px;font-weight:300;color:var(--muted);
+  margin-bottom:44px;line-height:1.55;max-width:560px;
+  margin-left:auto;margin-right:auto;
+}
+.cta-btns{
+  display:flex;align-items:center;justify-content:center;
+  gap:14px;flex-wrap:wrap;margin-bottom:36px;
+}
+.cta-note{font-size:12px;color:var(--dim);font-weight:300}
+
+/* ── FOOTER ─────────────────────────────────────────────── */
+footer{border-top:1px solid var(--border2);padding:44px 0}
+.foot-i{
+  display:flex;justify-content:space-between;
+  align-items:center;flex-wrap:wrap;gap:20px;
+}
+.foot-logo{
+  font-family:var(--ff);font-size:18px;font-weight:700;
+  color:var(--cream);letter-spacing:-.4px;
+}
+.foot-logo b{color:var(--red)}
+.foot-links{display:flex;gap:24px;list-style:none}
+.foot-links a{
+  font-family:var(--ff);font-size:13px;color:var(--muted);
+  transition:color .2s;
+}
+.foot-links a:hover{color:var(--cream)}
+.foot-copy{font-size:12px;color:var(--dim);font-weight:300}
+
+/* ── REVEAL ANIMATIONS ───────────────────────────────────── */
+.rv{
+  opacity:0;transform:translateY(22px);
+  transition:opacity .72s ease,transform .72s ease;
+}
+.rv.in{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}
+.d2{transition-delay:.2s}
+.d3{transition-delay:.3s}
+.d4{transition-delay:.4s}
+
+/* ── RESPONSIVE ─────────────────────────────────────────── */
+@media(max-width:960px){
+  .problem-grid,.about-grid,.faq-grid{grid-template-columns:1fr;gap:48px}
+  .about-grid{grid-template-columns:1fr}
+  .srv-head{grid-template-columns:1fr}
+  .srv-grid{grid-template-columns:1fr 1fr}
+  .port-grid{grid-template-columns:1fr 1fr}
+  .pc.wide{grid-column:span 2}
+  .proc-steps{grid-template-columns:1fr 1fr;gap:32px}
+  .proc-steps::before{display:none}
+  .nav-links{display:none}
+  .nav-mob{display:block}
+}
+@media(max-width:620px){
+  .srv-grid{grid-template-columns:1fr}
+  .port-grid{grid-template-columns:1fr}
+  .pc.wide{grid-column:span 1;aspect-ratio:4/3}
+  .proc-steps{grid-template-columns:1fr}
+  .about-pillars{grid-template-columns:1fr}
+  .cta-box{padding:52px 28px}
+  .hero-h1{letter-spacing:-2.5px}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════ NAV ═══════════════════════════════ -->
+<nav id="nav">
+  <div class="nav-i">
+    <a href="#" class="logo"><b>re:</b>ach studio</a>
+    <ul class="nav-links">
+      <li><a href="#services">Servicios</a></li>
+      <li><a href="#portfolio">Trabajo</a></li>
+      <li><a href="#about">Nosotros</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a href="#cta" class="btn btn-red nav-mob" style="font-size:13px;padding:10px 18px">Agendar llamada</a>
+    <a href="#cta" class="btn btn-red" style="font-size:13px;padding:10px 20px">Agendar llamada</a>
+  </div>
+</nav>
+
+<!-- ═══════════════════ HERO ══════════════════════════════ -->
+<section id="hero">
+  <div class="hero-bg" aria-hidden="true">re:ach</div>
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="wrap hero-content">
+    <div class="hero-eyebrow">Monterrey, MX &nbsp;·&nbsp; Branding &amp; Estrategia Digital</div>
+    <h1 class="hero-h1">
+      <span class="hero-window"><span class="hero-cycle" id="heroCycle">Re:design.</span></span>
+      <span class="hero-ghost">Re:</span>ach&nbsp;us.
+    </h1>
+    <p class="hero-sub">
+      Ayudamos a marcas en crecimiento a construir una identidad fuerte
+      y comunicarla con estrategia&nbsp;— para que crecer sea inevitable.
+    </p>
+    <div class="hero-ctas">
+      <!-- NOTA: Reemplaza XXXXXXXXXXX con el número de WhatsApp de re:ach -->
+      <a href="https://wa.me/52XXXXXXXXXXX?text=Hola%20re%3Aach%20studio%2C%20me%20gustar%C3%ADa%20agendar%20una%20llamada%20para%20explorar%20c%C3%B3mo%20pueden%20ayudar%20a%20mi%20marca%20a%20crecer." class="btn btn-red btn-lg" target="_blank">Agendar una llamada</a>
+      <a href="#portfolio" class="btn btn-ghost btn-lg">Ver nuestro trabajo</a>
+    </div>
+  </div>
+  <a href="#problem" class="hero-scroll"><span></span>Scroll</a>
+</section>
+
+<!-- ═══════════════════ PROBLEM (STAKES) ══════════════════ -->
+<section id="problem" class="sec-div">
+  <div class="wrap">
+    <div class="problem-grid">
+      <div class="rv">
+        <div class="tag tag-r" style="margin-bottom:24px">El problema</div>
+        <h2 class="problem-h2">
+          Tu marca debería<br>abrir puertas.<br>
+          <em>¿Las está<br>cerrando?</em>
+        </h2>
+      </div>
+      <div class="problem-list rv d2">
+        <div class="problem-item">
+          <span class="p-num">01</span>
+          <div class="p-txt">
+            <strong>Tu imagen no refleja lo que ofreces</strong>
+            <span>Tienes un buen producto o servicio, pero tu marca no lo demuestra. Los clientes correctos te buscan — y no te encuentran.</span>
+          </div>
+        </div>
+        <div class="problem-item">
+          <span class="p-num">02</span>
+          <div class="p-txt">
+            <strong>Te cuesta atraer a los clientes correctos</strong>
+            <span>Sin una identidad clara, atraes a quienes regatean en lugar de a quienes valoran lo que haces. Tu posicionamiento decide quién llega a ti.</span>
+          </div>
+        </div>
+        <div class="problem-item">
+          <span class="p-num">03</span>
+          <div class="p-txt">
+            <strong>No tienes el tiempo ni el equipo creativo</strong>
+            <span>Sabes que necesitas estrategia, contenido y diseño consistente — pero hacerlo solo, bien y de forma constante, es demasiado.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ SERVICES ═════════════════════════ -->
+<section id="services" class="sec-div">
+  <div class="wrap">
+    <div class="srv-head">
+      <div>
+        <div class="sec-eyebrow rv">Servicios</div>
+        <h2 class="sec-h2 rv">Todo lo que tu marca<br>necesita para <em>crecer.</em></h2>
+      </div>
+      <p class="sec-p rv d1">Sin paquetes genéricos. Sin soluciones de copia-pega. Cada proyecto se desarrolla de acuerdo con las necesidades específicas de cada marca.</p>
+    </div>
+
+    <div class="srv-grid rv d2">
+
+      <div class="srv-card">
+        <div class="srv-ico">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zm0 7L2 14l10 5 10-5-10-5zm0 7L2 21l10 5 10-5-10-5z" opacity=".4"/><path d="M12 2L2 7l10 5 10-5-10-5z"/></svg>
+        </div>
+        <div class="srv-name">Branding &amp; Rebranding</div>
+        <div class="srv-desc">Construimos identidades visuales completas que diferencian y posicionan tu marca. Desde la estrategia hasta el manual que guía cada pieza.</div>
+        <div class="srv-chips">
+          <span class="chip">Estrategia de marca</span>
+          <span class="chip">Identidad visual</span>
+          <span class="chip">Manual</span>
+        </div>
+      </div>
+
+      <div class="srv-card">
+        <div class="srv-ico">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" opacity=".3"/><path d="M8 12h8M8 8h8M8 16h5"/></svg>
+        </div>
+        <div class="srv-name">Social Media Management</div>
+        <div class="srv-desc">Creamos y gestionamos contenido para construir una presencia digital consistente. Estrategia, diseño, copy y publicación — todo cubierto.</div>
+        <div class="srv-chips">
+          <span class="chip">Estrategia</span>
+          <span class="chip">Diseño</span>
+          <span class="chip">Copywriting</span>
+          <span class="chip">Reportes</span>
+        </div>
+      </div>
+
+      <div class="srv-card">
+        <div class="srv-ico">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" opacity=".3"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <div class="srv-name">Meta Ads</div>
+        <div class="srv-desc">Campañas en Facebook e Instagram diseñadas para atraer clientes potenciales calificados y generar resultados medibles para tu negocio.</div>
+        <div class="srv-chips">
+          <span class="chip">Campañas</span>
+          <span class="chip">Segmentación</span>
+          <span class="chip">Optimización</span>
+          <span class="chip">Remarketing</span>
+        </div>
+      </div>
+
+      <div class="srv-card">
+        <div class="srv-ico">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="14" rx="2" opacity=".3"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <div class="srv-name">Producción de Contenido</div>
+        <div class="srv-desc">Fotografía, video, reels y UGC alineados con tu identidad y objetivos. Contenido que comunica desde el primer frame.</div>
+        <div class="srv-chips">
+          <span class="chip">Fotografía</span>
+          <span class="chip">Video</span>
+          <span class="chip">Reels</span>
+          <span class="chip">UGC</span>
+        </div>
+      </div>
+
+      <div class="srv-card">
+        <div class="srv-ico">
+          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" opacity=".3"/><polyline points="14 2 14 8 20 8"/></svg>
+        </div>
+        <div class="srv-name">Diseño Gráfico</div>
+        <div class="srv-desc">Materiales impresos y digitales que comunican lo que eres. Tarjetas, brochures, menús, presentaciones y todo lo que tu marca necesita.</div>
+        <div class="srv-chips">
+          <span class="chip">Impresos</span>
+          <span class="chip">Digital</span>
+          <span class="chip">Corporativo</span>
+        </div>
+      </div>
+
+      <div class="srv-card">
+        <div class="srv-ico">
+          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" opacity=".3"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <div class="srv-name">Landing Pages</div>
+        <div class="srv-desc">Páginas diseñadas con estructura estratégica para captar prospectos y convertir visitas en oportunidades reales de negocio.</div>
+        <div class="srv-chips">
+          <span class="chip">Diseño estratégico</span>
+          <span class="chip">WhatsApp</span>
+          <span class="chip">Responsive</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ ABOUT ═════════════════════════════ -->
+<section id="about" class="sec-div">
+  <div class="wrap">
+    <div class="about-grid">
+      <div>
+        <div class="tag rv" style="margin-bottom:40px">re:ach studio</div>
+        <div class="about-words">
+          <div class="aw rv d1 lit"><b>E</b>stratégico.</div>
+          <div class="aw rv d2"><b>C</b>reativo.</div>
+          <div class="aw rv d3"><b>C</b>ercano.</div>
+        </div>
+      </div>
+      <div class="rv d1">
+        <div class="tag tag-r" style="margin-bottom:22px">Quiénes somos</div>
+        <h2 class="sec-h2" style="margin-bottom:22px">Ideas que se convierten<br>en marcas <em>con propósito.</em></h2>
+        <p class="about-body">Somos un estudio creativo especializado en branding, marketing y estrategia digital. <strong>Nos enfocamos en conocer a fondo a cada cliente</strong> para crear experiencias auténticas que reflejen su esencia, conecten con su audiencia y fortalezcan la identidad y el reconocimiento de su marca.</p>
+        <p class="about-body">No solo desarrollamos ideas — las <strong>impulsamos con nuevas perspectivas, propuestas y oportunidades</strong> que potencian el crecimiento de cada proyecto. Atención personalizada y comunicación constante, con un valor que las agencias tradicionales rara vez igualan.</p>
+        <div class="about-pillars">
+          <div class="ap">
+            <div class="ap-lbl">Misión</div>
+            <div class="ap-title">Impulsar el crecimiento</div>
+            <div class="ap-txt">Estrategias personalizadas, contenido de calidad y diseño con propósito.</div>
+          </div>
+          <div class="ap">
+            <div class="ap-lbl">Visión</div>
+            <div class="ap-title">Tu aliado creativo</div>
+            <div class="ap-txt">El partner que tu marca necesita para destacar y construir presencia duradera.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ PORTFOLIO ════════════════════════ -->
+<section id="portfolio" class="sec-div">
+  <div class="wrap">
+    <div class="sec-eyebrow rv">Trabajo</div>
+    <h2 class="sec-h2 rv">Marcas que hemos<br><em>construido.</em></h2>
+    <p class="sec-p rv d1">Hemos trabajado con marcas de diferentes industrias desarrollando branding, contenido, campañas y estrategias que les han permitido crecer y posicionarse.</p>
+
+    <div class="port-grid rv d2">
+
+      <div class="pc wide">
+        <div class="pc-bg">
+          <div class="pc-label">
+            <div class="pc-name">Maremoto</div>
+            <div class="pc-type">Fotografía · Redes sociales · Menú</div>
+          </div>
+        </div>
+        <div class="pc-overlay">
+          <div><div class="pc-hover-name">Maremoto</div><div class="pc-hover-type">Fotografía de producto · Social Media · Diseño de menú</div></div>
+        </div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-bg">
+          <div class="pc-label">
+            <div class="pc-name">Livana</div>
+            <div class="pc-type">Branding</div>
+          </div>
+        </div>
+        <div class="pc-overlay">
+          <div><div class="pc-hover-name">Livana</div><div class="pc-hover-type">Branding &amp; Identidad visual completa</div></div>
+        </div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-bg">
+          <div class="pc-label">
+            <div class="pc-name">Travel Diaries</div>
+            <div class="pc-type">Branding</div>
+          </div>
+        </div>
+        <div class="pc-overlay">
+          <div><div class="pc-hover-name">Travel Diaries</div><div class="pc-hover-type">Branding &amp; Identidad visual completa</div></div>
+        </div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-bg">
+          <div class="pc-label">
+            <div class="pc-name">Aúrea</div>
+            <div class="pc-type">Branding</div>
+          </div>
+        </div>
+        <div class="pc-overlay">
+          <div><div class="pc-hover-name">Aúrea</div><div class="pc-hover-type">Branding &amp; Identidad visual completa</div></div>
+        </div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-bg">
+          <div class="pc-label">
+            <div class="pc-name">Asociación Violeta</div>
+            <div class="pc-type">Branding · Redes sociales</div>
+          </div>
+        </div>
+        <div class="pc-overlay">
+          <div><div class="pc-hover-name">Asociación Violeta</div><div class="pc-hover-type">Branding · Social Media Management</div></div>
+        </div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-bg">
+          <div class="pc-label">
+            <div class="pc-name">Beyond Human</div>
+            <div class="pc-type">Redes sociales</div>
+          </div>
+        </div>
+        <div class="pc-overlay">
+          <div><div class="pc-hover-name">Beyond Human</div><div class="pc-hover-type">Social Media Management</div></div>
+        </div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-bg">
+          <div class="pc-label">
+            <div class="pc-name">Parabar</div>
+            <div class="pc-type">Branding</div>
+          </div>
+        </div>
+        <div class="pc-overlay">
+          <div><div class="pc-hover-name">Parabar</div><div class="pc-hover-type">Branding &amp; Identidad visual completa</div></div>
+        </div>
+      </div>
+
+    </div>
+    <!-- Las imágenes reales se cargan cuando llegue la carpeta del Drive -->
+  </div>
+</section>
+
+<!-- ═══════════════════ PROCESS ══════════════════════════ -->
+<section id="process" class="sec-div">
+  <div class="wrap">
+    <div class="sec-eyebrow rv">Proceso</div>
+    <h2 class="sec-h2 rv">Cómo trabajamos<br><em>contigo.</em></h2>
+    <div class="proc-steps rv d1">
+      <div class="ps">
+        <div class="ps-num">01</div>
+        <div class="ps-title">Meet Inicial</div>
+        <div class="ps-desc">Conocemos tu negocio, objetivos y necesidades reales.</div>
+      </div>
+      <div class="ps">
+        <div class="ps-num">02</div>
+        <div class="ps-title">Cotización</div>
+        <div class="ps-desc">Desarrollamos una propuesta personalizada para tu proyecto.</div>
+      </div>
+      <div class="ps">
+        <div class="ps-num">03</div>
+        <div class="ps-title">Aprobación</div>
+        <div class="ps-desc">Confirmamos alcance, tiempos y arrancamos.</div>
+      </div>
+      <div class="ps">
+        <div class="ps-num">04</div>
+        <div class="ps-title">Brief</div>
+        <div class="ps-desc">Recopilamos la información para desarrollar la estrategia.</div>
+      </div>
+      <div class="ps">
+        <div class="ps-num">05</div>
+        <div class="ps-title">Arranque</div>
+        <div class="ps-desc">Comenzamos el desarrollo y ejecución del proyecto.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ FAQ ═══════════════════════════════ -->
+<section id="faq" class="sec-div">
+  <div class="wrap">
+    <div class="faq-grid">
+      <div class="rv">
+        <div class="sec-eyebrow" style="margin-bottom:20px">FAQ</div>
+        <h2 class="sec-h2" style="font-size:clamp(32px,4vw,52px)">Preguntas<br><em>frecuentes.</em></h2>
+        <p style="font-size:14px;color:var(--muted);margin-top:18px;line-height:1.6;font-weight:300">¿Algo que no esté aquí? Escríbenos — siempre respondemos.</p>
+        <div style="margin-top:28px">
+          <a href="#cta" class="btn btn-ghost">Hacer una pregunta</a>
+        </div>
+      </div>
+      <div class="faq-list rv d2">
+        <div class="fi">
+          <div class="fi-q"><span class="fi-question">¿Trabajan con cualquier tipo de negocio?</span><span class="fi-tog">+</span></div>
+          <div class="fi-ans">Sí, siempre que exista una visión clara de crecimiento y disposición a colaborar. Trabajamos con empresas, emprendedores y marcas en crecimiento, principalmente en México y Estados Unidos.</div>
+        </div>
+        <div class="fi">
+          <div class="fi-q"><span class="fi-question">¿Cuánto tarda un proyecto de branding?</span><span class="fi-tog">+</span></div>
+          <div class="fi-ans">Depende del alcance, pero un branding completo normalmente toma entre 4 y 5 semanas desde el arranque hasta la entrega final.</div>
+        </div>
+        <div class="fi">
+          <div class="fi-q"><span class="fi-question">¿También manejan publicidad pagada?</span><span class="fi-tog">+</span></div>
+          <div class="fi-ans">Sí, trabajamos campañas en Meta Ads (Facebook e Instagram) enfocadas en resultados: generación de prospectos, tráfico calificado y conversiones.</div>
+        </div>
+        <div class="fi">
+          <div class="fi-q"><span class="fi-question">¿Manejan fotografía y video?</span><span class="fi-tog">+</span></div>
+          <div class="fi-ans">Sí, a través de nuestro equipo y colaboradores especializados. Producimos fotografía de producto, retratos de marca, video institucional, reels y UGC alineados con la identidad de cada marca.</div>
+        </div>
+        <div class="fi">
+          <div class="fi-q"><span class="fi-question">¿Tienen paquetes con precios fijos?</span><span class="fi-tog">+</span></div>
+          <div class="fi-ans">No. Cada propuesta se adapta a las necesidades específicas de cada marca. No trabajamos con soluciones genéricas — lo que cotizamos es exactamente lo que necesitas, sin más ni menos.</div>
+        </div>
+        <div class="fi">
+          <div class="fi-q"><span class="fi-question">¿Qué necesito para comenzar?</span><span class="fi-tog">+</span></div>
+          <div class="fi-ans">Solo agendar una llamada inicial. Ahí conocemos tu negocio, tus objetivos y te presentamos una propuesta personalizada. Sin compromiso.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ CTA ═══════════════════════════════ -->
+<section id="cta" class="sec-div">
+  <div class="wrap">
+    <div class="cta-box rv">
+      <div class="cta-inner">
+        <div class="tag" style="margin:0 auto 24px;display:block;width:fit-content">Siguiente paso</div>
+        <h2 class="cta-h2">
+          Tu marca merece<br>llegar más <span>lejos.</span>
+        </h2>
+        <p class="cta-sub">
+          Agenda una llamada y exploramos juntos cómo podemos ayudar a tu marca a crecer.<br>
+          Sin compromisos, sin plantillas, sin promesas vacías.
+        </p>
+        <div class="cta-btns">
+          <!-- REEMPLAZA XXXXXXXXXXX con el número de WhatsApp -->
+          <a href="https://wa.me/52XXXXXXXXXXX?text=Hola%20re%3Aach%20studio%2C%20me%20gustar%C3%ADa%20agendar%20una%20llamada%20para%20explorar%20c%C3%B3mo%20pueden%20ayudar%20a%20mi%20marca." class="btn btn-wa btn-lg" target="_blank">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Escribir por WhatsApp
+          </a>
+          <a href="mailto:hola.reachstudio@gmail.com" class="btn btn-ghost btn-lg">Enviar un correo</a>
+        </div>
+        <p class="cta-note">@reachstudio_ &nbsp;·&nbsp; hola.reachstudio@gmail.com &nbsp;·&nbsp; Monterrey, MX</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ FOOTER ════════════════════════════ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-i">
+      <div class="foot-logo"><b>re:</b>ach studio</div>
+      <ul class="foot-links">
+        <li><a href="https://instagram.com/reachstudio_" target="_blank">Instagram</a></li>
+        <li><a href="https://tiktok.com/@reach.studio1" target="_blank">TikTok</a></li>
+        <li><a href="#services">Servicios</a></li>
+        <li><a href="#portfolio">Trabajo</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+      <p class="foot-copy">© 2026 re:ach studio &nbsp;·&nbsp; Monterrey, México</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── NAV scroll effect ──
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('on', scrollY > 28);
+}, { passive: true });
+
+// ── Hero cycling text ──
+const phrases = ['Re:design.', 'Re:connect.', 'Re:define.'];
+let ci = 0;
+const el = document.getElementById('heroCycle');
+function nextPhrase() {
+  ci = (ci + 1) % phrases.length;
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(-10px)';
+  setTimeout(() => {
+    el.textContent = phrases[ci];
+    el.style.transition = 'none';
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(12px)';
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      el.style.transition = 'opacity .6s ease, transform .6s cubic-bezier(.16,1,.3,1)';
+      el.style.opacity = '1';
+      el.style.transform = 'translateY(0)';
+    }));
+  }, 320);
+}
+setInterval(nextPhrase, 2800);
+
+// ── Scroll reveal ──
+const rvEls = document.querySelectorAll('.rv');
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+}, { threshold: 0.1 });
+rvEls.forEach(r => io.observe(r));
+
+// ── FAQ accordion ──
+document.querySelectorAll('.fi').forEach(item => {
+  item.querySelector('.fi-q').addEventListener('click', () => {
+    const open = item.classList.contains('open');
+    document.querySelectorAll('.fi').forEach(i => i.classList.remove('open'));
+    if (!open) item.classList.add('open');
+  });
+});
+
+// ── About words ──
+document.querySelectorAll('.aw').forEach(w => {
+  w.addEventListener('mouseenter', () => {
+    document.querySelectorAll('.aw').forEach(x => x.classList.remove('lit'));
+    w.classList.add('lit');
+  });
+});
+</script>
+</body>
+</html>

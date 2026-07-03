@@ -1,0 +1,1776 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>re:ach studio — We help brands re:ach with purpose</title>
+<meta name="description" content="Agencia de marketing en Monterrey. Estrategia, branding, Meta Ads y contenido con propósito. No es solo postear — es estrategia." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300;1,9..144,400&family=Albert+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          cream:   '#fffced',
+          cream2:  '#F7F4E8',
+          ink:     '#191919',
+          burg:    '#56070e',
+          burg2:   '#3d0509',
+          red:     '#e2361f',
+          coral:   '#e2361f',
+          nude:    '#EFD3CB',
+          mute:    '#8A7F70',
+          pink:    '#dc5f86',
+        },
+        fontFamily: {
+          serif:   ['Fraunces', 'serif'],
+          display: ['Fraunces', 'serif'],
+          sans:    ['"Albert Sans"', 'system-ui', 'sans-serif'],
+        },
+      }
+    }
+  }
+</script>
+
+<style>
+  html { scroll-behavior: smooth; }
+  body {
+    background: #fffced;
+    color: #191919;
+    font-family: 'Albert Sans', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Logo dot */
+  .re-dot {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #191919;
+    color: #fffced;
+    border-radius: 9999px;
+    font-family: 'Albert Sans', sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+  }
+
+  /* Pill / badge tipo Reach */
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: #e2361f;
+    color: #fffced;
+    padding: 0.35rem 0.9rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    font-size: 0.78rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+  .pill--burg { background: #56070e; }
+  .pill--ink  { background: #191919; }
+  .pill--cream { background: #fffced; color: #191919; }
+  .pill--outline { background: transparent; color: #191919; border: 1px solid #191919; }
+
+  /* Headline serif italic accent */
+  .italicize { font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-variation-settings: "opsz" 144; }
+
+  /* Botones */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.95rem 1.5rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: transform .25s ease, background .25s ease, color .25s ease, box-shadow .25s ease;
+    white-space: nowrap;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-primary { background: #e2361f; color: #fffced; box-shadow: 0 8px 24px -10px rgba(226,54,31,0.5); }
+  .btn-primary:hover { background: #56070e; }
+  .btn-dark { background: #191919; color: #fffced; }
+  .btn-dark:hover { background: #56070e; }
+  .btn-ghost { background: transparent; color: #191919; border: 1px solid #191919; }
+  .btn-ghost:hover { background: #191919; color: #fffced; }
+
+  /* Marquee */
+  .marquee {
+    display: flex;
+    gap: 3rem;
+    animation: scroll 54s linear infinite;
+    width: max-content;
+  }
+  @media (max-width: 768px) {
+    .marquee { animation-duration: 40s; }
+  }
+  @keyframes scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  .marquee-text {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-variation-settings: "opsz" 144;
+    letter-spacing: -0.02em;
+  }
+  .marquee-sep {
+    color: rgba(220,53,40,0.85);
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    opacity: 0.9;
+  }
+
+  /* Reveal on scroll */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity .9s ease, transform .9s ease; }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  /* Diagonal stripes */
+  .stripes {
+    background-image: repeating-linear-gradient(
+      135deg,
+      #56070e 0 22px,
+      #3d0509 22px 44px
+    );
+  }
+
+  /* Servicios accordion */
+  .svc-list { border-top: 1px solid rgba(14,11,8,0.12); }
+  .svc-row {
+    border-bottom: 1px solid rgba(14,11,8,0.12);
+    cursor: pointer;
+    transition: background .2s ease;
+  }
+  .svc-row:hover { background: rgba(14,11,8,0.025); }
+  .svc-row-top {
+    display: grid;
+    grid-template-columns: 3rem 1fr 2.5rem;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.4rem 0;
+  }
+  .svc-num {
+    font-family: 'Albert Sans', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: rgba(14,11,8,0.35);
+    letter-spacing: .08em;
+    line-height: 1;
+  }
+  .svc-titles { display: flex; align-items: baseline; gap: 1.2rem; flex-wrap: wrap; }
+  .svc-name {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.25rem, 2.2vw, 1.65rem);
+    font-weight: 400;
+    color: #0E0B08;
+    line-height: 1.1;
+    flex-shrink: 0;
+  }
+  .svc-tagline {
+    font-size: 0.88rem;
+    color: rgba(14,11,8,0.45);
+    font-style: italic;
+    line-height: 1.3;
+    display: none;
+  }
+  @media(min-width: 640px) { .svc-tagline { display: block; } }
+  .svc-toggle {
+    width: 2rem; height: 2rem;
+    border: 1px solid rgba(14,11,8,0.18);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: #0E0B08;
+    background: transparent;
+    cursor: pointer;
+    transition: background .2s ease, border-color .2s ease;
+    flex-shrink: 0;
+  }
+  .svc-row:hover .svc-toggle { background: #191919; color: #fffced; border-color: #191919; }
+  .svc-row.open .svc-toggle { background: #56070e; color: #fffced; border-color: #56070e; }
+  .svc-row.open .svc-toggle svg { transform: rotate(45deg); }
+  .svc-toggle svg { transition: transform .25s ease; }
+  .svc-detail {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .4s ease, padding .3s ease;
+    padding: 0 3rem 0 4.5rem;
+  }
+  .svc-row.open .svc-detail {
+    max-height: 300px;
+    padding: 0 3rem 1.5rem 4.5rem;
+  }
+  .svc-detail-desc {
+    font-size: 0.9rem;
+    color: rgba(14,11,8,0.65);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    max-width: 58ch;
+  }
+  .svc-chips { display: flex; flex-wrap: wrap; gap: .4rem; }
+  .svc-chips span {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: .04em;
+    color: #56070e;
+    background: rgba(86,7,14,0.07);
+    border: 1px solid rgba(86,7,14,0.15);
+    border-radius: 9999px;
+    padding: .25rem .7rem;
+  }
+  @media(max-width: 640px) {
+    .svc-row-top { grid-template-columns: 2.5rem 1fr 2.5rem; gap: .8rem; }
+    .svc-detail { padding: 0 .5rem 0 3rem; }
+    .svc-row.open .svc-detail { padding: 0 .5rem 1.2rem 3rem; }
+  }
+
+  /* Portfolio background (decor) */
+  #portafolio {
+    background:
+      radial-gradient(ellipse 80% 60% at 15% 5%, rgba(226,54,31,0.22), transparent 60%),
+      radial-gradient(ellipse 70% 55% at 85% 95%, rgba(86,7,14,0.55), transparent 60%),
+      radial-gradient(circle at 60% 50%, rgba(226,54,31,0.08), transparent 45%),
+      #191919;
+  }
+  .pf-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .pf-bg::before {
+    content: "re:ach";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -52%);
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(16rem, 42vw, 52rem);
+    letter-spacing: -0.05em;
+    line-height: 0.85;
+    color: rgba(244,236,221,0.045);
+    white-space: nowrap;
+    user-select: none;
+  }
+  .pf-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(rgba(244,236,221,0.06) 1px, transparent 1px),
+      radial-gradient(rgba(244,236,221,0.03) 1px, transparent 1px);
+    background-size: 3px 3px, 7px 7px;
+    background-position: 0 0, 1px 1px;
+    mix-blend-mode: overlay;
+    opacity: 0.7;
+  }
+
+  /* Portfolio card */
+  .pf-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1.25rem;
+    aspect-ratio: 4/5;
+    cursor: pointer;
+  }
+  .pf-card.pf-wide {
+    aspect-ratio: 3/2;
+  }
+  @media (max-width: 768px) {
+    .pf-card.pf-wide { aspect-ratio: 4/3; }
+  }
+  .pf-card .pf-inner {
+    position: absolute;
+    inset: 0;
+    transition: transform .6s ease;
+  }
+  .pf-card:hover .pf-inner { transform: scale(1.04); }
+
+  /* Portfolio image */
+  .pf-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform .65s cubic-bezier(.25,.46,.45,.94);
+  }
+  .pf-card:hover .pf-img { transform: scale(1.05); }
+
+  /* Portfolio overlay */
+  .pf-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(14,11,8,0.92) 0%,
+      rgba(14,11,8,0.35) 45%,
+      transparent 100%
+    );
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1.75rem;
+    transition: background .4s ease;
+  }
+  .pf-card:hover .pf-overlay {
+    background: linear-gradient(
+      to top,
+      rgba(14,11,8,0.96) 0%,
+      rgba(14,11,8,0.5) 55%,
+      rgba(14,11,8,0.1) 100%
+    );
+  }
+  .pf-tag {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(244,236,221,0.55);
+    margin-bottom: 0.4rem;
+    transform: translateY(4px);
+    transition: transform .4s ease, color .4s ease;
+  }
+  .pf-card:hover .pf-tag { color: rgba(220,53,40,0.9); transform: translateY(0); }
+  .pf-name {
+    color: #fffced;
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+  .pf-arrow {
+    margin-top: 0.6rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: rgba(220,53,40,0);
+    transition: color .35s ease, transform .35s ease;
+    transform: translateX(-6px);
+  }
+  .pf-card:hover .pf-arrow {
+    color: rgba(220,53,40,1);
+    transform: translateX(0);
+  }
+
+  /* Underline link */
+  .ul-link {
+    position: relative;
+    display: inline-block;
+  }
+  .ul-link::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: -3px;
+    width: 100%; height: 1px;
+    background: currentColor;
+    transform-origin: right;
+    transform: scaleX(1);
+    transition: transform .4s ease;
+  }
+  .ul-link:hover::after { transform-origin: left; transform: scaleX(0.4); }
+
+  /* WhatsApp icon stroke */
+  .wa-icon { width: 18px; height: 18px; }
+
+  /* Hero grain */
+  .grain::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: radial-gradient(rgba(14,11,8,0.04) 1px, transparent 1px);
+    background-size: 4px 4px;
+    pointer-events: none;
+    opacity: 0.6;
+  }
+
+  /* Tickets badge para hero */
+  .stamp {
+    transform: rotate(-8deg);
+    display: inline-block;
+  }
+
+  /* Responsive serif sizes */
+  .display-1 { font-family: 'Fraunces', serif; font-weight: 300; line-height: 0.95; letter-spacing: -0.02em; font-variation-settings: "opsz" 144; }
+  .display-2 { font-family: 'Fraunces', serif; font-weight: 300; line-height: 1.0;  letter-spacing: -0.01em; font-variation-settings: "opsz" 144; }
+
+  /* Hide scrollbars on marquee */
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+  /* Mobile nav */
+  @media (max-width: 768px){
+    .display-1 { font-size: clamp(3rem, 14vw, 6rem); }
+  }
+
+  /* Hero word cycling */
+  .hero-word {
+    display: inline-block;
+    transition: opacity .3s ease, transform .32s ease;
+  }
+  .hero-suffix {
+    display: inline-block;
+    transition: opacity .3s ease;
+  }
+
+  /* ===== PORTFOLIO MODAL ===== */
+  .pf-modal {
+    position: fixed; inset: 0; z-index: 900;
+    display: flex; align-items: center; justify-content: center;
+    padding: 1rem;
+    opacity: 0; visibility: hidden;
+    transition: opacity .28s ease, visibility .28s ease;
+  }
+  .pf-modal.is-open { opacity: 1; visibility: visible; }
+  .pfm-backdrop {
+    position: absolute; inset: 0;
+    background: rgba(14,11,8,0.82);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    cursor: pointer;
+  }
+  .pfm-content {
+    position: relative; z-index: 1;
+    display: grid; grid-template-columns: 300px 1fr;
+    max-width: 1060px; width: 100%; max-height: 88vh;
+    background: #FAF6EE; border-radius: 1.75rem;
+    overflow: hidden;
+    transform: scale(0.97) translateY(16px);
+    transition: transform .36s cubic-bezier(.22,1,.36,1);
+    box-shadow: 0 60px 120px -30px rgba(14,11,8,0.6), 0 0 0 1px rgba(14,11,8,0.06);
+  }
+  .pf-modal.is-open .pfm-content { transform: scale(1) translateY(0); }
+
+  /* Left info panel */
+  .pfm-info {
+    padding: 2rem 1.75rem 1.75rem;
+    position: relative;
+    display: flex; flex-direction: column;
+    overflow-y: auto; background: #FAF6EE;
+    border-right: 1px solid rgba(14,11,8,0.07);
+  }
+  .pfm-close {
+    position: absolute; top: 1.1rem; right: 1.1rem;
+    width: 1.9rem; height: 1.9rem; border-radius: 50%;
+    background: transparent; border: 1px solid rgba(14,11,8,0.14); cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(14,11,8,0.5); transition: background .2s, color .2s, border-color .2s;
+  }
+  .pfm-close:hover { background: #0E0B08; color: #F4ECDD; border-color: #0E0B08; }
+  .pfm-meta {
+    display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1.25rem;
+    padding-right: 2rem;
+  }
+  .pfm-year {
+    font-size: 0.65rem; letter-spacing: 0.15em; font-weight: 700;
+    text-transform: uppercase; color: rgba(14,11,8,0.28);
+  }
+  .pfm-year-dot {
+    width: 3px; height: 3px; border-radius: 50%;
+    background: rgba(14,11,8,0.2); flex-shrink: 0;
+  }
+  .pfm-cat-inline {
+    font-size: 0.65rem; letter-spacing: 0.1em; font-weight: 600;
+    text-transform: uppercase; color: rgba(14,11,8,0.28);
+  }
+  .pfm-name {
+    font-family: 'Fraunces', serif; font-weight: 300;
+    font-size: clamp(1.75rem, 3vw, 2.5rem); letter-spacing: -0.02em;
+    line-height: 1.05; color: #191919; margin-bottom: 1rem;
+    font-variation-settings: "opsz" 144;
+  }
+  .pfm-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 1.25rem; }
+  .pfm-tag {
+    font-size: 0.65rem; font-weight: 600; letter-spacing: 0.05em;
+    text-transform: uppercase; padding: 0.2rem 0.6rem; border-radius: 9999px;
+    background: rgba(107,15,26,0.07); color: #6B0F1A;
+  }
+  .pfm-desc {
+    font-size: 0.875rem; line-height: 1.75; color: rgba(14,11,8,0.6);
+    flex: 1;
+  }
+  .pfm-pdf-link {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    margin-top: 1.5rem; padding: 0.6rem 1rem;
+    border: 1px solid rgba(14,11,8,0.15); border-radius: 9999px;
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.03em;
+    color: #0E0B08; text-decoration: none;
+    transition: background .2s, color .2s, border-color .2s;
+    align-self: flex-start;
+  }
+  .pfm-pdf-link:hover { background: #0E0B08; color: #F4ECDD; border-color: #0E0B08; }
+  .pfm-pdf-icon { width: 14px; height: 14px; flex-shrink: 0; }
+
+  /* Right gallery panel */
+  .pfm-gallery {
+    position: relative; background: #0E0B08;
+    overflow: hidden; display: flex; align-items: center; justify-content: center;
+  }
+  .pfm-gallery > img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    transition: opacity .2s ease;
+  }
+  .pfm-gallery > img.pfm-fade { opacity: 0; }
+
+  /* Hover-reveal nav arrows */
+  .pfm-nav {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    background: rgba(14,11,8,0.55); backdrop-filter: blur(6px);
+    border: 1px solid rgba(244,236,221,0.12); color: #F4ECDD;
+    border-radius: 50%; width: 2.4rem; height: 2.4rem;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; z-index: 3;
+    opacity: 0;
+    transition: opacity .22s ease, background .2s, transform .2s;
+  }
+  .pfm-gallery:hover .pfm-nav { opacity: 1; }
+  .pfm-nav:hover { background: rgba(14,11,8,0.85); transform: translateY(-50%) scale(1.07); }
+  .pfm-prev { left: 0.85rem; }
+  .pfm-next { right: 0.85rem; }
+
+  /* Image counter */
+  .pfm-counter {
+    position: absolute; top: 0.9rem; right: 0.9rem; z-index: 3;
+    font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em;
+    color: rgba(244,236,221,0.55);
+    background: rgba(14,11,8,0.4); backdrop-filter: blur(6px);
+    padding: 0.25rem 0.55rem; border-radius: 9999px;
+  }
+
+  /* Dots — shown only for ≤10 images */
+  .pfm-dots {
+    position: absolute; bottom: 1rem; left: 50%; transform: translateX(-50%);
+    display: flex; gap: 0.35rem; z-index: 2;
+  }
+  .pfm-dot {
+    width: 5px; height: 5px; border-radius: 50%;
+    background: rgba(244,236,221,0.25); border: none; cursor: pointer;
+    transition: background .2s, transform .2s; padding: 0;
+  }
+  .pfm-dot.active { background: #F4ECDD; transform: scale(1.4); }
+
+  .pfm-brand-canvas {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  @media (max-width: 640px) {
+    .pfm-content {
+      grid-template-columns: 1fr;
+      grid-template-rows: 56vw 1fr;
+      max-height: 94vh;
+      border-radius: 1.25rem;
+    }
+    .pfm-gallery { order: -1; min-height: unset; }
+    .pfm-info { padding: 1.25rem 1.25rem 1.5rem; border-right: none; border-top: 1px solid rgba(14,11,8,0.07); }
+    .pfm-nav { opacity: 1; }
+  }
+</style>
+</head>
+
+<body class="bg-cream text-ink">
+
+<!-- ============ NAV ============ -->
+<header class="fixed top-0 inset-x-0 z-50 backdrop-blur bg-cream/80 border-b border-ink/10">
+  <div class="max-w-7xl mx-auto px-5 md:px-8 h-16 flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-2.5">
+      <span class="re-dot w-9 h-9 text-base">re:</span>
+      <span class="font-extrabold tracking-tight text-[0.95rem]">re:ach studio</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-ink/80">
+      <a href="#servicios"      class="hover:text-ink">Servicios</a>
+      <a href="#proceso"        class="hover:text-ink">Proceso</a>
+      <a href="#portafolio"     class="hover:text-ink">Trabajo</a>
+      <a href="#diferenciador"  class="hover:text-ink">Nosotros</a>
+      <a href="#faq"             class="hover:text-ink">FAQ</a>
+      <a href="#contacto"       class="hover:text-ink">Contacto</a>
+    </nav>
+    <a href="#contacto" class="btn btn-dark text-xs md:text-sm py-2.5 px-4 md:px-5">
+      Hablemos
+      <span aria-hidden>→</span>
+    </a>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section id="top" class="relative pt-28 md:pt-36 pb-16 md:pb-24 overflow-hidden grain">
+  <div class="max-w-7xl mx-auto px-5 md:px-8 relative">
+
+    <div class="flex flex-wrap items-center gap-2 mb-6 md:mb-8 reveal">
+      <span class="pill">Marketing &amp; Design Studio</span>
+      <span class="pill pill--outline">Monterrey, MX</span>
+    </div>
+
+    <h1 class="display-1 text-[3.5rem] md:text-[7rem] lg:text-[8.5rem] reveal">
+      We help brands<br/>
+      <span class="italicize hero-word" id="hero-word">re:ach</span> <span class="font-sans font-black tracking-tight hero-suffix" id="hero-suffix">with purpose.</span>
+    </h1>
+
+    <div class="mt-8 md:mt-12 grid md:grid-cols-12 gap-8 md:gap-12 items-end">
+      <p class="md:col-span-6 text-lg md:text-xl leading-relaxed text-ink/75 reveal">
+        Somos un estudio de marketing y diseño. Diseñamos estrategia, contenido y campañas
+        que hacen que tu marca <em class="italicize text-ink">se vea</em>, <em class="italicize text-ink">se entienda</em>
+        y <em class="italicize text-ink">venda</em> — sin sonar a plantilla.
+      </p>
+
+      <div class="md:col-span-6 flex flex-wrap gap-3 reveal">
+        <a href="#contacto-wa" class="btn btn-primary">
+          <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M19.05 4.91A10 10 0 0 0 2.4 17.34L1 23l5.79-1.52a10 10 0 0 0 4.78 1.22h.01A10 10 0 0 0 19.05 4.91Zm-7.47 15.4h-.01a8.31 8.31 0 0 1-4.23-1.16l-.3-.18-3.43.9.92-3.35-.2-.32a8.32 8.32 0 1 1 7.25 4.11Zm4.56-6.22c-.25-.13-1.47-.73-1.7-.81-.23-.08-.4-.13-.56.13-.16.25-.65.81-.8.98-.15.16-.29.18-.54.06-.25-.13-1.05-.39-2-1.23a7.5 7.5 0 0 1-1.39-1.72c-.15-.25 0-.39.11-.51.11-.11.25-.29.37-.43.13-.15.16-.25.25-.4.08-.16.04-.31-.02-.43-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48a.92.92 0 0 0-.67.31c-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.57.12.16 1.75 2.68 4.25 3.76.59.26 1.05.41 1.42.52.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.18-.48-.31Z"/></svg>
+          Escribir por WhatsApp
+        </a>
+        <a href="#servicios" class="btn btn-ghost">
+          Ver servicios
+          <span aria-hidden>↓</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Stamp -->
+    <div class="hidden md:flex absolute right-8 top-32 stamp reveal">
+      <div class="bg-red text-cream rounded-full w-32 h-32 flex flex-col items-center justify-center text-center px-3 leading-tight shadow-xl shadow-red/20">
+        <span class="text-[0.65rem] font-bold tracking-widest uppercase">Not luck.</span>
+        <span class="italicize text-2xl">Strategy.</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<section class="bg-ink text-cream py-3 md:py-4 border-y border-ink overflow-hidden">
+  <div class="marquee whitespace-nowrap">
+    <!-- duplicado para loop -->
+    <div class="flex items-center gap-10 md:gap-14 px-6 marquee-text text-sm md:text-base">
+      <span>Estrategia</span><span class="marquee-sep">·</span>
+      <span>Branding</span><span class="marquee-sep">·</span>
+      <span>Meta Ads</span><span class="marquee-sep">·</span>
+      <span>Contenido</span><span class="marquee-sep">·</span>
+      <span>Gestión de redes</span><span class="marquee-sep">·</span>
+      <span>Diseño editorial</span><span class="marquee-sep">·</span>
+      <span>Embudos de venta</span><span class="marquee-sep">·</span>
+      <span>Landing pages</span><span class="marquee-sep">·</span>
+    </div>
+    <div class="flex items-center gap-10 md:gap-14 px-6 marquee-text text-sm md:text-base" aria-hidden="true">
+      <span>Estrategia</span><span class="marquee-sep">·</span>
+      <span>Branding</span><span class="marquee-sep">·</span>
+      <span>Meta Ads</span><span class="marquee-sep">·</span>
+      <span>Contenido</span><span class="marquee-sep">·</span>
+      <span>Gestión de redes</span><span class="marquee-sep">·</span>
+      <span>Diseño editorial</span><span class="marquee-sep">·</span>
+      <span>Embudos de venta</span><span class="marquee-sep">·</span>
+      <span>Landing pages</span><span class="marquee-sep">·</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROBLEMA ============ -->
+<section id="problema" class="py-20 md:py-32">
+  <div class="max-w-7xl mx-auto px-5 md:px-8">
+    <div class="grid md:grid-cols-12 gap-10 md:gap-16 items-start">
+      <div class="md:col-span-5 reveal">
+        <span class="pill pill--burg mb-5">El problema</span>
+        <h2 class="display-2 text-5xl md:text-6xl mt-4">
+          Publicar <span class="italicize">no</span> es estrategia.
+        </h2>
+        <p class="mt-6 text-ink/70 text-lg leading-relaxed">
+          La mayoría de los negocios están haciendo marketing en automático: posts sin rumbo,
+          anuncios que no convierten, una imagen digital que no transmite lo que la marca vale.
+        </p>
+      </div>
+
+      <div class="md:col-span-7 grid sm:grid-cols-2 gap-4 reveal">
+        <div class="p-6 rounded-2xl bg-cream2 border border-ink/10">
+          <div class="text-red font-bold text-sm mb-2">01</div>
+          <p class="font-medium">Publican todos los días, pero las ventas no se mueven.</p>
+        </div>
+        <div class="p-6 rounded-2xl bg-cream2 border border-ink/10">
+          <div class="text-red font-bold text-sm mb-2">02</div>
+          <p class="font-medium">Tienen redes activas, pero ninguna estrategia detrás.</p>
+        </div>
+        <div class="p-6 rounded-2xl bg-cream2 border border-ink/10">
+          <div class="text-red font-bold text-sm mb-2">03</div>
+          <p class="font-medium">La marca se ve genérica y se confunde con la competencia.</p>
+        </div>
+        <div class="p-6 rounded-2xl bg-cream2 border border-ink/10">
+          <div class="text-red font-bold text-sm mb-2">04</div>
+          <p class="font-medium">Los anuncios queman presupuesto sin traer clientes reales.</p>
+        </div>
+        <div class="p-6 rounded-2xl bg-cream2 border border-ink/10">
+          <div class="text-red font-bold text-sm mb-2">05</div>
+          <p class="font-medium">La comunicación no conecta — el cliente no entiende qué ofreces.</p>
+        </div>
+        <div class="p-6 rounded-2xl bg-cream2 border border-ink/10">
+          <div class="text-red font-bold text-sm mb-2">06</div>
+          <p class="font-medium">Saben que necesitan crecer, pero no saben por dónde empezar.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SOLUCIÓN (burgundy block) ============ -->
+<section id="solucion" class="bg-burg text-cream py-20 md:py-32">
+  <div class="max-w-7xl mx-auto px-5 md:px-8">
+    <div class="grid md:grid-cols-12 gap-10 md:gap-16 items-start">
+      <div class="md:col-span-6 reveal">
+        <span class="pill pill--cream">La solución</span>
+        <h2 class="display-2 text-5xl md:text-7xl mt-5">
+          It is <span class="italicize">not</span> just<br/> posting.
+        </h2>
+        <p class="mt-6 text-cream/80 text-lg leading-relaxed max-w-md">
+          Construimos marca, estrategia y contenido que trabajan juntos.
+          Cada decisión se piensa para que tu negocio gane claridad, autoridad y clientes.
+        </p>
+
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="#servicios" class="btn btn-primary">Ver cómo lo hacemos →</a>
+        </div>
+      </div>
+
+      <div class="md:col-span-6 reveal">
+        <ul class="space-y-3">
+          <li class="flex items-start gap-4 border-t border-cream/15 pt-4">
+            <span class="text-red font-serif italic text-2xl leading-none mt-1">+</span>
+            <div>
+              <div class="font-semibold text-lg">Estrategia de marca y marketing</div>
+              <div class="text-cream/70 text-sm">Diagnóstico, posicionamiento y plan de crecimiento — no improvisamos.</div>
+            </div>
+          </li>
+          <li class="flex items-start gap-4 border-t border-cream/15 pt-4">
+            <span class="text-red font-serif italic text-2xl leading-none mt-1">+</span>
+            <div>
+              <div class="font-semibold text-lg">Identidad visual con propósito</div>
+              <div class="text-cream/70 text-sm">Branding que comunica lo que tu marca vale, no solo lo que se ve bonito.</div>
+            </div>
+          </li>
+          <li class="flex items-start gap-4 border-t border-cream/15 pt-4">
+            <span class="text-red font-serif italic text-2xl leading-none mt-1">+</span>
+            <div>
+              <div class="font-semibold text-lg">Contenido que conecta y vende</div>
+              <div class="text-cream/70 text-sm">Planning, editing, design — pensado para captar y convertir, no solo llenar feed.</div>
+            </div>
+          </li>
+          <li class="flex items-start gap-4 border-t border-cream/15 pt-4">
+            <span class="text-red font-serif italic text-2xl leading-none mt-1">+</span>
+            <div>
+              <div class="font-semibold text-lg">Pauta digital con foco comercial</div>
+              <div class="text-cream/70 text-sm">Meta Ads optimizado para resultados reales: leads, ventas, citas.</div>
+            </div>
+          </li>
+          <li class="flex items-start gap-4 border-t border-b border-cream/15 py-4">
+            <span class="text-red font-serif italic text-2xl leading-none mt-1">+</span>
+            <div>
+              <div class="font-semibold text-lg">Web y embudos que convierten</div>
+              <div class="text-cream/70 text-sm">Landing pages diseñadas para que el visitante haga clic, escriba o compre.</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICIOS ============ -->
+<section id="servicios" class="py-20 md:py-32 border-b border-ink/10">
+  <div class="max-w-7xl mx-auto px-5 md:px-8">
+
+    <div class="grid md:grid-cols-12 gap-10 md:gap-16 mb-16 reveal">
+      <div class="md:col-span-6">
+        <span class="pill pill--ink">Servicios</span>
+        <h2 class="display-2 text-5xl md:text-6xl mt-5">
+          Lo que <span class="italicize">hacemos</span><br/>por tu marca.
+        </h2>
+      </div>
+      <div class="md:col-span-6 flex items-end">
+        <p class="text-ink/65 text-lg leading-relaxed">
+          Cada proyecto es personalizado. No trabajamos con paquetes cerrados ni soluciones genéricas —
+          desarrollamos exactamente lo que tu marca necesita.
+        </p>
+      </div>
+    </div>
+
+    <!-- Accordion list -->
+    <div class="svc-list">
+
+      <div class="svc-row reveal" onclick="toggleSvc(this)">
+        <div class="svc-row-top">
+          <span class="svc-num">01</span>
+          <div class="svc-titles">
+            <h3 class="svc-name">Branding &amp; Rebranding</h3>
+            <p class="svc-tagline">Identidades que se ven, se sienten y se recuerdan.</p>
+          </div>
+          <button class="svc-toggle" aria-label="Ver detalles">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+        </div>
+        <div class="svc-detail">
+          <p class="svc-detail-desc">Desarrollo, creación o evolución de marcas a través de estrategia, identidad visual y lineamientos que les permitan diferenciarse y crecer.</p>
+          <div class="svc-chips">
+            <span>Moodboards</span><span>Estrategia de marca</span><span>Logo + variaciones</span>
+            <span>Isotipo</span><span>Paleta de colores</span><span>Tipografías</span>
+            <span>Elementos gráficos</span><span>Aplicaciones de marca</span><span>Manual de identidad</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="svc-row reveal" onclick="toggleSvc(this)">
+        <div class="svc-row-top">
+          <span class="svc-num">02</span>
+          <div class="svc-titles">
+            <h3 class="svc-name">Social Media Management</h3>
+            <p class="svc-tagline">Presencia constante. Contenido con criterio.</p>
+          </div>
+          <button class="svc-toggle" aria-label="Ver detalles">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+        </div>
+        <div class="svc-detail">
+          <p class="svc-detail-desc">Creamos y gestionamos contenido para construir una presencia digital consistente y alineada con los objetivos de cada marca.</p>
+          <div class="svc-chips">
+            <span>Estrategia de contenido</span><span>Planeación mensual</span><span>Diseño gráfico</span>
+            <span>Copywriting</span><span>Programación</span><span>Reportes mensuales</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="svc-row reveal" onclick="toggleSvc(this)">
+        <div class="svc-row-top">
+          <span class="svc-num">03</span>
+          <div class="svc-titles">
+            <h3 class="svc-name">Meta Ads</h3>
+            <p class="svc-tagline">Pauta que atrae clientes, no solo impresiones.</p>
+          </div>
+          <button class="svc-toggle" aria-label="Ver detalles">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+        </div>
+        <div class="svc-detail">
+          <p class="svc-detail-desc">Campañas en Meta (Instagram y Facebook) enfocadas en resultados: leads, mensajes, citas o ventas. Estrategia, creatividades y optimización continua.</p>
+          <div class="svc-chips">
+            <span>Estrategia publicitaria</span><span>Configuración de campañas</span>
+            <span>Segmentación de audiencias</span><span>Optimización continua</span>
+            <span>Remarketing</span><span>Reportes y análisis</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="svc-row reveal" onclick="toggleSvc(this)">
+        <div class="svc-row-top">
+          <span class="svc-num">04</span>
+          <div class="svc-titles">
+            <h3 class="svc-name">Producción de Contenido</h3>
+            <p class="svc-tagline">Visual pensado para conectar y convertir.</p>
+          </div>
+          <button class="svc-toggle" aria-label="Ver detalles">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+        </div>
+        <div class="svc-detail">
+          <p class="svc-detail-desc">Contenido visual alineado con la identidad y objetivos de cada marca. Sesiones, edición y dirección creativa con foco en estética y resultado.</p>
+          <div class="svc-chips">
+            <span>Fotografía</span><span>Video</span><span>Reels</span>
+            <span>UGC</span><span>Dirección creativa</span><span>Edición</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="svc-row reveal" onclick="toggleSvc(this)">
+        <div class="svc-row-top">
+          <span class="svc-num">05</span>
+          <div class="svc-titles">
+            <h3 class="svc-name">Diseño Gráfico</h3>
+            <p class="svc-tagline">Materiales que comunican al nivel de tu marca.</p>
+          </div>
+          <button class="svc-toggle" aria-label="Ver detalles">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+        </div>
+        <div class="svc-detail">
+          <p class="svc-detail-desc">Materiales impresos y digitales para apoyar la comunicación de tu marca en cada punto de contacto con el cliente.</p>
+          <div class="svc-chips">
+            <span>Menús</span><span>Tarjetas de presentación</span><span>Flyers</span>
+            <span>Brochures</span><span>Presentaciones</span><span>Lonas</span>
+            <span>Invitaciones</span><span>Etiquetas y stickers</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="svc-row reveal" onclick="toggleSvc(this)">
+        <div class="svc-row-top">
+          <span class="svc-num">06</span>
+          <div class="svc-titles">
+            <h3 class="svc-name">Landing Pages</h3>
+            <p class="svc-tagline">Páginas que convierten visitas en oportunidades.</p>
+          </div>
+          <button class="svc-toggle" aria-label="Ver detalles">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+        </div>
+        <div class="svc-detail">
+          <p class="svc-detail-desc">Páginas diseñadas para comunicar, captar prospectos y convertir visitas en oportunidades. Diseño estratégico, no solo visual.</p>
+          <div class="svc-chips">
+            <span>Diseño visual personalizado</span><span>Estructura estratégica</span>
+            <span>Integración con WhatsApp</span><span>Responsive móvil y desktop</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="mt-10 text-center text-ink/45 text-sm reveal">
+      Cada proyecto se desarrolla de manera personalizada según las necesidades,
+      objetivos y alcance definidos con cada cliente.
+    </p>
+
+  </div>
+</section>
+
+<!-- ============ DIFERENCIADOR ============ -->
+<section id="diferenciador" class="bg-cream2 py-20 md:py-32 border-y border-ink/10">
+  <div class="max-w-7xl mx-auto px-5 md:px-8">
+    <div class="grid md:grid-cols-12 gap-10 md:gap-16">
+      <div class="md:col-span-5 reveal">
+        <span class="pill pill--burg">Por qué re:ach</span>
+        <h2 class="display-2 text-5xl md:text-6xl mt-5">
+          Diseño con <span class="italicize">estrategia</span> detrás.
+        </h2>
+        <p class="mt-6 text-ink/70 text-lg leading-relaxed">
+          No somos solo un equipo de diseño. Pensamos como dueños de negocio:
+          cada pieza tiene un por qué, un objetivo y una métrica detrás.
+        </p>
+        <p class="mt-4 text-2xl text-burg leading-tight" style="font-family:'Fraunces',serif;font-style:italic;font-weight:300;font-variation-settings:'opsz' 144;">
+          we help brands re:ach the next level.
+        </p>
+      </div>
+
+      <div class="md:col-span-7 grid sm:grid-cols-2 gap-6 reveal">
+        <div>
+          <div class="text-5xl font-serif text-red">01</div>
+          <h4 class="font-semibold text-lg mt-2">Estrategia primero</h4>
+          <p class="text-ink/70 text-sm mt-1">Nada sale a producción sin un por qué. Pensamos antes de diseñar.</p>
+        </div>
+        <div>
+          <div class="text-5xl font-serif text-red">02</div>
+          <h4 class="font-semibold text-lg mt-2">Estética con criterio</h4>
+          <p class="text-ink/70 text-sm mt-1">Diseño editorial y tono cuidado — tu marca al nivel de las que admiras.</p>
+        </div>
+        <div>
+          <div class="text-5xl font-serif text-red">03</div>
+          <h4 class="font-semibold text-lg mt-2">Foco en resultados</h4>
+          <p class="text-ink/70 text-sm mt-1">Medimos lo que importa: leads, ventas, citas, conversaciones reales.</p>
+        </div>
+        <div>
+          <div class="text-5xl font-serif text-red">04</div>
+          <h4 class="font-semibold text-lg mt-2">Proceso claro</h4>
+          <p class="text-ink/70 text-sm mt-1">Comunicación honesta, entregables a tiempo y reportes que se entienden.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESO ============ -->
+<section id="proceso" class="py-20 md:py-32">
+  <div class="max-w-7xl mx-auto px-5 md:px-8">
+    <div class="flex flex-wrap items-end justify-between gap-6 mb-12 reveal">
+      <div>
+        <span class="pill pill--ink">Cómo trabajamos</span>
+        <h2 class="display-2 text-5xl md:text-6xl mt-5">
+          De la idea <span class="italicize">al</span> resultado.
+        </h2>
+      </div>
+      <p class="max-w-sm text-ink/70">Un proceso simple, ordenado y enfocado en que veas avance desde la primera semana.</p>
+    </div>
+
+    <div class="grid md:grid-cols-5 gap-4">
+      <div class="p-6 rounded-2xl border border-ink/10 bg-cream2 reveal">
+        <div class="re-dot w-10 h-10 text-sm mb-5">01</div>
+        <h4 class="font-serif text-2xl mb-2">Meet inicial</h4>
+        <p class="text-ink/70 text-sm leading-relaxed">Conocemos tu negocio, objetivos y necesidades. Una conversación honesta para ver si somos el fit correcto.</p>
+      </div>
+      <div class="p-6 rounded-2xl border border-ink/10 bg-cream2 reveal">
+        <div class="re-dot w-10 h-10 text-sm mb-5 bg-burg">02</div>
+        <h4 class="font-serif text-2xl mb-2">Cotización</h4>
+        <p class="text-ink/70 text-sm leading-relaxed">Desarrollamos una propuesta personalizada con exactamente lo que tu proyecto necesita — sin extras que no sirven.</p>
+      </div>
+      <div class="p-6 rounded-2xl border border-ink/10 bg-cream2 reveal">
+        <div class="re-dot w-10 h-10 text-sm mb-5 bg-red">03</div>
+        <h4 class="font-serif text-2xl mb-2">Aprobación</h4>
+        <p class="text-ink/70 text-sm leading-relaxed">Revisamos juntos alcance, tiempos y detalles. Confirmamos todo antes de arrancar — sin sorpresas.</p>
+      </div>
+      <div class="p-6 rounded-2xl border border-ink/10 bg-cream2 reveal">
+        <div class="re-dot w-10 h-10 text-sm mb-5 bg-coral">04</div>
+        <h4 class="font-serif text-2xl mb-2">Brief creativo</h4>
+        <p class="text-ink/70 text-sm leading-relaxed">Recopilamos toda la información necesaria para desarrollar la estrategia y el proyecto con claridad.</p>
+      </div>
+      <div class="p-6 rounded-2xl border border-ink/10 bg-ink text-cream reveal">
+        <div class="re-dot w-10 h-10 text-sm mb-5 bg-burg2">05</div>
+        <h4 class="font-serif text-2xl mb-2">Arranque</h4>
+        <p class="text-cream/70 text-sm leading-relaxed">Comenzamos producción y ejecución. Ves avance desde la primera semana — nada se queda en papel.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PORTAFOLIO ============ -->
+<section id="portafolio" class="py-20 md:py-32 text-cream relative overflow-hidden">
+  <div class="pf-bg" aria-hidden="true"></div>
+  <div class="max-w-7xl mx-auto px-5 md:px-8 relative z-10">
+
+    <div class="flex flex-wrap items-end justify-between gap-6 mb-12 reveal">
+      <div>
+        <span class="pill pill--cream">Trabajo reciente</span>
+        <h2 class="display-2 text-5xl md:text-6xl mt-5">
+          Algunas <span class="italicize">marcas</span><br/>con las que trabajamos.
+        </h2>
+      </div>
+      <a href="https://www.instagram.com/reachstudio_/" target="_blank" rel="noopener"
+         class="ul-link text-sm font-medium text-cream/70 hover:text-cream transition-colors">
+        Ver más en Instagram →
+      </a>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-4 md:gap-5">
+
+      <!-- Maremoto — destacado ancho -->
+      <article class="pf-card pf-wide md:col-span-2 reveal" onclick="openModal('maremoto')" role="button" tabindex="0" aria-label="Ver proyecto Maremoto">
+        <img src="img/maremoto.jpg" alt="Maremoto" class="pf-img" loading="lazy" style="object-position: center 30%;">
+        <div class="pf-overlay">
+          <div class="pf-tag">Fotografía · Identidad visual · Redes sociales</div>
+          <div class="pf-name">Maremoto</div>
+          <div class="pf-arrow">Ver proyecto →</div>
+        </div>
+      </article>
+
+      <!-- Livana -->
+      <article class="pf-card reveal" onclick="openModal('livana')" role="button" tabindex="0" aria-label="Ver proyecto Livana">
+        <img src="img/livana.jpg" alt="Livana" class="pf-img" loading="lazy">
+        <div class="pf-overlay">
+          <div class="pf-tag">Branding · Packaging</div>
+          <div class="pf-name" style="font-style: italic;">Livana</div>
+          <div class="pf-arrow">Ver proyecto →</div>
+        </div>
+      </article>
+
+      <!-- Áurea -->
+      <article class="pf-card reveal" onclick="openModal('aurea')" role="button" tabindex="0" aria-label="Ver proyecto Áurea">
+        <img src="img/aurea.jpg" alt="Áurea" class="pf-img" loading="lazy">
+        <div class="pf-overlay">
+          <div class="pf-tag">Identidad visual · Papelería</div>
+          <div class="pf-name">Áurea</div>
+          <div class="pf-arrow">Ver proyecto →</div>
+        </div>
+      </article>
+
+      <!-- Parabar -->
+      <article class="pf-card reveal" onclick="openModal('parabar')" role="button" tabindex="0" aria-label="Ver proyecto Parabar">
+        <img src="img/parabar.jpg" alt="Parabar" class="pf-img" loading="lazy">
+        <div class="pf-overlay">
+          <div class="pf-tag">Branding · Señalética</div>
+          <div class="pf-name">Parabar</div>
+          <div class="pf-arrow">Ver proyecto →</div>
+        </div>
+      </article>
+
+      <!-- Beyond Human -->
+      <article class="pf-card reveal" onclick="openModal('beyond')" role="button" tabindex="0" aria-label="Ver proyecto Beyond Human">
+        <img src="img/beyond-human.jpg" alt="Beyond Human" class="pf-img" loading="lazy" style="object-position: center 20%;">
+        <div class="pf-overlay">
+          <div class="pf-tag">Contenido · Meta Ads · Estrategia</div>
+          <div class="pf-name">Beyond Human</div>
+          <div class="pf-arrow">Ver proyecto →</div>
+        </div>
+      </article>
+
+      <!-- Asociación Violeta — destacado ancho -->
+      <article class="pf-card pf-wide md:col-span-2 reveal" onclick="openModal('violeta')" role="button" tabindex="0" aria-label="Ver proyecto Asociación Violeta">
+        <img src="img/asociacion-violeta.jpg" alt="Asociación Violeta" class="pf-img" loading="lazy" style="object-position: center top;">
+        <div class="pf-overlay">
+          <div class="pf-tag">Gestión de redes · Diseño editorial · Campaña</div>
+          <div class="pf-name">Asociación Violeta</div>
+          <div class="pf-arrow">Ver proyecto →</div>
+        </div>
+      </article>
+
+      <!-- Travel Diaries — editorial brand card (colores y patrón argyle del manual de marca) -->
+      <article class="pf-card reveal" style="overflow:hidden;" onclick="openModal('travel')" role="button" tabindex="0" aria-label="Ver proyecto Travel Diaries">
+        <div class="pf-inner flex flex-col items-center justify-center text-center p-8" style="background:#193525;">
+
+          <!-- Patrón argyle (firma visual de la marca) -->
+          <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.18;pointer-events:none;" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="argyle-td" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+                <polygon points="20,0 40,20 20,40 0,20" fill="none" stroke="#F6EAC7" stroke-width="0.7"/>
+                <polygon points="20,0 40,20 20,40 0,20" fill="#F6EAC7" fill-opacity="0.05"/>
+              </pattern>
+            </defs>
+            <rect width="200" height="250" fill="url(#argyle-td)"/>
+          </svg>
+
+          <!-- Sello pasaporte deco (esquina superior derecha) -->
+          <svg style="position:absolute;top:10%;right:7%;opacity:0.25;width:48px;height:48px;pointer-events:none;" viewBox="0 0 48 48" fill="none">
+            <circle cx="24" cy="24" r="22" stroke="#B9D4E5" stroke-width="1" stroke-dasharray="3 1.5"/>
+            <text x="24" y="18" text-anchor="middle" font-size="4.5" fill="#B9D4E5" font-family="serif" letter-spacing="0.8">MONTERREY</text>
+            <text x="24" y="28" text-anchor="middle" font-size="9" fill="#B9D4E5" font-family="serif" font-style="italic">MX</text>
+            <text x="24" y="37" text-anchor="middle" font-size="4" fill="#B9D4E5" font-family="serif">2026</text>
+          </svg>
+
+          <!-- Sello rectangular deco (esquina inferior izquierda) -->
+          <svg style="position:absolute;bottom:10%;left:7%;opacity:0.2;width:42px;height:42px;pointer-events:none;" viewBox="0 0 42 42" fill="none">
+            <rect x="1.5" y="1.5" width="39" height="39" rx="3" stroke="#F6EAC7" stroke-width="0.8" stroke-dasharray="2 1.5"/>
+            <text x="21" y="16" text-anchor="middle" font-size="4" fill="#F6EAC7" font-family="serif" letter-spacing="0.5">ARRIVED</text>
+            <text x="21" y="26" text-anchor="middle" font-size="6.5" fill="#F6EAC7" font-family="serif" font-style="italic">travel</text>
+            <text x="21" y="35" text-anchor="middle" font-size="3.5" fill="#F6EAC7" font-family="serif">MAY 2026</text>
+          </svg>
+
+          <!-- Contenido principal -->
+          <div style="position:relative;z-index:1;">
+            <div style="font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(185,212,229,0.55);font-weight:600;margin-bottom:1.4rem;">Identidad visual</div>
+
+            <!-- Logo tipográfico fiel al manual -->
+            <div style="display:flex;align-items:baseline;gap:0.3rem;justify-content:center;">
+              <span style="font-family:'Fraunces',serif;font-size:clamp(1.5rem,3.2vw,2rem);font-weight:300;color:#F6EAC7;letter-spacing:-0.01em;line-height:1;">travel</span>
+              <span style="font-family:'Fraunces',serif;font-style:italic;font-weight:300;font-size:clamp(1.7rem,3.8vw,2.3rem);color:#F6EAC7;line-height:1;letter-spacing:-0.02em;">diaries</span>
+            </div>
+
+            <div style="width:2rem;height:1px;background:rgba(185,212,229,0.3);margin:1.2rem auto;"></div>
+
+            <!-- Isotipo (td) -->
+            <div style="display:inline-flex;align-items:center;justify-content:center;border:1px solid rgba(185,212,229,0.28);border-radius:50%;width:2rem;height:2rem;margin-bottom:1.1rem;">
+              <span style="font-family:'Fraunces',serif;font-style:italic;font-weight:300;font-size:0.75rem;color:rgba(185,212,229,0.65);letter-spacing:-0.02em;">td</span>
+            </div>
+
+            <div style="font-size:0.6rem;letter-spacing:0.07em;color:rgba(246,234,199,0.35);font-family:serif;font-style:italic;">Agencia de viajes · Branding · 2026</div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIOS ============ -->
+<section class="py-20 md:py-32 bg-cream">
+  <div class="max-w-7xl mx-auto px-5 md:px-8">
+    <div class="flex flex-wrap items-end justify-between gap-6 mb-12 reveal">
+      <div>
+        <span class="pill pill--burg">Lo que dicen</span>
+        <h2 class="display-2 text-5xl md:text-6xl mt-5">
+          Resultados, <span class="italicize">no</span> promesas.
+        </h2>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-5">
+      <div class="p-7 rounded-2xl bg-cream2 border border-ink/10 reveal">
+        <div class="text-red text-4xl font-serif leading-none mb-4">"</div>
+        <p class="text-[1.05rem] leading-relaxed">
+          Llevábamos años con un Instagram que no nos representaba. En tres meses,
+          el feed cambió por completo y empezamos a recibir mensajes de clientes diciendo
+          que nos vieron "más serias".
+        </p>
+        <div class="mt-6 pt-5 border-t border-ink/10 flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-burg text-cream flex items-center justify-center font-bold text-sm">AR</div>
+          <div>
+            <div class="font-semibold text-sm">Ana R.</div>
+            <div class="text-ink/60 text-xs">Fundadora, marca de skincare</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-7 rounded-2xl bg-cream2 border border-ink/10 reveal">
+        <div class="text-red text-4xl font-serif leading-none mb-4">"</div>
+        <p class="text-[1.05rem] leading-relaxed">
+          Antes pagaba anuncios sin saber para qué. Ahora cada peso tiene un por qué
+          y veo claramente cuántas citas entran por Meta cada semana.
+        </p>
+        <div class="mt-6 pt-5 border-t border-ink/10 flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-red text-cream flex items-center justify-center font-bold text-sm">DM</div>
+          <div>
+            <div class="font-semibold text-sm">Daniela M.</div>
+            <div class="text-ink/60 text-xs">Directora, clínica de bienestar</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-7 rounded-2xl bg-cream2 border border-ink/10 reveal">
+        <div class="text-red text-4xl font-serif leading-none mb-4">"</div>
+        <p class="text-[1.05rem] leading-relaxed">
+          Lo que más valoro es la claridad. Saben explicar qué van a hacer, por qué,
+          y qué espero ver. Trabajar con ellas se siente como tener un equipo interno.
+        </p>
+        <div class="mt-6 pt-5 border-t border-ink/10 flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-ink text-cream flex items-center justify-center font-bold text-sm">JC</div>
+          <div>
+            <div class="font-semibold text-sm">Jorge C.</div>
+            <div class="text-ink/60 text-xs">Dueño, estudio de pilates</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section id="faq" class="py-20 md:py-32 bg-cream2 border-y border-ink/10">
+  <div class="max-w-4xl mx-auto px-5 md:px-8">
+    <div class="mb-12 reveal">
+      <span class="pill pill--burg">FAQ</span>
+      <h2 class="display-2 text-5xl md:text-6xl mt-5">
+        Preguntas <span class="italicize">frecuentes.</span>
+      </h2>
+    </div>
+
+    <div class="space-y-3" id="faq-list">
+
+      <div class="faq-item border border-ink/12 rounded-2xl overflow-hidden bg-cream">
+        <button class="faq-btn w-full flex items-center justify-between gap-4 px-7 py-6 text-left font-semibold text-[1.05rem]" onclick="toggleFaq(this)">
+          <span>¿Trabajan con cualquier tipo de negocio?</span>
+          <span class="faq-icon text-red text-2xl leading-none flex-shrink-0 transition-transform duration-300">+</span>
+        </button>
+        <div class="faq-body max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+          <p class="px-7 pb-6 text-ink/70 leading-relaxed">Sí, trabajamos con una amplia variedad de negocios — restaurantes, clínicas, marcas de producto, servicios profesionales y más. Lo único que pedimos es que haya una visión clara de hacia dónde quieren ir. Nos funciona mejor colaborar con marcas que están dispuestas a crecer con estrategia.</p>
+        </div>
+      </div>
+
+      <div class="faq-item border border-ink/12 rounded-2xl overflow-hidden bg-cream">
+        <button class="faq-btn w-full flex items-center justify-between gap-4 px-7 py-6 text-left font-semibold text-[1.05rem]" onclick="toggleFaq(this)">
+          <span>¿Cuánto tiempo tarda un proyecto de branding?</span>
+          <span class="faq-icon text-red text-2xl leading-none flex-shrink-0 transition-transform duration-300">+</span>
+        </button>
+        <div class="faq-body max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+          <p class="px-7 pb-6 text-ink/70 leading-relaxed">Un proyecto de branding completo (identidad visual, manual de marca, aplicaciones) toma entre 4 y 5 semanas. Los tiempos dependen de la complejidad del proyecto y de qué tan ágiles seamos en las aprobaciones. Te damos un timeline detallado desde el inicio para que siempre sepas dónde estamos.</p>
+        </div>
+      </div>
+
+      <div class="faq-item border border-ink/12 rounded-2xl overflow-hidden bg-cream">
+        <button class="faq-btn w-full flex items-center justify-between gap-4 px-7 py-6 text-left font-semibold text-[1.05rem]" onclick="toggleFaq(this)">
+          <span>¿Manejan campañas de Meta Ads (Facebook e Instagram)?</span>
+          <span class="faq-icon text-red text-2xl leading-none flex-shrink-0 transition-transform duration-300">+</span>
+        </button>
+        <div class="faq-body max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+          <p class="px-7 pb-6 text-ink/70 leading-relaxed">Sí. Diseñamos y gestionamos campañas de pauta en Meta (Facebook e Instagram) con foco en resultados comerciales: leads, mensajes, citas o ventas. Nos encargamos de la estrategia, creatividades, segmentación y optimización continua — no solo de "subir el anuncio".</p>
+        </div>
+      </div>
+
+      <div class="faq-item border border-ink/12 rounded-2xl overflow-hidden bg-cream">
+        <button class="faq-btn w-full flex items-center justify-between gap-4 px-7 py-6 text-left font-semibold text-[1.05rem]" onclick="toggleFaq(this)">
+          <span>¿Hacen producción de contenido (foto y video)?</span>
+          <span class="faq-icon text-red text-2xl leading-none flex-shrink-0 transition-transform duration-300">+</span>
+        </button>
+        <div class="faq-body max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+          <p class="px-7 pb-6 text-ink/70 leading-relaxed">Sí. Contamos con equipo y colaboradores para sesiones de foto y video, dirección creativa, edición y diseño. Producimos contenido pensado para redes sociales, campañas y sitios web — con estética editorial y foco en lo que comunica y convierte.</p>
+        </div>
+      </div>
+
+      <div class="faq-item border border-ink/12 rounded-2xl overflow-hidden bg-cream">
+        <button class="faq-btn w-full flex items-center justify-between gap-4 px-7 py-6 text-left font-semibold text-[1.05rem]" onclick="toggleFaq(this)">
+          <span>¿Tienen paquetes fijos o precios establecidos?</span>
+          <span class="faq-icon text-red text-2xl leading-none flex-shrink-0 transition-transform duration-300">+</span>
+        </button>
+        <div class="faq-body max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+          <p class="px-7 pb-6 text-ink/70 leading-relaxed">No trabajamos con paquetes cerrados porque cada proyecto tiene necesidades distintas. Después de una llamada inicial, te enviamos una cotización personalizada con exactamente lo que necesitas — sin pagar por cosas que no te sirven. Escríbenos y con gusto platicamos.</p>
+        </div>
+      </div>
+
+      <div class="faq-item border border-ink/12 rounded-2xl overflow-hidden bg-cream">
+        <button class="faq-btn w-full flex items-center justify-between gap-4 px-7 py-6 text-left font-semibold text-[1.05rem]" onclick="toggleFaq(this)">
+          <span>¿Trabajan con empresas fuera de Monterrey o de México?</span>
+          <span class="faq-icon text-red text-2xl leading-none flex-shrink-0 transition-transform duration-300">+</span>
+        </button>
+        <div class="faq-body max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+          <p class="px-7 pb-6 text-ink/70 leading-relaxed">Sí. Tenemos experiencia trabajando con marcas en distintas ciudades de México y también con clientes en Estados Unidos. La mayoría de nuestros procesos se gestionan de forma remota sin problema. Si requieren producción de contenido en campo, lo evaluamos caso a caso.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA FINAL ============ -->
+<section id="contacto" class="py-20 md:py-32 bg-ink text-cream relative overflow-hidden">
+  <div class="absolute -right-20 -top-20 w-[420px] h-[420px] rounded-full bg-red/10 blur-3xl"></div>
+  <div class="absolute -left-20 bottom-0 w-[360px] h-[360px] rounded-full bg-burg/30 blur-3xl"></div>
+
+  <div class="max-w-7xl mx-auto px-5 md:px-8 relative">
+    <div class="grid md:grid-cols-12 gap-10 items-end">
+      <div class="md:col-span-8 reveal">
+        <span class="pill pill--cream">¿Empezamos?</span>
+        <h2 class="display-1 text-5xl md:text-7xl lg:text-8xl mt-5">
+          Tu marca merece<br/>
+          verse tan <span class="italicize">buena</span><br/>
+          como es.
+        </h2>
+        <p class="mt-6 text-cream/70 text-lg max-w-xl">
+          Cuéntanos qué necesitas. En una llamada corta te decimos si podemos
+          ayudarte — y por dónde empezaríamos.
+        </p>
+      </div>
+
+      <div class="md:col-span-4 flex flex-col gap-3 reveal" id="contacto-wa">
+        <a href="https://wa.me/528110290364?text=Hola%2C%20vi%20su%20p%C3%A1gina%20web%20y%20me%20interesa%20mejorar%20la%20presencia%20digital%20de%20mi%20negocio."
+           target="_blank" rel="noopener"
+           class="btn btn-primary justify-center w-full text-base py-4">
+          <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M19.05 4.91A10 10 0 0 0 2.4 17.34L1 23l5.79-1.52a10 10 0 0 0 4.78 1.22h.01A10 10 0 0 0 19.05 4.91Zm-7.47 15.4h-.01a8.31 8.31 0 0 1-4.23-1.16l-.3-.18-3.43.9.92-3.35-.2-.32a8.32 8.32 0 1 1 7.25 4.11Zm4.56-6.22c-.25-.13-1.47-.73-1.7-.81-.23-.08-.4-.13-.56.13-.16.25-.65.81-.8.98-.15.16-.29.18-.54.06-.25-.13-1.05-.39-2-1.23a7.5 7.5 0 0 1-1.39-1.72c-.15-.25 0-.39.11-.51.11-.11.25-.29.37-.43.13-.15.16-.25.25-.4.08-.16.04-.31-.02-.43-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48a.92.92 0 0 0-.67.31c-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.57.12.16 1.75 2.68 4.25 3.76.59.26 1.05.41 1.42.52.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.18-.48-.31Z"/></svg>
+          Escribir por WhatsApp
+        </a>
+        <a href="https://www.instagram.com/reachstudio_/" target="_blank" rel="noopener"
+           class="btn justify-center w-full bg-cream text-ink hover:bg-nude text-base py-4">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg>
+          Seguir en Instagram
+        </a>
+        <a href="mailto:hola.reachstudio@gmail.com"
+           class="btn justify-center w-full bg-transparent text-cream border border-cream/40 hover:bg-cream hover:text-ink text-base py-4">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          Enviar correo
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-cream2 border-t border-ink/10 py-14">
+  <div class="max-w-7xl mx-auto px-5 md:px-8">
+    <div class="grid md:grid-cols-12 gap-10">
+      <div class="md:col-span-5">
+        <div class="flex items-center gap-2.5">
+          <span class="re-dot w-12 h-12 text-lg">re:</span>
+          <span class="font-extrabold text-xl tracking-tight">re:ach studio</span>
+        </div>
+        <p class="mt-5 text-ink/70 max-w-sm">
+          Agencia de marketing y diseño. Ayudamos a marcas a comunicar mejor,
+          verse más profesionales y vender más.
+        </p>
+        <p class="mt-4 text-xl text-burg" style="font-family:'Fraunces',serif;font-style:italic;font-weight:300;font-variation-settings:'opsz' 144;">we help brands re:ach with purpose.</p>
+      </div>
+
+      <div class="md:col-span-3">
+        <div class="text-xs uppercase tracking-widest text-ink/50 font-bold mb-4">Servicios</div>
+        <ul class="space-y-2 text-sm text-ink/80">
+          <li>Estrategia digital</li>
+          <li>Branding e identidad</li>
+          <li>Gestión de redes</li>
+          <li>Meta Ads</li>
+          <li>Creación de contenido</li>
+          <li>Web y landing pages</li>
+        </ul>
+      </div>
+
+      <div class="md:col-span-4">
+        <div class="text-xs uppercase tracking-widest text-ink/50 font-bold mb-4">Contacto</div>
+        <ul class="space-y-3 text-sm">
+          <li>
+            <a href="https://wa.me/528110290364?text=Hola%2C%20vi%20su%20p%C3%A1gina%20web%20y%20me%20interesa%20mejorar%20la%20presencia%20digital%20de%20mi%20negocio."
+               target="_blank" rel="noopener" class="ul-link font-medium">
+              WhatsApp →
+            </a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/reachstudio_/" target="_blank" rel="noopener" class="ul-link font-medium">
+              @reachstudio_ →
+            </a>
+          </li>
+          <li>
+            <a href="https://www.tiktok.com/@reach.studio1" target="_blank" rel="noopener" class="ul-link font-medium">
+              @reach.studio1 TikTok →
+            </a>
+          </li>
+          <li>
+            <a href="mailto:hola.reachstudio@gmail.com" class="ul-link font-medium">
+              hola.reachstudio@gmail.com
+            </a>
+          </li>
+          <li class="text-ink/60 pt-2">Monterrey, México</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-12 pt-6 border-t border-ink/10 flex flex-wrap items-center justify-between gap-4 text-xs text-ink/50">
+      <div>© <span id="year"></span> re:ach studio. Todos los derechos reservados.</div>
+      <div class="flex items-center gap-2"><span class="italicize">Not luck.</span> Strategy.</div>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== PORTFOLIO MODAL ===== -->
+<div id="pf-modal" class="pf-modal" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="pfm-backdrop" onclick="closeModal()"></div>
+  <div class="pfm-content">
+    <!-- Info panel -->
+    <div class="pfm-info">
+      <button class="pfm-close" onclick="closeModal()" aria-label="Cerrar">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 1l10 10M11 1L1 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </button>
+      <div class="pfm-meta">
+        <div class="pfm-year"></div>
+        <div class="pfm-year-dot"></div>
+        <div class="pfm-cat-inline"></div>
+      </div>
+      <h2 class="pfm-name"></h2>
+      <div class="pfm-tags"></div>
+      <p class="pfm-desc"></p>
+      <a id="pfm-pdf" class="pfm-pdf-link" href="#" target="_blank" rel="noopener" style="display:none;">
+        <svg class="pfm-pdf-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        Ver identidad visual →
+      </a>
+    </div>
+    <!-- Gallery panel -->
+    <div class="pfm-gallery">
+      <img id="pfm-img" src="" alt="" loading="lazy">
+      <div class="pfm-counter" id="pfm-counter"></div>
+      <button class="pfm-nav pfm-prev" onclick="prevImg()" aria-label="Imagen anterior">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <button class="pfm-nav pfm-next" onclick="nextImg()" aria-label="Imagen siguiente">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+      <div class="pfm-dots"></div>
+      <!-- Travel Diaries brand visual -->
+      <div class="pfm-brand-canvas" id="pfm-brand" style="display:none;">
+        <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.15;pointer-events:none;" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="argyle-modal" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse"><polygon points="20,0 40,20 20,40 0,20" fill="none" stroke="#F6EAC7" stroke-width="0.7"/></pattern></defs><rect width="200" height="250" fill="url(#argyle-modal)"/></svg>
+        <div style="position:relative;z-index:1;text-align:center;">
+          <div style="font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(185,212,229,0.5);margin-bottom:1.5rem;font-weight:600;">Identidad visual · 2026</div>
+          <div style="display:flex;align-items:baseline;gap:0.35rem;justify-content:center;margin-bottom:1rem;">
+            <span style="font-family:'Fraunces',serif;font-size:2.4rem;font-weight:300;color:#F6EAC7;line-height:1;">travel</span>
+            <span style="font-family:'Fraunces',serif;font-style:italic;font-weight:300;font-size:2.8rem;color:#F6EAC7;line-height:1;">diaries</span>
+          </div>
+          <div style="width:2rem;height:1px;background:rgba(185,212,229,0.25);margin:0 auto 1rem;"></div>
+          <div style="display:inline-flex;align-items:center;justify-content:center;border:1px solid rgba(185,212,229,0.25);border-radius:50%;width:2.4rem;height:2.4rem;">
+            <span style="font-family:'Fraunces',serif;font-style:italic;font-weight:300;font-size:0.9rem;color:rgba(185,212,229,0.6);">td</span>
+          </div>
+          <div style="margin-top:1.25rem;font-size:0.58rem;letter-spacing:0.07em;color:rgba(246,234,199,0.3);font-family:serif;font-style:italic;">Agencia de viajes · Branding · 2026</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Año actual
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // FAQ accordion
+  function toggleFaq(btn) {
+    const item  = btn.closest('.faq-item');
+    const body  = item.querySelector('.faq-body');
+    const icon  = btn.querySelector('.faq-icon');
+    const open  = item.classList.contains('is-open');
+
+    // Cerrar todos
+    document.querySelectorAll('.faq-item.is-open').forEach(el => {
+      el.classList.remove('is-open');
+      el.querySelector('.faq-body').style.maxHeight = '0';
+      el.querySelector('.faq-icon').style.transform = 'rotate(0deg)';
+    });
+
+    // Abrir el clickeado si estaba cerrado
+    if (!open) {
+      item.classList.add('is-open');
+      body.style.maxHeight = body.scrollHeight + 'px';
+      icon.style.transform = 'rotate(45deg)';
+    }
+  }
+
+  // Smooth scroll para enlaces internos (asegura comportamiento en Safari)
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', (e) => {
+      const id = a.getAttribute('href');
+      if (id.length > 1) {
+        const target = document.querySelector(id);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    });
+  });
+
+  // ===== HERO WORD CYCLING =====
+  const heroWords    = ['re:ach', 're:design', 're:connect', 're:define'];
+  const heroSuffixes = ['with purpose.', 'your brand.', 'with your audience.', 'your story.'];
+  let heroIdx = 0;
+  const heroWordEl   = document.getElementById('hero-word');
+  const heroSuffixEl = document.getElementById('hero-suffix');
+
+  function cycleHero() {
+    heroWordEl.style.opacity   = '0';
+    heroWordEl.style.transform = 'translateY(-10px)';
+    heroSuffixEl.style.opacity = '0';
+    setTimeout(() => {
+      heroIdx = (heroIdx + 1) % heroWords.length;
+      heroWordEl.textContent   = heroWords[heroIdx];
+      heroSuffixEl.textContent = heroSuffixes[heroIdx];
+      heroWordEl.style.opacity   = '1';
+      heroWordEl.style.transform = 'translateY(0)';
+      heroSuffixEl.style.opacity = '1';
+    }, 320);
+  }
+  setInterval(cycleHero, 3000);
+
+  // ===== PORTFOLIO MODAL =====
+  const pjData = {
+    maremoto: {
+      name: 'Maremoto', year: '2026',
+      category: 'Restaurante · Cocina de mar',
+      tags: ['Identidad visual', 'Fotografía', 'Redes sociales'],
+      description: 'Proyecto integral para restaurante de cocina de mar en Monterrey. Identidad de marca, sesión fotográfica de platillos, aplicaciones impresas y gestión de redes — contenido que comunica frescura, calidad y carácter.',
+      pdf: 'img/pdf/maremoto-brand.pdf',
+      images: [
+        'img/maremoto-brand-slogan.jpg','img/maremoto-brand-bolsa.jpg',
+        'img/maremoto-brand-contenedor.jpg','img/maremoto-brand-menu.jpg',
+        'img/maremoto-f1.jpg','img/maremoto-f2.jpg','img/maremoto-f3.jpg',
+        'img/maremoto-f4.jpg','img/maremoto-f5.jpg','img/maremoto-f6.jpg'
+      ]
+    },
+    livana: {
+      name: 'Livana', year: '2026',
+      category: 'Wellness · Lifestyle',
+      tags: ['Branding', 'Packaging', 'Identidad visual'],
+      description: 'Identidad visual completa y sistema de packaging para marca de velas y jabones artesanales. Cada pieza — desde la vela hasta la bolsa — refleja el carácter delicado y premium de la marca.',
+      pdf: 'img/pdf/livana-brand.pdf',
+      images: [
+        'img/livana-01.jpg','img/livana-02.jpg','img/livana-03.jpg',
+        'img/livana-04.jpg','img/livana-05.jpg','img/livana-06.jpg',
+        'img/livana-07.jpg','img/livana-08.jpg'
+      ]
+    },
+    aurea: {
+      name: 'Áurea', year: '2026',
+      category: 'Moda · Estilo de vida',
+      tags: ['Identidad visual', 'Papelería', 'Packaging'],
+      description: 'Identidad visual elegante para marca de moda con sistema de papelería completo: tarjetas, packaging, bolsas, cajas, sello y materiales impresos. Una marca que se ve y se siente premium en cada punto de contacto.',
+      pdf: 'img/pdf/aurea-brand.pdf',
+      images: [
+        'img/aurea-portada.jpg','img/aurea-bolsa1.jpg','img/aurea-bolsa2.jpg',
+        'img/aurea-caja1.jpg','img/aurea-caja2.jpg','img/aurea-etiquetas.jpg',
+        'img/aurea-tarjetas.jpg','img/aurea-sacos.jpg','img/aurea-sello.jpg'
+      ]
+    },
+    parabar: {
+      name: 'Parabar', year: '2026',
+      category: 'Bar · Entretenimiento',
+      tags: ['Branding', 'Señalética', 'Diseño gráfico'],
+      description: 'Branding completo desde cero para bar con identidad urbana y contemporánea. Logotipo, señalética de fachada, gorras, bolsas, pin y toda la línea de aplicaciones de marca.',
+      pdf: 'img/pdf/parabar-brand.pdf',
+      images: [
+        'img/parabar-fachada.jpg','img/parabar-letrero.jpg',
+        'img/parabar-bolsa-m.jpg','img/parabar-caja-m.jpg',
+        'img/parabar-gorra.jpg','img/parabar-bordado.jpg','img/parabar-pin.jpg'
+      ]
+    },
+    beyond: {
+      name: 'Beyond Human', year: '2026',
+      category: 'Salud · Bienestar',
+      tags: ['Contenido', 'Meta Ads', 'Fotografía', 'Estrategia digital'],
+      description: 'Estrategia de contenido, producción visual y campañas de Meta Ads para clínica de bienestar y medicina avanzada. Sesión fotográfica, posts para redes, flyer impreso y campañas que generan confianza y citas reales.',
+      pdf: null,
+      galleryFit: 'contain',
+      images: [
+        'img/beyond-s1.jpg','img/beyond-s2.jpg','img/beyond-s3.jpg',
+        'img/beyond-s4.jpg','img/beyond-s5.jpg','img/beyond-s6.jpg',
+        'img/beyond-post1.jpg','img/beyond-post2.jpg',
+        'img/beyond-post3.jpg','img/beyond-post4.jpg','img/beyond-flyer.jpg'
+      ]
+    },
+    violeta: {
+      name: 'Asociación Violeta', year: '2026',
+      category: 'ONG · Impacto social',
+      tags: ['Gestión de redes', 'Diseño editorial', 'Campaña'],
+      description: 'Gestión de redes sociales y diseño editorial para organización de impacto social. Contenido con propósito: mensajes contundentes, estética editorial consistente y campañas que generan conciencia y alcance real.',
+      pdf: null,
+      galleryFit: 'contain',
+      images: [
+        'img/violeta-p1.jpg','img/violeta-p2.jpg','img/violeta-p3.jpg',
+        'img/violeta-p4.jpg','img/violeta-p5.jpg','img/violeta-p6.jpg'
+      ]
+    },
+    travel: {
+      name: 'Travel Diaries', year: '2026',
+      category: 'Agencia de viajes · Lujo',
+      tags: ['Identidad visual', 'Manual de marca', 'Branding completo'],
+      description: 'Identidad visual completa para agencia de viajes de lujo. Logotipo, isotipo (td), sistema tipográfico, paleta cromática y manual de aplicaciones — una marca tan evocadora como los destinos que representa.',
+      pdf: 'img/pdf/travel-brand.pdf',
+      images: []
+    }
+  };
+
+  let currentPj  = null;
+  let currentImg = 0;
+  // Preload cache
+  const imgCache = {};
+
+  function preloadImg(src) {
+    if (!src || imgCache[src]) return;
+    const i = new Image(); i.src = src; imgCache[src] = i;
+  }
+
+  function toggleSvc(row) {
+    const isOpen = row.classList.contains('open');
+    document.querySelectorAll('.svc-row.open').forEach(r => r.classList.remove('open'));
+    if (!isOpen) row.classList.add('open');
+  }
+
+  function openModal(id) {
+    const pj = pjData[id];
+    if (!pj) return;
+    currentPj  = pj;
+    currentImg = 0;
+    const m = document.getElementById('pf-modal');
+
+    // Info panel
+    m.querySelector('.pfm-year').textContent       = pj.year;
+    m.querySelector('.pfm-cat-inline').textContent = pj.category;
+    m.querySelector('.pfm-name').textContent       = pj.name;
+    m.querySelector('.pfm-desc').textContent       = pj.description;
+    m.querySelector('.pfm-tags').innerHTML         = pj.tags.map(t => `<span class="pfm-tag">${t}</span>`).join('');
+
+    // PDF link
+    const pdfEl = document.getElementById('pfm-pdf');
+    if (pj.pdf) {
+      pdfEl.href = pj.pdf;
+      pdfEl.style.display = 'inline-flex';
+    } else {
+      pdfEl.style.display = 'none';
+    }
+
+    // Gallery
+    const imgEl  = document.getElementById('pfm-img');
+    const brand  = document.getElementById('pfm-brand');
+    const gal    = m.querySelector('.pfm-gallery');
+    const hasImgs = pj.images.length > 0;
+
+    if (hasImgs) {
+      gal.style.background   = '#0E0B08';
+      imgEl.style.display    = 'block';
+      imgEl.style.objectFit  = pj.galleryFit || 'cover';
+      imgEl.src              = pj.images[0];
+      imgEl.alt              = pj.name;
+      brand.style.display    = 'none';
+      // Preload first 3
+      preloadImg(pj.images[0]);
+      preloadImg(pj.images[1]);
+      preloadImg(pj.images[2]);
+      const showNav = pj.images.length > 1;
+      m.querySelector('.pfm-prev').style.display = showNav ? 'flex' : 'none';
+      m.querySelector('.pfm-next').style.display = showNav ? 'flex' : 'none';
+      updateGalleryUI();
+    } else {
+      gal.style.background   = '#193525';
+      imgEl.style.display    = 'none';
+      brand.style.display    = 'flex';
+      m.querySelector('.pfm-prev').style.display   = 'none';
+      m.querySelector('.pfm-next').style.display   = 'none';
+      m.querySelector('.pfm-dots').innerHTML       = '';
+      document.getElementById('pfm-counter').textContent = '';
+    }
+
+    m.classList.add('is-open');
+    m.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => m.querySelector('.pfm-close').focus(), 80);
+  }
+
+  function closeModal() {
+    const m = document.getElementById('pf-modal');
+    m.classList.remove('is-open');
+    m.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    currentPj = null;
+  }
+
+  function updateGalleryUI() {
+    if (!currentPj || !currentPj.images.length) return;
+    const total = currentPj.images.length;
+    // Counter
+    document.getElementById('pfm-counter').textContent = `${currentImg + 1} / ${total}`;
+    // Dots — only render if ≤ 10
+    if (total <= 10) {
+      document.querySelector('.pfm-dots').innerHTML = currentPj.images.map((_, i) =>
+        `<button class="pfm-dot${i === currentImg ? ' active' : ''}" onclick="goTo(${i})" aria-label="Imagen ${i+1}"></button>`
+      ).join('');
+    } else {
+      document.querySelector('.pfm-dots').innerHTML = '';
+    }
+  }
+
+  function updateImg() {
+    if (!currentPj || !currentPj.images.length) return;
+    const imgEl = document.getElementById('pfm-img');
+    imgEl.classList.add('pfm-fade');
+    setTimeout(() => {
+      imgEl.src = currentPj.images[currentImg];
+      imgEl.style.objectFit = currentPj.galleryFit || 'cover';
+      imgEl.classList.remove('pfm-fade');
+      updateGalleryUI();
+      // Preload next two
+      preloadImg(currentPj.images[(currentImg + 1) % currentPj.images.length]);
+      preloadImg(currentPj.images[(currentImg + 2) % currentPj.images.length]);
+    }, 200);
+  }
+
+  function prevImg() {
+    if (!currentPj || !currentPj.images.length) return;
+    currentImg = (currentImg - 1 + currentPj.images.length) % currentPj.images.length;
+    updateImg();
+  }
+
+  function nextImg() {
+    if (!currentPj || !currentPj.images.length) return;
+    currentImg = (currentImg + 1) % currentPj.images.length;
+    updateImg();
+  }
+
+  function goTo(i) { currentImg = i; updateImg(); }
+
+  // Swipe support for mobile
+  (function() {
+    let sx = 0;
+    const gal = document.querySelector('.pfm-gallery');
+    gal.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, { passive: true });
+    gal.addEventListener('touchend', e => {
+      const dx = e.changedTouches[0].clientX - sx;
+      if (Math.abs(dx) > 40) { dx < 0 ? nextImg() : prevImg(); }
+    }, { passive: true });
+  })();
+
+  document.addEventListener('keydown', e => {
+    if (!document.getElementById('pf-modal').classList.contains('is-open')) return;
+    if (e.key === 'Escape')     closeModal();
+    if (e.key === 'ArrowLeft')  prevImg();
+    if (e.key === 'ArrowRight') nextImg();
+  });
+
+  // Keyboard support for portfolio cards (Enter/Space)
+  document.querySelectorAll('.pf-card[role="button"]').forEach(card => {
+    card.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); card.click(); }
+    });
+  });
+</script>
+
+</body>
+</html>
