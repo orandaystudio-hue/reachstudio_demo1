@@ -16,7 +16,7 @@
     theme: {
       extend: {
         colors: {
-          cream:   '#fffced',
+          cream:   '#fffefa',
           cream2:  '#F7F4E8',
           ink:     '#191919',
           burg:    '#56070e',
@@ -40,7 +40,7 @@
 <style>
   html { scroll-behavior: smooth; }
   body {
-    background: #fffced;
+    background: #fffefa;
     color: #191919;
     font-family: 'Albert Sans', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -52,7 +52,7 @@
     align-items: center;
     justify-content: center;
     background: #191919;
-    color: #fffced;
+    color: #fffefa;
     border-radius: 9999px;
     font-family: 'Albert Sans', sans-serif;
     font-weight: 800;
@@ -75,11 +75,11 @@
   }
   .pill--burg { background: #56070e; }
   .pill--ink  { background: #191919; }
-  .pill--cream { background: #fffced; color: #191919; }
+  .pill--cream { background: #fffefa; color: #191919; }
   .pill--outline { background: transparent; color: #191919; border: 1px solid #191919; }
 
-  /* Headline serif italic accent */
-  .italicize { font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-variation-settings: "opsz" 144; }
+  /* Headline serif accent */
+  .italicize { font-family: 'Fraunces', serif; font-style: normal; font-weight: 300; font-variation-settings: "opsz" 144; }
 
   /* Botones */
   .btn {
@@ -124,7 +124,6 @@
   .marquee-sep {
     color: rgba(220,53,40,0.85);
     font-family: 'Fraunces', serif;
-    font-style: italic;
     font-weight: 300;
     opacity: 0.9;
   }
@@ -231,6 +230,28 @@
     .svc-row.open .svc-detail { padding: 0 .5rem 1.2rem 3rem; }
   }
 
+  /* Service colors per row */
+  .svc-list .svc-row:nth-child(1) .svc-num { color: #56070e; }
+  .svc-list .svc-row:nth-child(1).open .svc-toggle { background: #56070e; border-color: #56070e; }
+  .svc-list .svc-row:nth-child(2) .svc-num { color: #e2361f; }
+  .svc-list .svc-row:nth-child(2).open .svc-toggle { background: #e2361f; border-color: #e2361f; }
+  .svc-list .svc-row:nth-child(3) .svc-num { color: #dc5f86; }
+  .svc-list .svc-row:nth-child(3).open .svc-toggle { background: #dc5f86; border-color: #dc5f86; }
+  .svc-list .svc-row:nth-child(4) .svc-num { color: #56070e; }
+  .svc-list .svc-row:nth-child(4).open .svc-toggle { background: #56070e; border-color: #56070e; }
+  .svc-list .svc-row:nth-child(5) .svc-num { color: #e2361f; }
+  .svc-list .svc-row:nth-child(5).open .svc-toggle { background: #e2361f; border-color: #e2361f; }
+  .svc-list .svc-row:nth-child(6) .svc-num { color: #dc5f86; }
+  .svc-list .svc-row:nth-child(6).open .svc-toggle { background: #dc5f86; border-color: #dc5f86; }
+
+  /* Re:words animated section */
+  .reword-line {
+    border-top: 1px solid rgba(244,236,221,0.1);
+    padding: 1rem 0;
+    overflow: hidden;
+  }
+  .reword-line:last-child { border-bottom: 1px solid rgba(244,236,221,0.1); }
+
   /* Portfolio background (decor) */
   #portafolio {
     background:
@@ -253,7 +274,7 @@
     left: 50%;
     transform: translate(-50%, -52%);
     font-family: 'Fraunces', serif;
-    font-style: italic;
+    font-style: normal;
     font-weight: 400;
     font-size: clamp(16rem, 42vw, 52rem);
     letter-spacing: -0.05em;
@@ -589,12 +610,11 @@
       <span class="font-extrabold tracking-tight text-[0.95rem]">re:ach studio</span>
     </a>
     <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-ink/80">
-      <a href="#servicios"      class="hover:text-ink">Servicios</a>
-      <a href="#proceso"        class="hover:text-ink">Proceso</a>
-      <a href="#portafolio"     class="hover:text-ink">Trabajo</a>
-      <a href="#diferenciador"  class="hover:text-ink">Nosotros</a>
-      <a href="#faq"             class="hover:text-ink">FAQ</a>
-      <a href="#contacto"       class="hover:text-ink">Contacto</a>
+      <a href="#servicios"  class="hover:text-ink">Services</a>
+      <a href="#proceso"    class="hover:text-ink">Process</a>
+      <a href="#portafolio" class="hover:text-ink">Work</a>
+      <a href="#faq"        class="hover:text-ink">FAQ</a>
+      <a href="#contacto"   class="hover:text-ink">Contact</a>
     </nav>
     <a href="#contacto" class="btn btn-dark text-xs md:text-sm py-2.5 px-4 md:px-5">
       Hablemos
@@ -614,18 +634,16 @@
 
     <h1 class="display-1 text-[3.5rem] md:text-[7rem] lg:text-[8.5rem] reveal">
       We help brands<br/>
-      <span class="italicize hero-word" id="hero-word">re:ach</span> <span class="font-sans font-black tracking-tight hero-suffix" id="hero-suffix">with purpose.</span>
+      <span style="color:#e2361f">re:ach</span> with purpose.
     </h1>
 
     <div class="mt-8 md:mt-12 grid md:grid-cols-12 gap-8 md:gap-12 items-end">
       <p class="md:col-span-6 text-lg md:text-xl leading-relaxed text-ink/75 reveal">
-        Somos un estudio de marketing y diseño. Diseñamos estrategia, contenido y campañas
-        que hacen que tu marca <em class="italicize text-ink">se vea</em>, <em class="italicize text-ink">se entienda</em>
-        y <em class="italicize text-ink">venda</em> — sin sonar a plantilla.
+        Construimos marcas que conectan, contenido que destaca y estrategias pensadas para hacer crecer tu negocio.
       </p>
 
       <div class="md:col-span-6 flex flex-wrap gap-3 reveal">
-        <a href="#contacto-wa" class="btn btn-primary">
+        <a href="https://wa.me/523111144178?text=Hola%2C%20vi%20su%20p%C3%A1gina%20web%20y%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20sus%20servicios." target="_blank" rel="noopener" class="btn btn-primary">
           <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M19.05 4.91A10 10 0 0 0 2.4 17.34L1 23l5.79-1.52a10 10 0 0 0 4.78 1.22h.01A10 10 0 0 0 19.05 4.91Zm-7.47 15.4h-.01a8.31 8.31 0 0 1-4.23-1.16l-.3-.18-3.43.9.92-3.35-.2-.32a8.32 8.32 0 1 1 7.25 4.11Zm4.56-6.22c-.25-.13-1.47-.73-1.7-.81-.23-.08-.4-.13-.56.13-.16.25-.65.81-.8.98-.15.16-.29.18-.54.06-.25-.13-1.05-.39-2-1.23a7.5 7.5 0 0 1-1.39-1.72c-.15-.25 0-.39.11-.51.11-.11.25-.29.37-.43.13-.15.16-.25.25-.4.08-.16.04-.31-.02-.43-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48a.92.92 0 0 0-.67.31c-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.57.12.16 1.75 2.68 4.25 3.76.59.26 1.05.41 1.42.52.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.18-.48-.31Z"/></svg>
           Escribir por WhatsApp
         </a>
@@ -636,168 +654,64 @@
       </div>
     </div>
 
-    <!-- Stamp -->
-    <div class="hidden md:flex absolute right-8 top-32 stamp reveal">
-      <div class="bg-red text-cream rounded-full w-32 h-32 flex flex-col items-center justify-center text-center px-3 leading-tight shadow-xl shadow-red/20">
-        <span class="text-[0.65rem] font-bold tracking-widest uppercase">Not luck.</span>
-        <span class="italicize text-2xl">Strategy.</span>
-      </div>
-    </div>
-
   </div>
 </section>
 
 <!-- ============ MARQUEE ============ -->
 <section class="bg-ink text-cream py-3 md:py-4 border-y border-ink overflow-hidden">
   <div class="marquee whitespace-nowrap">
-    <!-- duplicado para loop -->
     <div class="flex items-center gap-10 md:gap-14 px-6 marquee-text text-sm md:text-base">
-      <span>Estrategia</span><span class="marquee-sep">·</span>
+      <span>Diseño Gráfico</span><span class="marquee-sep">·</span>
       <span>Branding</span><span class="marquee-sep">·</span>
-      <span>Meta Ads</span><span class="marquee-sep">·</span>
-      <span>Contenido</span><span class="marquee-sep">·</span>
-      <span>Gestión de redes</span><span class="marquee-sep">·</span>
-      <span>Diseño editorial</span><span class="marquee-sep">·</span>
-      <span>Embudos de venta</span><span class="marquee-sep">·</span>
-      <span>Landing pages</span><span class="marquee-sep">·</span>
+      <span>Gestión de redes sociales</span><span class="marquee-sep">·</span>
+      <span>Estrategia y línea gráfica</span><span class="marquee-sep">·</span>
+      <span>Pauta publicitaria</span><span class="marquee-sep">·</span>
+      <span>Fotografía y video</span><span class="marquee-sep">·</span>
+      <span>&amp; more</span><span class="marquee-sep">·</span>
     </div>
     <div class="flex items-center gap-10 md:gap-14 px-6 marquee-text text-sm md:text-base" aria-hidden="true">
-      <span>Estrategia</span><span class="marquee-sep">·</span>
+      <span>Diseño Gráfico</span><span class="marquee-sep">·</span>
       <span>Branding</span><span class="marquee-sep">·</span>
-      <span>Meta Ads</span><span class="marquee-sep">·</span>
-      <span>Contenido</span><span class="marquee-sep">·</span>
-      <span>Gestión de redes</span><span class="marquee-sep">·</span>
-      <span>Diseño editorial</span><span class="marquee-sep">·</span>
-      <span>Embudos de venta</span><span class="marquee-sep">·</span>
-      <span>Landing pages</span><span class="marquee-sep">·</span>
+      <span>Gestión de redes sociales</span><span class="marquee-sep">·</span>
+      <span>Estrategia y línea gráfica</span><span class="marquee-sep">·</span>
+      <span>Pauta publicitaria</span><span class="marquee-sep">·</span>
+      <span>Fotografía y video</span><span class="marquee-sep">·</span>
+      <span>&amp; more</span><span class="marquee-sep">·</span>
     </div>
   </div>
 </section>
 
-<!-- ============ PROBLEMA ============ -->
-<section id="problema" class="py-20 md:py-32">
+<!-- ============ RE:WORDS ============ -->
+<section class="bg-ink text-cream overflow-hidden">
   <div class="max-w-7xl mx-auto px-5 md:px-8">
-    <div class="grid md:grid-cols-12 gap-10 md:gap-16 items-start">
-      <div class="md:col-span-5 reveal">
-        <span class="pill pill--burg mb-5">El problema</span>
-        <h2 class="display-2 text-5xl md:text-6xl mt-4">
-          Publicar <span class="italicize">no</span> es estrategia.
-        </h2>
-        <p class="mt-6 text-ink/70 text-lg leading-relaxed">
-          La mayoría de los negocios están haciendo marketing en automático: posts sin rumbo,
-          anuncios que no convierten, una imagen digital que no transmite lo que la marca vale.
-        </p>
-      </div>
-
-      <div class="md:col-span-7 grid sm:grid-cols-2 gap-4 reveal">
-        <div class="p-6 rounded-2xl bg-cream2 border border-ink/10">
-          <div class="text-red font-bold text-sm mb-2">01</div>
-          <p class="font-medium">Publican todos los días, pero las ventas no se mueven.</p>
-        </div>
-        <div class="p-6 rounded-2xl bg-cream2 border border-ink/10">
-          <div class="text-red font-bold text-sm mb-2">02</div>
-          <p class="font-medium">Tienen redes activas, pero ninguna estrategia detrás.</p>
-        </div>
-        <div class="p-6 rounded-2xl bg-cream2 border border-ink/10">
-          <div class="text-red font-bold text-sm mb-2">03</div>
-          <p class="font-medium">La marca se ve genérica y se confunde con la competencia.</p>
-        </div>
-        <div class="p-6 rounded-2xl bg-cream2 border border-ink/10">
-          <div class="text-red font-bold text-sm mb-2">04</div>
-          <p class="font-medium">Los anuncios queman presupuesto sin traer clientes reales.</p>
-        </div>
-        <div class="p-6 rounded-2xl bg-cream2 border border-ink/10">
-          <div class="text-red font-bold text-sm mb-2">05</div>
-          <p class="font-medium">La comunicación no conecta — el cliente no entiende qué ofreces.</p>
-        </div>
-        <div class="p-6 rounded-2xl bg-cream2 border border-ink/10">
-          <div class="text-red font-bold text-sm mb-2">06</div>
-          <p class="font-medium">Saben que necesitan crecer, pero no saben por dónde empezar.</p>
-        </div>
-      </div>
+    <div class="reword-line reveal">
+      <span class="display-1 text-[2.8rem] md:text-[5.5rem] lg:text-[7.5rem] text-cream/25">re:design</span>
+    </div>
+    <div class="reword-line reveal">
+      <span class="display-1 text-[2.8rem] md:text-[5.5rem] lg:text-[7.5rem] text-cream/45">re:create</span>
+    </div>
+    <div class="reword-line reveal">
+      <span class="display-1 text-[2.8rem] md:text-[5.5rem] lg:text-[7.5rem] text-cream/65">re:define</span>
+    </div>
+    <div class="reword-line reveal">
+      <span class="display-1 text-[2.8rem] md:text-[5.5rem] lg:text-[7.5rem] text-cream/85">re:connect</span>
+    </div>
+    <div class="reword-line reveal">
+      <a href="#contacto" class="display-1 text-[2.8rem] md:text-[5.5rem] lg:text-[7.5rem] text-red hover:text-pink transition-colors duration-300">re:ach us →</a>
     </div>
   </div>
 </section>
 
-<!-- ============ SOLUCIÓN (burgundy block) ============ -->
-<section id="solucion" class="bg-burg text-cream py-20 md:py-32">
-  <div class="max-w-7xl mx-auto px-5 md:px-8">
-    <div class="grid md:grid-cols-12 gap-10 md:gap-16 items-start">
-      <div class="md:col-span-6 reveal">
-        <span class="pill pill--cream">La solución</span>
-        <h2 class="display-2 text-5xl md:text-7xl mt-5">
-          It is <span class="italicize">not</span> just<br/> posting.
-        </h2>
-        <p class="mt-6 text-cream/80 text-lg leading-relaxed max-w-md">
-          Construimos marca, estrategia y contenido que trabajan juntos.
-          Cada decisión se piensa para que tu negocio gane claridad, autoridad y clientes.
-        </p>
-
-        <div class="mt-8 flex flex-wrap gap-3">
-          <a href="#servicios" class="btn btn-primary">Ver cómo lo hacemos →</a>
-        </div>
-      </div>
-
-      <div class="md:col-span-6 reveal">
-        <ul class="space-y-3">
-          <li class="flex items-start gap-4 border-t border-cream/15 pt-4">
-            <span class="text-red font-serif italic text-2xl leading-none mt-1">+</span>
-            <div>
-              <div class="font-semibold text-lg">Estrategia de marca y marketing</div>
-              <div class="text-cream/70 text-sm">Diagnóstico, posicionamiento y plan de crecimiento — no improvisamos.</div>
-            </div>
-          </li>
-          <li class="flex items-start gap-4 border-t border-cream/15 pt-4">
-            <span class="text-red font-serif italic text-2xl leading-none mt-1">+</span>
-            <div>
-              <div class="font-semibold text-lg">Identidad visual con propósito</div>
-              <div class="text-cream/70 text-sm">Branding que comunica lo que tu marca vale, no solo lo que se ve bonito.</div>
-            </div>
-          </li>
-          <li class="flex items-start gap-4 border-t border-cream/15 pt-4">
-            <span class="text-red font-serif italic text-2xl leading-none mt-1">+</span>
-            <div>
-              <div class="font-semibold text-lg">Contenido que conecta y vende</div>
-              <div class="text-cream/70 text-sm">Planning, editing, design — pensado para captar y convertir, no solo llenar feed.</div>
-            </div>
-          </li>
-          <li class="flex items-start gap-4 border-t border-cream/15 pt-4">
-            <span class="text-red font-serif italic text-2xl leading-none mt-1">+</span>
-            <div>
-              <div class="font-semibold text-lg">Pauta digital con foco comercial</div>
-              <div class="text-cream/70 text-sm">Meta Ads optimizado para resultados reales: leads, ventas, citas.</div>
-            </div>
-          </li>
-          <li class="flex items-start gap-4 border-t border-b border-cream/15 py-4">
-            <span class="text-red font-serif italic text-2xl leading-none mt-1">+</span>
-            <div>
-              <div class="font-semibold text-lg">Web y embudos que convierten</div>
-              <div class="text-cream/70 text-sm">Landing pages diseñadas para que el visitante haga clic, escriba o compre.</div>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ============ SERVICIOS ============ -->
 <section id="servicios" class="py-20 md:py-32 border-b border-ink/10">
   <div class="max-w-7xl mx-auto px-5 md:px-8">
 
-    <div class="grid md:grid-cols-12 gap-10 md:gap-16 mb-16 reveal">
-      <div class="md:col-span-6">
-        <span class="pill pill--ink">Servicios</span>
-        <h2 class="display-2 text-5xl md:text-6xl mt-5">
-          Lo que <span class="italicize">hacemos</span><br/>por tu marca.
-        </h2>
-      </div>
-      <div class="md:col-span-6 flex items-end">
-        <p class="text-ink/65 text-lg leading-relaxed">
-          Cada proyecto es personalizado. No trabajamos con paquetes cerrados ni soluciones genéricas —
-          desarrollamos exactamente lo que tu marca necesita.
-        </p>
-      </div>
+    <div class="mb-16 reveal">
+      <span class="pill pill--ink">let's work together!</span>
+      <h2 class="display-2 text-5xl md:text-6xl mt-5">
+        get to know our services.
+      </h2>
     </div>
 
     <!-- Accordion list -->
@@ -808,7 +722,6 @@
           <span class="svc-num">01</span>
           <div class="svc-titles">
             <h3 class="svc-name">Branding &amp; Rebranding</h3>
-            <p class="svc-tagline">Identidades que se ven, se sienten y se recuerdan.</p>
           </div>
           <button class="svc-toggle" aria-label="Ver detalles">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
@@ -829,7 +742,6 @@
           <span class="svc-num">02</span>
           <div class="svc-titles">
             <h3 class="svc-name">Social Media Management</h3>
-            <p class="svc-tagline">Presencia constante. Contenido con criterio.</p>
           </div>
           <button class="svc-toggle" aria-label="Ver detalles">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
@@ -849,7 +761,6 @@
           <span class="svc-num">03</span>
           <div class="svc-titles">
             <h3 class="svc-name">Meta Ads</h3>
-            <p class="svc-tagline">Pauta que atrae clientes, no solo impresiones.</p>
           </div>
           <button class="svc-toggle" aria-label="Ver detalles">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
@@ -870,7 +781,6 @@
           <span class="svc-num">04</span>
           <div class="svc-titles">
             <h3 class="svc-name">Producción de Contenido</h3>
-            <p class="svc-tagline">Visual pensado para conectar y convertir.</p>
           </div>
           <button class="svc-toggle" aria-label="Ver detalles">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
@@ -890,7 +800,6 @@
           <span class="svc-num">05</span>
           <div class="svc-titles">
             <h3 class="svc-name">Diseño Gráfico</h3>
-            <p class="svc-tagline">Materiales que comunican al nivel de tu marca.</p>
           </div>
           <button class="svc-toggle" aria-label="Ver detalles">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
@@ -911,7 +820,6 @@
           <span class="svc-num">06</span>
           <div class="svc-titles">
             <h3 class="svc-name">Landing Pages</h3>
-            <p class="svc-tagline">Páginas que convierten visitas en oportunidades.</p>
           </div>
           <button class="svc-toggle" aria-label="Ver detalles">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
@@ -928,96 +836,49 @@
 
     </div>
 
-    <p class="mt-10 text-center text-ink/45 text-sm reveal">
-      Cada proyecto se desarrolla de manera personalizada según las necesidades,
-      objetivos y alcance definidos con cada cliente.
+    <p class="mt-10 text-center text-ink/65 text-sm reveal font-semibold">
+      Cada servicio se adapta a lo que tu marca necesita.
     </p>
 
   </div>
 </section>
 
-<!-- ============ DIFERENCIADOR ============ -->
-<section id="diferenciador" class="bg-cream2 py-20 md:py-32 border-y border-ink/10">
-  <div class="max-w-7xl mx-auto px-5 md:px-8">
-    <div class="grid md:grid-cols-12 gap-10 md:gap-16">
-      <div class="md:col-span-5 reveal">
-        <span class="pill pill--burg">Por qué re:ach</span>
-        <h2 class="display-2 text-5xl md:text-6xl mt-5">
-          Diseño con <span class="italicize">estrategia</span> detrás.
-        </h2>
-        <p class="mt-6 text-ink/70 text-lg leading-relaxed">
-          No somos solo un equipo de diseño. Pensamos como dueños de negocio:
-          cada pieza tiene un por qué, un objetivo y una métrica detrás.
-        </p>
-        <p class="mt-4 text-2xl text-burg leading-tight" style="font-family:'Fraunces',serif;font-style:italic;font-weight:300;font-variation-settings:'opsz' 144;">
-          we help brands re:ach the next level.
-        </p>
-      </div>
-
-      <div class="md:col-span-7 grid sm:grid-cols-2 gap-6 reveal">
-        <div>
-          <div class="text-5xl font-serif text-red">01</div>
-          <h4 class="font-semibold text-lg mt-2">Estrategia primero</h4>
-          <p class="text-ink/70 text-sm mt-1">Nada sale a producción sin un por qué. Pensamos antes de diseñar.</p>
-        </div>
-        <div>
-          <div class="text-5xl font-serif text-red">02</div>
-          <h4 class="font-semibold text-lg mt-2">Estética con criterio</h4>
-          <p class="text-ink/70 text-sm mt-1">Diseño editorial y tono cuidado — tu marca al nivel de las que admiras.</p>
-        </div>
-        <div>
-          <div class="text-5xl font-serif text-red">03</div>
-          <h4 class="font-semibold text-lg mt-2">Foco en resultados</h4>
-          <p class="text-ink/70 text-sm mt-1">Medimos lo que importa: leads, ventas, citas, conversaciones reales.</p>
-        </div>
-        <div>
-          <div class="text-5xl font-serif text-red">04</div>
-          <h4 class="font-semibold text-lg mt-2">Proceso claro</h4>
-          <p class="text-ink/70 text-sm mt-1">Comunicación honesta, entregables a tiempo y reportes que se entienden.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ============ PROCESO ============ -->
 <section id="proceso" class="py-20 md:py-32">
   <div class="max-w-7xl mx-auto px-5 md:px-8">
-    <div class="flex flex-wrap items-end justify-between gap-6 mb-12 reveal">
-      <div>
-        <span class="pill pill--ink">Cómo trabajamos</span>
-        <h2 class="display-2 text-5xl md:text-6xl mt-5">
-          De la idea <span class="italicize">al</span> resultado.
-        </h2>
-      </div>
-      <p class="max-w-sm text-ink/70">Un proceso simple, ordenado y enfocado en que veas avance desde la primera semana.</p>
+    <div class="mb-12 reveal">
+      <span class="pill pill--ink">Our process</span>
+      <h2 class="display-2 text-5xl md:text-6xl mt-5">
+        from idea to results.
+      </h2>
     </div>
 
     <div class="grid md:grid-cols-5 gap-4">
       <div class="p-6 rounded-2xl border border-ink/10 bg-cream2 reveal">
         <div class="re-dot w-10 h-10 text-sm mb-5">01</div>
-        <h4 class="font-serif text-2xl mb-2">Meet inicial</h4>
-        <p class="text-ink/70 text-sm leading-relaxed">Conocemos tu negocio, objetivos y necesidades. Una conversación honesta para ver si somos el fit correcto.</p>
+        <h4 class="font-serif text-2xl mb-2">Llamada inicial</h4>
+        <p class="text-ink/70 text-sm leading-relaxed">Conocemos tu marca, objetivos y necesidades para entender cómo podemos ayudarte.</p>
       </div>
       <div class="p-6 rounded-2xl border border-ink/10 bg-cream2 reveal">
         <div class="re-dot w-10 h-10 text-sm mb-5 bg-burg">02</div>
         <h4 class="font-serif text-2xl mb-2">Cotización</h4>
-        <p class="text-ink/70 text-sm leading-relaxed">Desarrollamos una propuesta personalizada con exactamente lo que tu proyecto necesita — sin extras que no sirven.</p>
+        <p class="text-ink/70 text-sm leading-relaxed">Preparamos una propuesta personalizada con los servicios que realmente necesita tu proyecto.</p>
       </div>
       <div class="p-6 rounded-2xl border border-ink/10 bg-cream2 reveal">
         <div class="re-dot w-10 h-10 text-sm mb-5 bg-red">03</div>
         <h4 class="font-serif text-2xl mb-2">Aprobación</h4>
-        <p class="text-ink/70 text-sm leading-relaxed">Revisamos juntos alcance, tiempos y detalles. Confirmamos todo antes de arrancar — sin sorpresas.</p>
+        <p class="text-ink/70 text-sm leading-relaxed">Revisamos juntos el alcance, tiempos y entregables antes de comenzar.</p>
       </div>
       <div class="p-6 rounded-2xl border border-ink/10 bg-cream2 reveal">
-        <div class="re-dot w-10 h-10 text-sm mb-5 bg-coral">04</div>
+        <div class="re-dot w-10 h-10 text-sm mb-5 bg-pink">04</div>
         <h4 class="font-serif text-2xl mb-2">Brief creativo</h4>
-        <p class="text-ink/70 text-sm leading-relaxed">Recopilamos toda la información necesaria para desarrollar la estrategia y el proyecto con claridad.</p>
+        <p class="text-ink/70 text-sm leading-relaxed">Recopilamos toda la información necesaria para desarrollar la estrategia y la dirección creativa.</p>
       </div>
       <div class="p-6 rounded-2xl border border-ink/10 bg-ink text-cream reveal">
         <div class="re-dot w-10 h-10 text-sm mb-5 bg-burg2">05</div>
-        <h4 class="font-serif text-2xl mb-2">Arranque</h4>
-        <p class="text-cream/70 text-sm leading-relaxed">Comenzamos producción y ejecución. Ves avance desde la primera semana — nada se queda en papel.</p>
+        <h4 class="font-serif text-2xl mb-2">Inicio del proyecto</h4>
+        <p class="text-cream/70 text-sm leading-relaxed">Comenzamos el proyecto y te mantenemos al tanto de cada avance durante todo el proceso.</p>
       </div>
     </div>
   </div>
@@ -1030,9 +891,9 @@
 
     <div class="flex flex-wrap items-end justify-between gap-6 mb-12 reveal">
       <div>
-        <span class="pill pill--cream">Trabajo reciente</span>
+        <span class="pill pill--cream">Recent work</span>
         <h2 class="display-2 text-5xl md:text-6xl mt-5">
-          Algunas <span class="italicize">marcas</span><br/>con las que trabajamos.
+          Brands we've worked with.
         </h2>
       </div>
       <a href="https://www.instagram.com/reachstudio__/" target="_blank" rel="noopener"
@@ -1043,12 +904,59 @@
 
     <div class="grid md:grid-cols-3 gap-4 md:gap-5">
 
-      <!-- Maremoto — destacado ancho -->
-      <article class="pf-card pf-wide md:col-span-2 reveal" onclick="openModal('maremoto')" role="button" tabindex="0" aria-label="Ver proyecto Maremoto">
+      <!-- Maremoto -->
+      <article class="pf-card reveal" onclick="openModal('maremoto')" role="button" tabindex="0" aria-label="Ver proyecto Maremoto">
         <img src="img/maremoto.jpg" alt="Maremoto" class="pf-img" loading="lazy" style="object-position: center 30%;">
         <div class="pf-overlay">
           <div class="pf-tag">Fotografía · Identidad visual · Redes sociales</div>
           <div class="pf-name">Maremoto</div>
+          <div class="pf-arrow">Ver proyecto →</div>
+        </div>
+      </article>
+
+      <!-- Travel Diaries -->
+      <article class="pf-card reveal" style="overflow:hidden;" onclick="openModal('travel')" role="button" tabindex="0" aria-label="Ver proyecto Travel Diaries">
+        <div class="pf-inner flex flex-col items-center justify-center text-center p-8" style="background:#193525;">
+          <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.18;pointer-events:none;" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="argyle-td" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+                <polygon points="20,0 40,20 20,40 0,20" fill="none" stroke="#F6EAC7" stroke-width="0.7"/>
+                <polygon points="20,0 40,20 20,40 0,20" fill="#F6EAC7" fill-opacity="0.05"/>
+              </pattern>
+            </defs>
+            <rect width="200" height="250" fill="url(#argyle-td)"/>
+          </svg>
+          <div style="position:relative;z-index:1;">
+            <div style="font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(185,212,229,0.55);font-weight:600;margin-bottom:1.4rem;">Identidad visual</div>
+            <div style="display:flex;align-items:baseline;gap:0.3rem;justify-content:center;">
+              <span style="font-family:'Fraunces',serif;font-size:clamp(1.5rem,3.2vw,2rem);font-weight:300;color:#F6EAC7;letter-spacing:-0.01em;line-height:1;">travel</span>
+              <span style="font-family:'Fraunces',serif;font-style:italic;font-weight:300;font-size:clamp(1.7rem,3.8vw,2.3rem);color:#F6EAC7;line-height:1;letter-spacing:-0.02em;">diaries</span>
+            </div>
+            <div style="width:2rem;height:1px;background:rgba(185,212,229,0.3);margin:1.2rem auto;"></div>
+            <div style="display:inline-flex;align-items:center;justify-content:center;border:1px solid rgba(185,212,229,0.28);border-radius:50%;width:2rem;height:2rem;margin-bottom:1.1rem;">
+              <span style="font-family:'Fraunces',serif;font-style:italic;font-weight:300;font-size:0.75rem;color:rgba(185,212,229,0.65);letter-spacing:-0.02em;">td</span>
+            </div>
+            <div style="font-size:0.6rem;letter-spacing:0.07em;color:rgba(246,234,199,0.35);font-family:serif;font-style:italic;">Agencia de viajes · Branding · 2026</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Áurea -->
+      <article class="pf-card reveal" onclick="openModal('aurea')" role="button" tabindex="0" aria-label="Ver proyecto Áurea">
+        <img src="img/aurea.jpg" alt="Áurea" class="pf-img" loading="lazy">
+        <div class="pf-overlay">
+          <div class="pf-tag">Identidad visual · Papelería · Packaging</div>
+          <div class="pf-name">Áurea</div>
+          <div class="pf-arrow">Ver proyecto →</div>
+        </div>
+      </article>
+
+      <!-- Asociación Violeta -->
+      <article class="pf-card reveal" onclick="openModal('violeta')" role="button" tabindex="0" aria-label="Ver proyecto Asociación Violeta">
+        <img src="img/asociacion-violeta.jpg" alt="Asociación Violeta" class="pf-img" loading="lazy" style="object-position: center top;">
+        <div class="pf-overlay">
+          <div class="pf-tag">Branding · Gestión de redes</div>
+          <div class="pf-name">Asociación Violeta</div>
           <div class="pf-arrow">Ver proyecto →</div>
         </div>
       </article>
@@ -1058,27 +966,7 @@
         <img src="img/livana.jpg" alt="Livana" class="pf-img" loading="lazy">
         <div class="pf-overlay">
           <div class="pf-tag">Branding · Packaging</div>
-          <div class="pf-name" style="font-style: italic;">Livana</div>
-          <div class="pf-arrow">Ver proyecto →</div>
-        </div>
-      </article>
-
-      <!-- Áurea -->
-      <article class="pf-card reveal" onclick="openModal('aurea')" role="button" tabindex="0" aria-label="Ver proyecto Áurea">
-        <img src="img/aurea.jpg" alt="Áurea" class="pf-img" loading="lazy">
-        <div class="pf-overlay">
-          <div class="pf-tag">Identidad visual · Papelería</div>
-          <div class="pf-name">Áurea</div>
-          <div class="pf-arrow">Ver proyecto →</div>
-        </div>
-      </article>
-
-      <!-- Parabar -->
-      <article class="pf-card reveal" onclick="openModal('parabar')" role="button" tabindex="0" aria-label="Ver proyecto Parabar">
-        <img src="img/parabar.jpg" alt="Parabar" class="pf-img" loading="lazy">
-        <div class="pf-overlay">
-          <div class="pf-tag">Branding · Señalética</div>
-          <div class="pf-name">Parabar</div>
+          <div class="pf-name">Livana</div>
           <div class="pf-arrow">Ver proyecto →</div>
         </div>
       </article>
@@ -1093,69 +981,6 @@
         </div>
       </article>
 
-      <!-- Asociación Violeta — destacado ancho -->
-      <article class="pf-card pf-wide md:col-span-2 reveal" onclick="openModal('violeta')" role="button" tabindex="0" aria-label="Ver proyecto Asociación Violeta">
-        <img src="img/asociacion-violeta.jpg" alt="Asociación Violeta" class="pf-img" loading="lazy" style="object-position: center top;">
-        <div class="pf-overlay">
-          <div class="pf-tag">Gestión de redes · Diseño editorial · Campaña</div>
-          <div class="pf-name">Asociación Violeta</div>
-          <div class="pf-arrow">Ver proyecto →</div>
-        </div>
-      </article>
-
-      <!-- Travel Diaries — editorial brand card (colores y patrón argyle del manual de marca) -->
-      <article class="pf-card reveal" style="overflow:hidden;" onclick="openModal('travel')" role="button" tabindex="0" aria-label="Ver proyecto Travel Diaries">
-        <div class="pf-inner flex flex-col items-center justify-center text-center p-8" style="background:#193525;">
-
-          <!-- Patrón argyle (firma visual de la marca) -->
-          <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.18;pointer-events:none;" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="argyle-td" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
-                <polygon points="20,0 40,20 20,40 0,20" fill="none" stroke="#F6EAC7" stroke-width="0.7"/>
-                <polygon points="20,0 40,20 20,40 0,20" fill="#F6EAC7" fill-opacity="0.05"/>
-              </pattern>
-            </defs>
-            <rect width="200" height="250" fill="url(#argyle-td)"/>
-          </svg>
-
-          <!-- Sello pasaporte deco (esquina superior derecha) -->
-          <svg style="position:absolute;top:10%;right:7%;opacity:0.25;width:48px;height:48px;pointer-events:none;" viewBox="0 0 48 48" fill="none">
-            <circle cx="24" cy="24" r="22" stroke="#B9D4E5" stroke-width="1" stroke-dasharray="3 1.5"/>
-            <text x="24" y="18" text-anchor="middle" font-size="4.5" fill="#B9D4E5" font-family="serif" letter-spacing="0.8">MONTERREY</text>
-            <text x="24" y="28" text-anchor="middle" font-size="9" fill="#B9D4E5" font-family="serif" font-style="italic">MX</text>
-            <text x="24" y="37" text-anchor="middle" font-size="4" fill="#B9D4E5" font-family="serif">2026</text>
-          </svg>
-
-          <!-- Sello rectangular deco (esquina inferior izquierda) -->
-          <svg style="position:absolute;bottom:10%;left:7%;opacity:0.2;width:42px;height:42px;pointer-events:none;" viewBox="0 0 42 42" fill="none">
-            <rect x="1.5" y="1.5" width="39" height="39" rx="3" stroke="#F6EAC7" stroke-width="0.8" stroke-dasharray="2 1.5"/>
-            <text x="21" y="16" text-anchor="middle" font-size="4" fill="#F6EAC7" font-family="serif" letter-spacing="0.5">ARRIVED</text>
-            <text x="21" y="26" text-anchor="middle" font-size="6.5" fill="#F6EAC7" font-family="serif" font-style="italic">travel</text>
-            <text x="21" y="35" text-anchor="middle" font-size="3.5" fill="#F6EAC7" font-family="serif">MAY 2026</text>
-          </svg>
-
-          <!-- Contenido principal -->
-          <div style="position:relative;z-index:1;">
-            <div style="font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(185,212,229,0.55);font-weight:600;margin-bottom:1.4rem;">Identidad visual</div>
-
-            <!-- Logo tipográfico fiel al manual -->
-            <div style="display:flex;align-items:baseline;gap:0.3rem;justify-content:center;">
-              <span style="font-family:'Fraunces',serif;font-size:clamp(1.5rem,3.2vw,2rem);font-weight:300;color:#F6EAC7;letter-spacing:-0.01em;line-height:1;">travel</span>
-              <span style="font-family:'Fraunces',serif;font-style:italic;font-weight:300;font-size:clamp(1.7rem,3.8vw,2.3rem);color:#F6EAC7;line-height:1;letter-spacing:-0.02em;">diaries</span>
-            </div>
-
-            <div style="width:2rem;height:1px;background:rgba(185,212,229,0.3);margin:1.2rem auto;"></div>
-
-            <!-- Isotipo (td) -->
-            <div style="display:inline-flex;align-items:center;justify-content:center;border:1px solid rgba(185,212,229,0.28);border-radius:50%;width:2rem;height:2rem;margin-bottom:1.1rem;">
-              <span style="font-family:'Fraunces',serif;font-style:italic;font-weight:300;font-size:0.75rem;color:rgba(185,212,229,0.65);letter-spacing:-0.02em;">td</span>
-            </div>
-
-            <div style="font-size:0.6rem;letter-spacing:0.07em;color:rgba(246,234,199,0.35);font-family:serif;font-style:italic;">Agencia de viajes · Branding · 2026</div>
-          </div>
-        </div>
-      </article>
-
     </div>
   </div>
 </section>
@@ -1163,61 +988,60 @@
 <!-- ============ TESTIMONIOS ============ -->
 <section class="py-20 md:py-32 bg-cream">
   <div class="max-w-7xl mx-auto px-5 md:px-8">
-    <div class="flex flex-wrap items-end justify-between gap-6 mb-12 reveal">
-      <div>
-        <span class="pill pill--burg">Lo que dicen</span>
-        <h2 class="display-2 text-5xl md:text-6xl mt-5">
-          Resultados, <span class="italicize">no</span> promesas.
-        </h2>
-      </div>
+    <div class="mb-12 reveal">
+      <span class="pill pill--burg">testimonials</span>
+      <h2 class="display-2 text-5xl md:text-6xl mt-5">
+        What our clients say.
+      </h2>
     </div>
 
     <div class="grid md:grid-cols-3 gap-5">
+
+      <!-- Requiem -->
       <div class="p-7 rounded-2xl bg-cream2 border border-ink/10 reveal">
         <div class="text-red text-4xl font-serif leading-none mb-4">"</div>
-        <p class="text-[1.05rem] leading-relaxed">
-          Llevábamos años con un Instagram que no nos representaba. En tres meses,
-          el feed cambió por completo y empezamos a recibir mensajes de clientes diciendo
-          que nos vieron "más serias".
+        <p class="text-[0.95rem] leading-relaxed">
+          Trabajar con Re:ach ha sido un antes y un después para Requiem. Su creatividad, rapidez y compromiso se reflejan en cada proyecto. Están siempre presentes, aportando ideas extraordinarias y convirtiéndose en una verdadera extensión de nuestro equipo.
         </p>
         <div class="mt-6 pt-5 border-t border-ink/10 flex items-center gap-3">
-          <div class="w-10 h-10 rounded-full bg-burg text-cream flex items-center justify-center font-bold text-sm">AR</div>
+          <div class="w-10 h-10 rounded-full bg-ink text-cream flex items-center justify-center font-bold text-sm">R</div>
           <div>
-            <div class="font-semibold text-sm">Ana R.</div>
-            <div class="text-ink/60 text-xs">Fundadora, marca de skincare</div>
+            <div class="font-semibold text-sm">Cliente Requiem</div>
+            <div class="text-ink/60 text-xs">Branding &amp; Contenido</div>
           </div>
         </div>
       </div>
 
+      <!-- Asociación Violeta -->
       <div class="p-7 rounded-2xl bg-cream2 border border-ink/10 reveal">
-        <div class="text-red text-4xl font-serif leading-none mb-4">"</div>
-        <p class="text-[1.05rem] leading-relaxed">
-          Antes pagaba anuncios sin saber para qué. Ahora cada peso tiene un por qué
-          y veo claramente cuántas citas entran por Meta cada semana.
+        <div class="text-pink text-4xl font-serif leading-none mb-4">"</div>
+        <p class="text-[0.95rem] leading-relaxed">
+          Estoy súper enamorada de su trabajo, branding, y todo el contenido de redes!, wooow impresionante, amo trabajar con ustedes! Sin duda el mejor equipo, mil gracias por todoooo
         </p>
         <div class="mt-6 pt-5 border-t border-ink/10 flex items-center gap-3">
-          <div class="w-10 h-10 rounded-full bg-red text-cream flex items-center justify-center font-bold text-sm">DM</div>
+          <div class="w-10 h-10 rounded-full bg-pink text-cream flex items-center justify-center font-bold text-sm">V</div>
           <div>
-            <div class="font-semibold text-sm">Daniela M.</div>
-            <div class="text-ink/60 text-xs">Directora, clínica de bienestar</div>
+            <div class="font-semibold text-sm">Cliente Asociación Violeta</div>
+            <div class="text-ink/60 text-xs">Branding &amp; Redes sociales</div>
           </div>
         </div>
       </div>
 
+      <!-- Maremoto -->
       <div class="p-7 rounded-2xl bg-cream2 border border-ink/10 reveal">
-        <div class="text-red text-4xl font-serif leading-none mb-4">"</div>
-        <p class="text-[1.05rem] leading-relaxed">
-          Lo que más valoro es la claridad. Saben explicar qué van a hacer, por qué,
-          y qué espero ver. Trabajar con ellas se siente como tener un equipo interno.
+        <div class="text-burg text-4xl font-serif leading-none mb-4">"</div>
+        <p class="text-[0.95rem] leading-relaxed">
+          Trabajar con su equipo para el branding y marketing de Maremoto fue y sigue siendo una excelente experiencia. Desde que empezó el proyecto siempre estuvieron disponibles para ayudar y responder cualquier duda. Cada vez que necesitaba algún cambio, lo tenían listo muy rápido y con muy buena actitud.
         </p>
         <div class="mt-6 pt-5 border-t border-ink/10 flex items-center gap-3">
-          <div class="w-10 h-10 rounded-full bg-ink text-cream flex items-center justify-center font-bold text-sm">JC</div>
+          <div class="w-10 h-10 rounded-full bg-burg text-cream flex items-center justify-center font-bold text-sm">M</div>
           <div>
-            <div class="font-semibold text-sm">Jorge C.</div>
-            <div class="text-ink/60 text-xs">Dueño, estudio de pilates</div>
+            <div class="font-semibold text-sm">Cliente Maremoto</div>
+            <div class="text-ink/60 text-xs">Branding &amp; Marketing</div>
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -1228,7 +1052,7 @@
     <div class="mb-12 reveal">
       <span class="pill pill--burg">FAQ</span>
       <h2 class="display-2 text-5xl md:text-6xl mt-5">
-        Preguntas <span class="italicize">frecuentes.</span>
+        Frequently Asked Questions.
       </h2>
     </div>
 
@@ -1284,16 +1108,6 @@
         </div>
       </div>
 
-      <div class="faq-item border border-ink/12 rounded-2xl overflow-hidden bg-cream">
-        <button class="faq-btn w-full flex items-center justify-between gap-4 px-7 py-6 text-left font-semibold text-[1.05rem]" onclick="toggleFaq(this)">
-          <span>¿Trabajan con empresas fuera de Monterrey o de México?</span>
-          <span class="faq-icon text-red text-2xl leading-none flex-shrink-0 transition-transform duration-300">+</span>
-        </button>
-        <div class="faq-body max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
-          <p class="px-7 pb-6 text-ink/70 leading-relaxed">Sí. Tenemos experiencia trabajando con marcas en distintas ciudades de México y también con clientes en Estados Unidos. La mayoría de nuestros procesos se gestionan de forma remota sin problema. Si requieren producción de contenido en campo, lo evaluamos caso a caso.</p>
-        </div>
-      </div>
-
     </div>
   </div>
 </section>
@@ -1308,18 +1122,16 @@
       <div class="md:col-span-8 reveal">
         <span class="pill pill--cream">¿Empezamos?</span>
         <h2 class="display-1 text-5xl md:text-7xl lg:text-8xl mt-5">
-          Tu marca merece<br/>
-          verse tan <span class="italicize">buena</span><br/>
-          como es.
+          re:ach us.
         </h2>
-        <p class="mt-6 text-cream/70 text-lg max-w-xl">
-          Cuéntanos qué necesitas. En una llamada corta te decimos si podemos
-          ayudarte — y por dónde empezaríamos.
+        <p class="mt-4 text-cream/80 text-2xl font-light">Cuéntanos en qué podemos ayudarte.</p>
+        <p class="mt-4 text-cream/65 text-lg max-w-xl">
+          Agenda una llamada de 20 minutos y platiquemos sobre tu marca, tus objetivos y cómo podemos ayudarte a alcanzarlos.
         </p>
       </div>
 
       <div class="md:col-span-4 flex flex-col gap-3 reveal" id="contacto-wa">
-        <a href="https://wa.me/528110290364?text=Hola%2C%20vi%20su%20p%C3%A1gina%20web%20y%20me%20interesa%20mejorar%20la%20presencia%20digital%20de%20mi%20negocio."
+        <a href="https://wa.me/523111144178?text=Hola%2C%20vi%20su%20p%C3%A1gina%20web%20y%20me%20interesa%20agendar%20una%20llamada%20para%20conocer%20m%C3%A1s%20sobre%20sus%20servicios."
            target="_blank" rel="noopener"
            class="btn btn-primary justify-center w-full text-base py-4">
           <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M19.05 4.91A10 10 0 0 0 2.4 17.34L1 23l5.79-1.52a10 10 0 0 0 4.78 1.22h.01A10 10 0 0 0 19.05 4.91Zm-7.47 15.4h-.01a8.31 8.31 0 0 1-4.23-1.16l-.3-.18-3.43.9.92-3.35-.2-.32a8.32 8.32 0 1 1 7.25 4.11Zm4.56-6.22c-.25-.13-1.47-.73-1.7-.81-.23-.08-.4-.13-.56.13-.16.25-.65.81-.8.98-.15.16-.29.18-.54.06-.25-.13-1.05-.39-2-1.23a7.5 7.5 0 0 1-1.39-1.72c-.15-.25 0-.39.11-.51.11-.11.25-.29.37-.43.13-.15.16-.25.25-.4.08-.16.04-.31-.02-.43-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48a.92.92 0 0 0-.67.31c-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.57.12.16 1.75 2.68 4.25 3.76.59.26 1.05.41 1.42.52.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.18-.48-.31Z"/></svg>
@@ -1350,21 +1162,20 @@
           <span class="font-extrabold text-xl tracking-tight">re:ach studio</span>
         </div>
         <p class="mt-5 text-ink/70 max-w-sm">
-          Agencia de marketing y diseño. Ayudamos a marcas a comunicar mejor,
-          verse más profesionales y vender más.
+          Agencia de branding, marketing y diseño. Creamos estrategias e identidades visuales que ayudan a las marcas a destacar, conectar y crecer.
         </p>
-        <p class="mt-4 text-xl text-burg" style="font-family:'Fraunces',serif;font-style:italic;font-weight:300;font-variation-settings:'opsz' 144;">we help brands re:ach with purpose.</p>
+        <p class="mt-4 text-xl text-burg" style="font-family:'Fraunces',serif;font-weight:300;font-variation-settings:'opsz' 144;">we help brands re:ach with purpose.</p>
       </div>
 
       <div class="md:col-span-3">
         <div class="text-xs uppercase tracking-widest text-ink/50 font-bold mb-4">Servicios</div>
         <ul class="space-y-2 text-sm text-ink/80">
-          <li>Estrategia digital</li>
-          <li>Branding e identidad</li>
-          <li>Gestión de redes</li>
+          <li>Branding &amp; Rebranding</li>
+          <li>Social Media Management</li>
           <li>Meta Ads</li>
-          <li>Creación de contenido</li>
-          <li>Web y landing pages</li>
+          <li>Producción de Contenido</li>
+          <li>Diseño Gráfico</li>
+          <li>Landing Pages</li>
         </ul>
       </div>
 
@@ -1372,7 +1183,7 @@
         <div class="text-xs uppercase tracking-widest text-ink/50 font-bold mb-4">Contacto</div>
         <ul class="space-y-3 text-sm">
           <li>
-            <a href="https://wa.me/528110290364?text=Hola%2C%20vi%20su%20p%C3%A1gina%20web%20y%20me%20interesa%20mejorar%20la%20presencia%20digital%20de%20mi%20negocio."
+            <a href="https://wa.me/523111144178?text=Hola%2C%20vi%20su%20p%C3%A1gina%20web%20y%20me%20interesa%20agendar%20una%20llamada."
                target="_blank" rel="noopener" class="ul-link font-medium">
               WhatsApp →
             </a>
@@ -1399,7 +1210,7 @@
 
     <div class="mt-12 pt-6 border-t border-ink/10 flex flex-wrap items-center justify-between gap-4 text-xs text-ink/50">
       <div>© <span id="year"></span> re:ach studio. Todos los derechos reservados.</div>
-      <div class="flex items-center gap-2"><span class="italicize">Not luck.</span> Strategy.</div>
+      <div class="flex items-center gap-2">Not luck. Strategy.</div>
     </div>
   </div>
 </footer>
@@ -1509,27 +1320,6 @@
     });
   });
 
-  // ===== HERO WORD CYCLING =====
-  const heroWords    = ['re:ach', 're:design', 're:connect', 're:define'];
-  const heroSuffixes = ['with purpose.', 'your brand.', 'with your audience.', 'your story.'];
-  let heroIdx = 0;
-  const heroWordEl   = document.getElementById('hero-word');
-  const heroSuffixEl = document.getElementById('hero-suffix');
-
-  function cycleHero() {
-    heroWordEl.style.opacity   = '0';
-    heroWordEl.style.transform = 'translateY(-10px)';
-    heroSuffixEl.style.opacity = '0';
-    setTimeout(() => {
-      heroIdx = (heroIdx + 1) % heroWords.length;
-      heroWordEl.textContent   = heroWords[heroIdx];
-      heroSuffixEl.textContent = heroSuffixes[heroIdx];
-      heroWordEl.style.opacity   = '1';
-      heroWordEl.style.transform = 'translateY(0)';
-      heroSuffixEl.style.opacity = '1';
-    }, 320);
-  }
-  setInterval(cycleHero, 3000);
 
   // ===== PORTFOLIO MODAL =====
   const pjData = {
@@ -1537,8 +1327,8 @@
       name: 'Maremoto', year: '2026',
       category: 'Restaurante · Cocina de mar',
       tags: ['Identidad visual', 'Fotografía', 'Redes sociales'],
-      description: 'Proyecto integral para restaurante de cocina de mar en Monterrey. Identidad de marca, sesión fotográfica de platillos, aplicaciones impresas y gestión de redes — contenido que comunica frescura, calidad y carácter.',
-      pdf: 'https://drive.google.com/file/d/1KYprLbUyioPgP-wW1bypP1D3liE_KOtv/view?usp=sharing',
+      description: 'Complementamos la identidad visual de la marca mediante el desarrollo de aplicaciones gráficas, el diseño del menú, sesiones fotográficas profesionales de producto y la creación de contenido para redes sociales, construyendo una presencia visual sólida, consistente y alineada con el posicionamiento de la marca.',
+      pdf: null,
       images: [
         'img/maremoto-brand-slogan.jpg','img/maremoto-brand-bolsa.jpg',
         'img/maremoto-brand-contenedor.jpg','img/maremoto-brand-menu.jpg',
@@ -1550,8 +1340,8 @@
       name: 'Livana', year: '2026',
       category: 'Wellness · Lifestyle',
       tags: ['Branding', 'Packaging', 'Identidad visual'],
-      description: 'Identidad visual completa y sistema de packaging para marca de velas y jabones artesanales. Cada pieza — desde la vela hasta la bolsa — refleja el carácter delicado y premium de la marca.',
-      pdf: 'https://drive.google.com/file/d/17wKHHwXUXgCRSs-SjnGs_KbbXZIUoG5P/view?usp=sharing',
+      description: 'Desarrollamos la identidad visual completa de Livana, incluyendo logotipo, sistema gráfico, packaging para velas y jabones, así como aplicaciones de marca que transmiten una estética delicada y premium.',
+      pdf: null,
       images: [
         'img/livana-01.jpg','img/livana-02.jpg','img/livana-03.jpg',
         'img/livana-04.jpg','img/livana-05.jpg','img/livana-06.jpg',
@@ -1562,31 +1352,19 @@
       name: 'Áurea', year: '2026',
       category: 'Moda · Estilo de vida',
       tags: ['Identidad visual', 'Papelería', 'Packaging'],
-      description: 'Identidad visual elegante para marca de moda con sistema de papelería completo: tarjetas, packaging, bolsas, cajas, sello y materiales impresos. Una marca que se ve y se siente premium en cada punto de contacto.',
-      pdf: 'https://drive.google.com/file/d/1qYmwPNtcxo8FzPF1MYc1cYLo1r9dTdZH/view?usp=sharing',
+      description: 'Definimos la estrategia de marca y desarrollamos la línea gráfica e identidad visual. El proyecto incluyó el diseño de logotipo, sistema de papelería, packaging, sello, manual de identidad y aplicaciones de marca, creando una experiencia visual sofisticada y consistente en todos sus puntos de contacto.',
+      pdf: null,
       images: [
         'img/aurea-portada.jpg','img/aurea-bolsa1.jpg','img/aurea-bolsa2.jpg',
         'img/aurea-caja1.jpg','img/aurea-caja2.jpg','img/aurea-etiquetas.jpg',
         'img/aurea-tarjetas.jpg','img/aurea-sacos.jpg','img/aurea-sello.jpg'
       ]
     },
-    parabar: {
-      name: 'Parabar', year: '2026',
-      category: 'Bar · Entretenimiento',
-      tags: ['Branding', 'Señalética', 'Diseño gráfico'],
-      description: 'Branding completo desde cero para bar con identidad urbana y contemporánea. Logotipo, señalética de fachada, gorras, bolsas, pin y toda la línea de aplicaciones de marca.',
-      pdf: 'https://drive.google.com/file/d/1undcL1_bkhcJJa7yOeoAPKNG4uLgTNG8/view?usp=sharing',
-      images: [
-        'img/parabar-fachada.jpg','img/parabar-letrero.jpg',
-        'img/parabar-bolsa-m.jpg','img/parabar-caja-m.jpg',
-        'img/parabar-gorra.jpg','img/parabar-bordado.jpg','img/parabar-pin.jpg'
-      ]
-    },
     beyond: {
       name: 'Beyond Human', year: '2026',
       category: 'Salud · Bienestar',
       tags: ['Contenido', 'Meta Ads', 'Fotografía', 'Estrategia digital'],
-      description: 'Estrategia de contenido, producción visual y campañas de Meta Ads para clínica de bienestar y medicina avanzada. Sesión fotográfica, posts para redes, flyer impreso y campañas que generan confianza y citas reales.',
+      description: 'Desarrollamos la estrategia de marca y la línea gráfica de Beyond Human, complementando el proyecto con producción fotográfica, creación de contenido, copywriting, diseño de piezas gráficas, programación de publicaciones y gestión de redes sociales para construir una presencia digital coherente y profesional.',
       pdf: null,
       galleryFit: 'contain',
       images: [
@@ -1599,8 +1377,8 @@
     violeta: {
       name: 'Asociación Violeta', year: '2026',
       category: 'ONG · Impacto social',
-      tags: ['Gestión de redes', 'Diseño editorial', 'Campaña'],
-      description: 'Gestión de redes sociales y diseño editorial para organización de impacto social. Contenido con propósito: mensajes contundentes, estética editorial consistente y campañas que generan conciencia y alcance real.',
+      tags: ['Branding', 'Gestión de redes'],
+      description: 'Desarrollamos el branding de Asociación Violeta y gestionamos sus redes sociales, creando una identidad visual sólida y una comunicación clara, cercana y profesional que fortalece su presencia digital y transmite confianza a su comunidad.',
       pdf: null,
       galleryFit: 'contain',
       images: [
@@ -1612,8 +1390,8 @@
       name: 'Travel Diaries', year: '2026',
       category: 'Agencia de viajes · Lujo',
       tags: ['Identidad visual', 'Manual de marca', 'Branding completo'],
-      description: 'Identidad visual completa para agencia de viajes de lujo. Logotipo, isotipo (td), sistema tipográfico, paleta cromática y manual de aplicaciones — una marca tan evocadora como los destinos que representa.',
-      pdf: 'https://drive.google.com/file/d/1lGldlxvM7_vQAIwzOw4heIiOt_5M-vhF/view?usp=sharing',
+      description: 'Diseñamos la identidad visual de Travel Diaries, desarrollando un sistema de marca completo que incluye logotipo, isotipo, tipografía, paleta de color, aplicaciones y manual de identidad para una agencia de viajes de lujo.',
+      pdf: null,
       images: []
     }
   };
