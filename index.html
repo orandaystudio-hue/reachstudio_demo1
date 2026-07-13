@@ -363,22 +363,63 @@
     background: #fffefa;
   }
 
-  /* Portfolio card — 4-col editorial style (ref: Groovies/Vasset) */
+  /* Portfolio — fila horizontal con scroll (ref: Groovies/Vasset/Otter) */
+  .pf-row {
+    display: flex;
+    flex-direction: row;
+    gap: 1.25rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 1rem;
+    /* oculta scrollbar visualmente */
+    scrollbar-width: none;
+  }
+  .pf-row::-webkit-scrollbar { display: none; }
+
+  /* Scrollbar custom del carrusel */
+  .pf-scrollbar-wrap {
+    margin-top: 1.5rem;
+    padding: 0 0.25rem;
+  }
+  .pf-scrollbar-track {
+    position: relative;
+    height: 3px;
+    background: rgba(25,25,25,0.1);
+    border-radius: 99px;
+    cursor: pointer;
+  }
+  .pf-scrollbar-thumb {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 30%;
+    background: #e2361f;
+    border-radius: 99px;
+    cursor: grab;
+    transition: background 0.2s;
+  }
+  .pf-scrollbar-thumb:hover { background: #56070e; }
+  .pf-scrollbar-thumb.dragging { cursor: grabbing; background: #56070e; }
+
   .pf-card {
     cursor: pointer;
     display: flex;
     flex-direction: column;
+    flex: 0 0 260px;
+    scroll-snap-align: start;
     transition: transform .3s ease;
   }
-  .pf-card:hover { transform: translateY(-4px); }
+  .pf-card:hover { transform: translateY(-5px); }
 
   .pf-img-wrap {
     position: relative;
     overflow: hidden;
-    border-radius: 0.6rem;
-    aspect-ratio: 1 / 1;
+    border-radius: 0.5rem;
+    aspect-ratio: 4 / 5;
     background: #e4dfd9;
-    margin-bottom: 0.9rem;
+    margin-bottom: 0.75rem;
   }
   .pf-img {
     width: 100%;
@@ -392,24 +433,24 @@
   .pf-name {
     font-family: 'ITCAvantGarde', sans-serif;
     font-weight: 700;
-    font-size: 0.78rem;
-    letter-spacing: 0.09em;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     color: #191919;
-    margin-bottom: 0.18rem;
+    margin-bottom: 0.15rem;
   }
   .pf-tagline {
     font-family: 'Albert Sans', sans-serif;
     font-style: italic;
-    font-size: 0.78rem;
+    font-size: 0.75rem;
     color: rgba(25,25,25,0.5);
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.25rem;
     line-height: 1.35;
   }
   .pf-desc {
     font-family: 'Albert Sans', sans-serif;
-    font-size: 0.72rem;
-    color: rgba(25,25,25,0.42);
+    font-size: 0.68rem;
+    color: rgba(25,25,25,0.4);
     line-height: 1.55;
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -565,7 +606,7 @@
 
   /* Right gallery panel */
   .pfm-gallery {
-    position: relative; background: #0E0B08;
+    position: relative; background: #F7F4E8;
     overflow: hidden; display: flex; align-items: center; justify-content: center;
   }
   .pfm-gallery > img {
@@ -574,6 +615,24 @@
     transition: opacity .2s ease;
   }
   .pfm-gallery > img.pfm-fade { opacity: 0; }
+
+  /* Two-up: carrusel de 2 imágenes simultáneas */
+  .pfm-gallery.two-up {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+    gap: 2px;
+    background: #e8e3db;
+  }
+  .pfm-gallery.two-up .pfm-tu-img {
+    position: static;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    opacity: 1;
+    transition: opacity .25s ease;
+  }
+  .pfm-gallery.two-up .pfm-tu-img.pfm-fade { opacity: 0; }
 
   /* Hover-reveal nav arrows */
   .pfm-nav {
@@ -637,7 +696,7 @@
 <header class="fixed top-0 inset-x-0 z-50 backdrop-blur bg-cream/80 border-b border-ink/10">
   <div class="max-w-7xl mx-auto px-5 md:px-8 h-16 flex items-center justify-between">
     <a href="#top" class="flex items-center">
-      <svg height="32" viewBox="25 470 1035 145" xmlns="http://www.w3.org/2000/svg" style="fill:#191919;display:block;" aria-label="re:ach studio"><path d="M157.52,586.37v-79.47h22.34v8.45h.29c4.15-8.45,10.74-11.17,19.9-11.17v23.91c-14.18.14-18.76,5.44-18.76,14.46v43.81h-23.77Z"/><path d="M224.1,553.87c1.29,9.02,8.88,15.03,18.61,15.03,6.44,0,10.6-2.43,14.46-7.45h24.34c-7.59,17.33-22.05,27.49-38.8,27.49-22.91,0-42.1-18.47-42.1-42.1s18.33-42.67,41.67-42.67,41.95,18.76,41.95,43.38c0,2.29-.14,4.15-.57,6.3h-59.57ZM260.47,537.83c-1.86-8.16-9.02-13.6-18.18-13.6-8.59,0-16.04,5.15-17.9,13.6h36.08Z"/><path d="M394.93,586.37v-8.59h-.29c-3.44,7.02-12.89,11.31-23.34,11.31-23.48,0-39.81-18.47-39.81-42.53s17.04-42.38,39.81-42.38c9.74,0,18.76,3.87,23.34,11.17h.29v-8.45h23.77v79.47h-23.77ZM394.93,546.57c0-11.17-9.02-20.19-20.19-20.19s-19.47,9.02-19.47,20.48,8.73,20.05,19.76,20.05,19.9-8.88,19.9-20.33Z"/><path d="M488.57,537.55c-3.44-7.44-9.59-11.17-17.75-11.17-10.88,0-18.33,9.02-18.33,20.19s7.88,20.19,18.9,20.19c8.02,0,13.6-3.72,17.18-10.6h24.2c-4.73,19.9-21.76,32.79-42.1,32.79-23.48,0-42.1-19.04-42.1-42.52s18.76-42.24,41.67-42.24c20.91,0,37.94,13.17,42.38,33.36h-24.06Z"/><path d="M569.9,586.37v-43.67c0-10.31-4.01-16.18-12.74-16.18s-13.32,5.3-13.32,15.18v44.67h-23.77v-105.96h23.77v34.08c3.44-6.44,11.17-10.31,20.62-10.31,18.18,0,29.21,11.45,29.21,32.22v49.97h-23.77Z"/><path d="M666.25,529.24c-.14-4.58-3.44-6.01-7.3-6.01s-6.87,2.29-6.87,5.3c0,4.3,3.87,6.44,14.89,9.31,18.9,5.01,25.06,12.6,25.06,24.2,0,16.61-14.32,27.06-32.36,27.06s-30.64-10.17-32.36-26.35h23.63c.72,5.01,4.3,7.3,9.02,7.3,4.15,0,8.3-2.43,8.3-6.16,0-4.44-2.72-6.73-14.6-10.45-20.05-6.16-25.34-14.03-25.34-23.34,0-15.75,14.75-25.92,30.78-25.92,17.18,0,29.35,9.45,30.5,25.06h-23.34Z"/><path d="M705.05,586.37v-61.43h-11.74v-18.04h11.74v-26.49h23.77v26.49h11.46v18.04h-11.46v61.43h-23.77Z"/><path d="M798.12,586.37v-8.45h-.29c-3.44,7.3-9.74,11.02-20.47,11.02-16.75,0-30.64-10.02-30.64-32.64v-49.4h23.77v44.53c0,10.45,3.72,15.32,12.74,15.32s13.6-6.01,13.6-15.75v-44.1h23.77v79.47h-22.48Z"/><path d="M894.34,586.37v-8.59h-.29c-4.44,7.3-12.46,11.17-23.77,11.17-24.05,0-39.81-18.47-39.81-42.52s16.18-42.24,39.38-42.24c9.16,0,16.61,2.72,23.34,9.45v-33.22h23.77v105.96h-22.62ZM894.48,546.28c0-11.02-8.45-19.9-20.19-19.9s-20.05,8.3-20.05,19.9,8.45,20.48,19.9,20.48,20.33-8.73,20.33-20.48Z"/><path d="M930.57,586.37v-79.47h23.77v79.47h-23.77Z"/><path d="M1007.03,588.81c-24.2,0-42.81-17.9-42.81-42.24s19.04-42.24,42.81-42.24,42.81,17.9,42.81,41.95-18.9,42.53-42.81,42.53ZM1026.07,546.57c0-10.59-8.02-20.05-19.19-20.05-10.45,0-18.9,9.16-18.9,20.05s8.3,20.05,19.04,20.05,19.04-9.45,19.04-20.05Z"/><circle cx="942.45" cy="486.57" r="11.88"/><circle cx="307.8" cy="519.08" r="11.88"/><circle cx="307.8" cy="574.2" r="11.88"/><circle cx="100.71" cy="542.25" r="18.47"/><path d="M66.86,604.74c0-12.75,7.05-23.84,17.46-29.61,1.48-.82,1.5-2.93.05-3.8-9.44-5.66-15.71-16.08-15.71-27.96,0-18.56,13.92-33.17,31.54-33.17.17,0,.33.01.5.01v-35.64c-2-.21-4.02-.32-6.07-.32-36.88,0-64.48,30.62-64.48,68.65,0,28.54,14.19,52.21,36.73,62.85,0-.34-.03-.67-.03-1.01Z"/></svg>
+      <svg height="32" viewBox="25 470 1035 145" xmlns="http://www.w3.org/2000/svg" style="fill:#56070e;display:block;" aria-label="re:ach studio"><path d="M157.52,586.37v-79.47h22.34v8.45h.29c4.15-8.45,10.74-11.17,19.9-11.17v23.91c-14.18.14-18.76,5.44-18.76,14.46v43.81h-23.77Z"/><path d="M224.1,553.87c1.29,9.02,8.88,15.03,18.61,15.03,6.44,0,10.6-2.43,14.46-7.45h24.34c-7.59,17.33-22.05,27.49-38.8,27.49-22.91,0-42.1-18.47-42.1-42.1s18.33-42.67,41.67-42.67,41.95,18.76,41.95,43.38c0,2.29-.14,4.15-.57,6.3h-59.57ZM260.47,537.83c-1.86-8.16-9.02-13.6-18.18-13.6-8.59,0-16.04,5.15-17.9,13.6h36.08Z"/><path d="M394.93,586.37v-8.59h-.29c-3.44,7.02-12.89,11.31-23.34,11.31-23.48,0-39.81-18.47-39.81-42.53s17.04-42.38,39.81-42.38c9.74,0,18.76,3.87,23.34,11.17h.29v-8.45h23.77v79.47h-23.77ZM394.93,546.57c0-11.17-9.02-20.19-20.19-20.19s-19.47,9.02-19.47,20.48,8.73,20.05,19.76,20.05,19.9-8.88,19.9-20.33Z"/><path d="M488.57,537.55c-3.44-7.44-9.59-11.17-17.75-11.17-10.88,0-18.33,9.02-18.33,20.19s7.88,20.19,18.9,20.19c8.02,0,13.6-3.72,17.18-10.6h24.2c-4.73,19.9-21.76,32.79-42.1,32.79-23.48,0-42.1-19.04-42.1-42.52s18.76-42.24,41.67-42.24c20.91,0,37.94,13.17,42.38,33.36h-24.06Z"/><path d="M569.9,586.37v-43.67c0-10.31-4.01-16.18-12.74-16.18s-13.32,5.3-13.32,15.18v44.67h-23.77v-105.96h23.77v34.08c3.44-6.44,11.17-10.31,20.62-10.31,18.18,0,29.21,11.45,29.21,32.22v49.97h-23.77Z"/><path d="M666.25,529.24c-.14-4.58-3.44-6.01-7.3-6.01s-6.87,2.29-6.87,5.3c0,4.3,3.87,6.44,14.89,9.31,18.9,5.01,25.06,12.6,25.06,24.2,0,16.61-14.32,27.06-32.36,27.06s-30.64-10.17-32.36-26.35h23.63c.72,5.01,4.3,7.3,9.02,7.3,4.15,0,8.3-2.43,8.3-6.16,0-4.44-2.72-6.73-14.6-10.45-20.05-6.16-25.34-14.03-25.34-23.34,0-15.75,14.75-25.92,30.78-25.92,17.18,0,29.35,9.45,30.5,25.06h-23.34Z"/><path d="M705.05,586.37v-61.43h-11.74v-18.04h11.74v-26.49h23.77v26.49h11.46v18.04h-11.46v61.43h-23.77Z"/><path d="M798.12,586.37v-8.45h-.29c-3.44,7.3-9.74,11.02-20.47,11.02-16.75,0-30.64-10.02-30.64-32.64v-49.4h23.77v44.53c0,10.45,3.72,15.32,12.74,15.32s13.6-6.01,13.6-15.75v-44.1h23.77v79.47h-22.48Z"/><path d="M894.34,586.37v-8.59h-.29c-4.44,7.3-12.46,11.17-23.77,11.17-24.05,0-39.81-18.47-39.81-42.52s16.18-42.24,39.38-42.24c9.16,0,16.61,2.72,23.34,9.45v-33.22h23.77v105.96h-22.62ZM894.48,546.28c0-11.02-8.45-19.9-20.19-19.9s-20.05,8.3-20.05,19.9,8.45,20.48,19.9,20.48,20.33-8.73,20.33-20.48Z"/><path d="M930.57,586.37v-79.47h23.77v79.47h-23.77Z"/><path d="M1007.03,588.81c-24.2,0-42.81-17.9-42.81-42.24s19.04-42.24,42.81-42.24,42.81,17.9,42.81,41.95-18.9,42.53-42.81,42.53ZM1026.07,546.57c0-10.59-8.02-20.05-19.19-20.05-10.45,0-18.9,9.16-18.9,20.05s8.3,20.05,19.04,20.05,19.04-9.45,19.04-20.05Z"/><circle cx="942.45" cy="486.57" r="11.88"/><circle cx="307.8" cy="519.08" r="11.88"/><circle cx="307.8" cy="574.2" r="11.88"/><circle cx="100.71" cy="542.25" r="18.47"/><path d="M66.86,604.74c0-12.75,7.05-23.84,17.46-29.61,1.48-.82,1.5-2.93.05-3.8-9.44-5.66-15.71-16.08-15.71-27.96,0-18.56,13.92-33.17,31.54-33.17.17,0,.33.01.5.01v-35.64c-2-.21-4.02-.32-6.07-.32-36.88,0-64.48,30.62-64.48,68.65,0,28.54,14.19,52.21,36.73,62.85,0-.34-.03-.67-.03-1.01Z"/></svg>
     </a>
     <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-ink/80">
       <a href="#servicios"  class="hover:text-ink">Services</a>
@@ -938,28 +997,30 @@
 </section>
 
 <!-- ============ PORTAFOLIO ============ -->
-<section id="portafolio" class="py-20 md:py-32 relative overflow-hidden">
+<section id="portafolio" class="py-16 md:py-24 relative">
   <div class="max-w-7xl mx-auto px-5 md:px-8 relative">
 
-    <div class="flex flex-wrap items-end justify-between gap-6 mb-12 reveal">
-      <div>
-        <span class="pill pill--burg">Recent work</span>
-        <h2 class="display-2 text-5xl md:text-6xl mt-5">
-          Brands we've worked with.
-        </h2>
-      </div>
+    <!-- Header mínimo igual a la referencia -->
+    <div class="flex items-center justify-between mb-8 reveal">
+      <span class="pill pill--burg">Recent work</span>
       <a href="https://www.instagram.com/reachstudio__/" target="_blank" rel="noopener"
-         class="ul-link text-sm font-medium text-ink/60 hover:text-ink transition-colors">
-        Ver más en Instagram →
+         class="text-[0.7rem] font-semibold uppercase tracking-[0.12em] text-ink/40 hover:text-ink transition-colors">
+        Ver en Instagram →
       </a>
     </div>
 
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-5 gap-y-9 md:gap-x-6">
+    <!-- Heading -->
+    <h2 class="display-2 text-4xl md:text-5xl mb-10 reveal">
+      Brands we've worked with.
+    </h2>
+
+    <!-- Fila horizontal con scroll — igual a la referencia -->
+    <div class="pf-row">
 
       <!-- Maremoto -->
       <article class="pf-card reveal" onclick="openModal('maremoto')" role="button" tabindex="0" aria-label="Ver proyecto Maremoto">
         <div class="pf-img-wrap">
-          <img src="img/maremoto-f1.jpg" alt="Maremoto" class="pf-img" loading="lazy">
+          <img src="img/maremoto-f2.jpg" alt="Maremoto" class="pf-img" loading="lazy">
         </div>
         <div class="pf-name">Maremoto</div>
         <div class="pf-tagline">Presencia visual que sabe a mar</div>
@@ -1017,6 +1078,14 @@
       </article>
 
     </div>
+
+    <!-- Barra de scroll custom arrastrable -->
+    <div class="pf-scrollbar-wrap">
+      <div class="pf-scrollbar-track" id="pf-track">
+        <div class="pf-scrollbar-thumb" id="pf-thumb"></div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -1030,7 +1099,7 @@
       </h2>
     </div>
 
-    <div class="grid md:grid-cols-2 gap-5 max-w-4xl">
+    <div class="grid md:grid-cols-3 gap-5">
 
       <!-- Requiem -->
       <div class="p-7 rounded-2xl bg-cream2 border border-ink/10 reveal">
@@ -1062,6 +1131,21 @@
         </div>
       </div>
 
+
+      <!-- Maremoto -->
+      <div class="p-7 rounded-2xl bg-cream2 border border-ink/10 reveal">
+        <div class="text-red text-4xl font-serif leading-none mb-4">"</div>
+        <p class="text-[0.95rem] leading-relaxed">
+          Trabajar con su equipo para el branding y marketing de Maremoto fue y sigue siendo una excelente experiencia. Desde que empezó el proyecto siempre estuvieron disponibles para ayudar y responder cualquier duda. Cada vez que necesitaba algún cambio, lo tenían listo muy rápido y con muy buena actitud. Además, me ayudaron muchísimo a dirigir los photoshoots, ya que yo no tenía experiencia en esa parte, y lograron que todo el proceso fuera muy fácil. Siempre escucharon mis ideas, entendieron perfectamente los cambios que pedía y aportaron muchas sugerencias que realmente mejoraron el resultado final.
+        </p>
+        <div class="mt-6 pt-5 border-t border-ink/10 flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-red text-cream flex items-center justify-center font-bold text-sm">M</div>
+          <div>
+            <div class="font-semibold text-sm">Cliente Maremoto</div>
+            <div class="text-ink/60 text-xs">Branding, Fotografía &amp; Marketing</div>
+          </div>
+        </div>
+      </div>
 
     </div>
   </div>
@@ -1350,7 +1434,7 @@
       description: 'Complementamos la identidad visual de la marca mediante el desarrollo de aplicaciones gráficas, el diseño del menú, sesiones fotográficas profesionales de producto y la creación de contenido para redes sociales, construyendo una presencia visual sólida, consistente y alineada con el posicionamiento de la marca.',
       pdf: null,
       images: [
-        'img/maremoto-f1.jpg','img/maremoto-f2.jpg','img/maremoto-f3.jpg',
+        'img/maremoto-f2.jpg','img/maremoto-f1.jpg','img/maremoto-f3.jpg',
         'img/maremoto-f4.jpg','img/maremoto-f5.jpg','img/maremoto-f6.jpg',
         'img/maremoto-brand-slogan.jpg','img/maremoto-brand-bolsa.jpg',
         'img/maremoto-brand-contenedor.jpg','img/maremoto-brand-menu.jpg'
@@ -1386,12 +1470,14 @@
       tags: ['Contenido', 'Meta Ads', 'Fotografía', 'Estrategia digital'],
       description: 'Desarrollamos la estrategia de marca y la línea gráfica de Beyond Human, complementando el proyecto con producción fotográfica, creación de contenido, copywriting, diseño de piezas gráficas, programación de publicaciones y gestión de redes sociales para construir una presencia digital coherente y profesional.',
       pdf: null,
-      galleryFit: 'contain',
+      twoUp: true,
       images: [
-        'img/beyond-s1.jpg','img/beyond-s2.jpg','img/beyond-s3.jpg',
-        'img/beyond-s4.jpg','img/beyond-s5.jpg','img/beyond-s6.jpg',
+        'img/beyond-s1.jpg','img/beyond-s2.jpg',
+        'img/beyond-s3.jpg','img/beyond-s4.jpg',
+        'img/beyond-s5.jpg','img/beyond-s6.jpg',
         'img/beyond-post1.jpg','img/beyond-post2.jpg',
-        'img/beyond-post3.jpg','img/beyond-post4.jpg','img/beyond-flyer.jpg'
+        'img/beyond-post3.jpg','img/beyond-post4.jpg',
+        'img/beyond-2.jpg','img/beyond-3.jpg'
       ]
     },
     violeta: {
@@ -1400,10 +1486,14 @@
       tags: ['Branding', 'Gestión de redes'],
       description: 'Desarrollamos el branding de Asociación Violeta y gestionamos sus redes sociales, creando una identidad visual sólida y una comunicación clara, cercana y profesional que fortalece su presencia digital y transmite confianza a su comunidad.',
       pdf: null,
-      galleryFit: 'contain',
+      twoUp: true,
       images: [
-        'img/violeta-p1.jpg','img/violeta-p2.jpg','img/violeta-p3.jpg',
-        'img/violeta-p4.jpg','img/violeta-p5.jpg','img/violeta-p6.jpg'
+        'img/av-01.jpg','img/av-02.jpg',
+        'img/av-03.jpg','img/av-04.jpg',
+        'img/av-05.jpg','img/av-06.jpg',
+        'img/av-07.jpg','img/av-08.jpg',
+        'img/av-09.jpg','img/av-10.jpg',
+        'img/av-11.jpg','img/av-12.jpg'
       ]
     },
     travel: {
@@ -1464,14 +1554,36 @@
     const gal    = m.querySelector('.pfm-gallery');
     const hasImgs = pj.images.length > 0;
 
-    if (hasImgs) {
-      gal.style.background   = '#0E0B08';
+    if (hasImgs && pj.twoUp) {
+      // Two-up carousel: muestra 2 imágenes a la vez, nav salta de a 2
+      gal.classList.add('two-up');
+      imgEl.style.display = 'none';
+      brand.style.display = 'none';
+      // Crear o reutilizar los 2 slots fijos
+      let tuA = gal.querySelector('.pfm-tu-a');
+      let tuB = gal.querySelector('.pfm-tu-b');
+      if (!tuA) {
+        tuA = document.createElement('img'); tuA.className = 'pfm-tu-img pfm-tu-a'; tuA.alt = pj.name;
+        tuB = document.createElement('img'); tuB.className = 'pfm-tu-img pfm-tu-b'; tuB.alt = pj.name;
+        gal.appendChild(tuA); gal.appendChild(tuB);
+      }
+      currentImg = 0;
+      tuA.src = pj.images[0];
+      tuB.src = pj.images[1] || pj.images[0];
+      const pairs = Math.floor(pj.images.length / 2);
+      document.getElementById('pfm-counter').textContent = '1 / ' + pairs;
+      m.querySelector('.pfm-dots').innerHTML = '';
+      m.querySelector('.pfm-prev').style.display = 'flex';
+      m.querySelector('.pfm-next').style.display = 'flex';
+    } else if (hasImgs) {
+      gal.classList.remove('two-up');
+      ['pfm-tu-a','pfm-tu-b'].forEach(c => { const el = gal.querySelector('.'+c); if(el) el.remove(); });
+      gal.style.background   = '#F7F4E8';
       imgEl.style.display    = 'block';
       imgEl.style.objectFit  = pj.galleryFit || 'cover';
       imgEl.src              = pj.images[0];
       imgEl.alt              = pj.name;
       brand.style.display    = 'none';
-      // Preload first 3
       preloadImg(pj.images[0]);
       preloadImg(pj.images[1]);
       preloadImg(pj.images[2]);
@@ -1480,6 +1592,8 @@
       m.querySelector('.pfm-next').style.display = showNav ? 'flex' : 'none';
       updateGalleryUI();
     } else {
+      gal.classList.remove('two-up');
+      Array.from(gal.querySelectorAll('img.two-up-img')).forEach(i => i.remove());
       gal.style.background   = '#F7F4E8';
       imgEl.style.display    = 'none';
       brand.style.display    = 'flex';
@@ -1500,6 +1614,9 @@
     m.classList.remove('is-open');
     m.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
+    const gal = m.querySelector('.pfm-gallery');
+    gal.classList.remove('two-up');
+    ['pfm-tu-a','pfm-tu-b'].forEach(c => { const el = gal.querySelector('.'+c); if(el) el.remove(); });
     currentPj = null;
   }
 
@@ -1520,6 +1637,21 @@
 
   function updateImg() {
     if (!currentPj || !currentPj.images.length) return;
+    if (currentPj.twoUp) {
+      // Two-up: swap par de imágenes con fade
+      const gal  = document.querySelector('.pfm-gallery');
+      const tuA  = gal.querySelector('.pfm-tu-a');
+      const tuB  = gal.querySelector('.pfm-tu-b');
+      tuA.classList.add('pfm-fade'); tuB.classList.add('pfm-fade');
+      setTimeout(() => {
+        tuA.src = currentPj.images[currentImg];
+        tuB.src = currentPj.images[currentImg + 1] || currentPj.images[currentImg];
+        tuA.classList.remove('pfm-fade'); tuB.classList.remove('pfm-fade');
+        const pairs = Math.floor(currentPj.images.length / 2);
+        document.getElementById('pfm-counter').textContent = (currentImg / 2 + 1) + ' / ' + pairs;
+      }, 220);
+      return;
+    }
     const imgEl = document.getElementById('pfm-img');
     imgEl.classList.add('pfm-fade');
     setTimeout(() => {
@@ -1527,7 +1659,6 @@
       imgEl.style.objectFit = currentPj.galleryFit || 'cover';
       imgEl.classList.remove('pfm-fade');
       updateGalleryUI();
-      // Preload next two
       preloadImg(currentPj.images[(currentImg + 1) % currentPj.images.length]);
       preloadImg(currentPj.images[(currentImg + 2) % currentPj.images.length]);
     }, 200);
@@ -1535,13 +1666,23 @@
 
   function prevImg() {
     if (!currentPj || !currentPj.images.length) return;
-    currentImg = (currentImg - 1 + currentPj.images.length) % currentPj.images.length;
+    if (currentPj.twoUp) {
+      const pairs = Math.floor(currentPj.images.length / 2);
+      currentImg = ((currentImg / 2 - 1 + pairs) % pairs) * 2;
+    } else {
+      currentImg = (currentImg - 1 + currentPj.images.length) % currentPj.images.length;
+    }
     updateImg();
   }
 
   function nextImg() {
     if (!currentPj || !currentPj.images.length) return;
-    currentImg = (currentImg + 1) % currentPj.images.length;
+    if (currentPj.twoUp) {
+      const pairs = Math.floor(currentPj.images.length / 2);
+      currentImg = ((currentImg / 2 + 1) % pairs) * 2;
+    } else {
+      currentImg = (currentImg + 1) % currentPj.images.length;
+    }
     updateImg();
   }
 
@@ -1564,6 +1705,82 @@
     if (e.key === 'ArrowLeft')  prevImg();
     if (e.key === 'ArrowRight') nextImg();
   });
+
+  // Carrusel portfolio — drag-to-scroll + barra custom
+  (function() {
+    const row   = document.querySelector('.pf-row');
+    const track = document.getElementById('pf-track');
+    const thumb = document.getElementById('pf-thumb');
+    if (!row || !track || !thumb) return;
+
+    // Actualiza posición y tamaño del thumb según scroll del row
+    function syncThumb() {
+      const ratio      = row.scrollLeft / (row.scrollWidth - row.clientWidth);
+      const trackW     = track.clientWidth;
+      const thumbW     = Math.max(40, trackW * (row.clientWidth / row.scrollWidth));
+      const maxLeft    = trackW - thumbW;
+      thumb.style.width = thumbW + 'px';
+      thumb.style.left  = (ratio * maxLeft) + 'px';
+    }
+    syncThumb();
+    row.addEventListener('scroll', syncThumb, { passive: true });
+    window.addEventListener('resize', syncThumb);
+
+    // Drag del thumb → mueve el row
+    let thumbDragging = false, thumbStartX, thumbStartLeft;
+    thumb.addEventListener('mousedown', e => {
+      thumbDragging = true;
+      thumb.classList.add('dragging');
+      thumbStartX    = e.clientX;
+      thumbStartLeft = parseFloat(thumb.style.left) || 0;
+      e.preventDefault();
+    });
+    document.addEventListener('mousemove', e => {
+      if (!thumbDragging) return;
+      const trackW  = track.clientWidth;
+      const thumbW  = thumb.offsetWidth;
+      const maxLeft = trackW - thumbW;
+      const newLeft = Math.min(maxLeft, Math.max(0, thumbStartLeft + (e.clientX - thumbStartX)));
+      const ratio   = newLeft / maxLeft;
+      row.scrollLeft = ratio * (row.scrollWidth - row.clientWidth);
+    });
+    document.addEventListener('mouseup', () => {
+      if (!thumbDragging) return;
+      thumbDragging = false;
+      thumb.classList.remove('dragging');
+    });
+
+    // Click en el track → salta a esa posición
+    track.addEventListener('click', e => {
+      if (e.target === thumb) return;
+      const rect   = track.getBoundingClientRect();
+      const ratio  = (e.clientX - rect.left) / rect.width;
+      row.scrollLeft = ratio * (row.scrollWidth - row.clientWidth);
+    });
+
+    // Drag del row con mouse
+    let rowDragging = false, rowStartX, rowScrollLeft, rowMoved = false;
+    row.style.cursor = 'grab';
+    row.addEventListener('mousedown', e => {
+      if (e.target === thumb) return;
+      rowDragging = true; rowMoved = false;
+      row.style.cursor = 'grabbing';
+      rowStartX    = e.pageX - row.offsetLeft;
+      rowScrollLeft = row.scrollLeft;
+    });
+    document.addEventListener('mouseup', () => { rowDragging = false; row.style.cursor = 'grab'; });
+    row.addEventListener('mouseleave', () => { rowDragging = false; row.style.cursor = 'grab'; });
+    row.addEventListener('mousemove', e => {
+      if (!rowDragging) return;
+      e.preventDefault();
+      const walk = (e.pageX - row.offsetLeft - rowStartX) * 1.4;
+      if (Math.abs(walk) > 5) rowMoved = true;
+      row.scrollLeft = rowScrollLeft - walk;
+    });
+    row.querySelectorAll('.pf-card').forEach(card => {
+      card.addEventListener('click', e => { if (rowMoved) { e.stopPropagation(); e.preventDefault(); } }, true);
+    });
+  })();
 
   // Keyboard support for portfolio cards (Enter/Space)
   document.querySelectorAll('.pf-card[role="button"]').forEach(card => {
