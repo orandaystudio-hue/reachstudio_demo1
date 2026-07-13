@@ -283,9 +283,28 @@
     margin-bottom: 0.6rem;
     display: block;
   }
+  .rw-row {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+  .rw-static {
+    font-family: 'ITCAvantGarde', sans-serif;
+    font-weight: 300;
+    font-size: clamp(3rem, 12vw, 11rem);
+    letter-spacing: -0.04em;
+    line-height: 1;
+    color: #191919;
+    flex-shrink: 0;
+    height: clamp(68px, 12.5vw, 185px);
+    display: flex;
+    align-items: center;
+  }
   .rw-slot {
     position: relative;
     height: clamp(68px, 12.5vw, 185px);
+    flex: 1;
+    min-width: 0;
     overflow: hidden;
   }
   .rw-word {
@@ -298,7 +317,7 @@
     font-size: clamp(3rem, 12vw, 11rem);
     letter-spacing: -0.04em;
     line-height: 1;
-    color: #191919;
+    color: #e2361f;
     white-space: nowrap;
     text-decoration: none;
     opacity: 0;
@@ -318,7 +337,7 @@
     transition: opacity .26s ease-in, transform .28s ease-in;
     pointer-events: none;
   }
-  .rw-word.rw-cta { color: #e2361f; }
+  .rw-word.rw-cta { color: #e2361f; } /* already red, kept for specificity */
   .rw-bars {
     display: flex;
     gap: 5px;
@@ -722,7 +741,7 @@
 </section>
 
 <!-- ============ MARQUEE ============ -->
-<section class="bg-ink text-cream py-3 md:py-4 border-y border-ink overflow-hidden">
+<section class="text-cream py-3 md:py-4 overflow-hidden" style="background:#e2361f;">
   <div class="marquee whitespace-nowrap">
     <div class="flex items-center gap-10 md:gap-14 px-6 marquee-text text-sm md:text-base">
       <span>Diseño Gráfico</span><span class="marquee-sep">·</span>
@@ -749,12 +768,15 @@
 <section class="overflow-hidden" style="padding:3.5rem 0 3.75rem;background:#fffefa;">
   <div class="max-w-7xl mx-auto px-5 md:px-8">
     <span class="rw-label">we help brands</span>
-    <div class="rw-slot" id="rw-slot">
-      <span class="rw-word">re:design</span>
-      <span class="rw-word">re:create</span>
-      <span class="rw-word">re:define</span>
-      <span class="rw-word">re:connect</span>
-      <a href="#contacto" class="rw-word rw-cta">re:ach us →</a>
+    <div class="rw-row">
+      <span class="rw-static">re:</span>
+      <div class="rw-slot" id="rw-slot">
+        <span class="rw-word">design</span>
+        <span class="rw-word">create</span>
+        <span class="rw-word">define</span>
+        <span class="rw-word">connect</span>
+        <a href="#contacto" class="rw-word rw-cta">ach us →</a>
+      </div>
     </div>
     <div class="rw-bars" id="rw-bars">
       <div class="rw-bar on"></div>
