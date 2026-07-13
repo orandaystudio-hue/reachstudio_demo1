@@ -283,10 +283,14 @@
     margin-bottom: 0.6rem;
     display: block;
   }
+  /* clip wrapper — solo corta verticalmente la animación de slide */
+  .rw-clip {
+    overflow: hidden;
+    height: clamp(68px, 12.5vw, 185px);
+  }
   .rw-row {
     display: flex;
     align-items: center;
-    overflow: hidden;
   }
   .rw-static {
     font-family: 'ITCAvantGarde', sans-serif;
@@ -304,12 +308,11 @@
     position: relative;
     height: clamp(68px, 12.5vw, 185px);
     flex: 1;
-    min-width: 0;
-    overflow: hidden;
+    /* sin overflow:hidden — el clip lo maneja .rw-clip */
   }
   .rw-word {
     position: absolute;
-    inset: 0;
+    top: 0; bottom: 0; left: 0; /* sin right:0 para que la palabra no se corte */
     display: flex;
     align-items: center;
     font-family: 'ITCAvantGarde', sans-serif;
@@ -741,7 +744,7 @@
 </section>
 
 <!-- ============ MARQUEE ============ -->
-<section class="text-cream py-3 md:py-4 overflow-hidden" style="background:#e2361f;">
+<section class="text-cream py-3 md:py-4 overflow-hidden" style="background:#56070e;">
   <div class="marquee whitespace-nowrap">
     <div class="flex items-center gap-10 md:gap-14 px-6 marquee-text text-sm md:text-base">
       <span>Diseño Gráfico</span><span class="marquee-sep">·</span>
@@ -768,6 +771,7 @@
 <section class="overflow-hidden" style="padding:3.5rem 0 3.75rem;background:#fffefa;">
   <div class="max-w-7xl mx-auto px-5 md:px-8">
     <span class="rw-label">we help brands</span>
+    <div class="rw-clip">
     <div class="rw-row">
       <span class="rw-static">re:</span>
       <div class="rw-slot" id="rw-slot">
@@ -777,6 +781,7 @@
         <span class="rw-word">connect</span>
         <a href="#contacto" class="rw-word rw-cta">ach us →</a>
       </div>
+    </div>
     </div>
     <div class="rw-bars" id="rw-bars">
       <div class="rw-bar on"></div>
