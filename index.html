@@ -8,7 +8,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300;1,9..144,400&family=Albert+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
@@ -28,8 +28,8 @@
           pink:    '#dc5f86',
         },
         fontFamily: {
-          serif:   ['Fraunces', 'serif'],
-          display: ['Fraunces', 'serif'],
+          serif:   ['ITCAvantGarde', 'sans-serif'],
+          display: ['ITCAvantGarde', 'sans-serif'],
           sans:    ['"Albert Sans"', 'system-ui', 'sans-serif'],
         },
       }
@@ -38,6 +38,35 @@
 </script>
 
 <style>
+  @font-face {
+    font-family: 'ITCAvantGarde';
+    src: url('fonts/ITCAvantGarde-Book.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'ITCAvantGarde';
+    src: url('fonts/ITCAvantGarde-Medium.otf') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'ITCAvantGarde';
+    src: url('fonts/ITCAvantGarde-Demi.otf') format('opentype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'ITCAvantGarde';
+    src: url('fonts/ITCAvantGarde-Bold.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+
   html { scroll-behavior: smooth; }
   body {
     background: #fffefa;
@@ -79,7 +108,7 @@
   .pill--outline { background: transparent; color: #191919; border: 1px solid #191919; }
 
   /* Headline serif accent */
-  .italicize { font-family: 'Fraunces', serif; font-style: normal; font-weight: 300; font-variation-settings: "opsz" 144; }
+  .italicize { font-family: 'ITCAvantGarde', sans-serif; font-style: normal; font-weight: 300; }
 
   /* Botones */
   .btn {
@@ -116,14 +145,13 @@
     to   { transform: translateX(-50%); }
   }
   .marquee-text {
-    font-family: 'Fraunces', serif;
+    font-family: 'ITCAvantGarde', sans-serif;
     font-weight: 400;
-    font-variation-settings: "opsz" 144;
     letter-spacing: -0.02em;
   }
   .marquee-sep {
     color: rgba(220,53,40,0.85);
-    font-family: 'Fraunces', serif;
+    font-family: 'ITCAvantGarde', sans-serif;
     font-weight: 300;
     opacity: 0.9;
   }
@@ -166,7 +194,7 @@
   }
   .svc-titles { display: flex; align-items: baseline; gap: 1.2rem; flex-wrap: wrap; }
   .svc-name {
-    font-family: 'Fraunces', serif;
+    font-family: 'ITCAvantGarde', sans-serif;
     font-size: clamp(1.25rem, 2.2vw, 1.65rem);
     font-weight: 400;
     color: #0E0B08;
@@ -273,7 +301,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -52%);
-    font-family: 'Fraunces', serif;
+    font-family: 'ITCAvantGarde', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: clamp(16rem, 42vw, 52rem);
@@ -366,7 +394,7 @@
   .pf-card:hover .pf-tag { color: rgba(220,53,40,0.9); transform: translateY(0); }
   .pf-name {
     color: #fffced;
-    font-family: 'Fraunces', serif;
+    font-family: 'ITCAvantGarde', sans-serif;
     font-weight: 400;
     font-size: clamp(1.75rem, 3vw, 2.5rem);
     line-height: 1.1;
@@ -422,8 +450,8 @@
   }
 
   /* Responsive serif sizes */
-  .display-1 { font-family: 'Fraunces', serif; font-weight: 300; line-height: 0.95; letter-spacing: -0.02em; font-variation-settings: "opsz" 144; }
-  .display-2 { font-family: 'Fraunces', serif; font-weight: 300; line-height: 1.0;  letter-spacing: -0.01em; font-variation-settings: "opsz" 144; }
+  .display-1 { font-family: 'ITCAvantGarde', sans-serif; font-weight: 300; line-height: 0.95; letter-spacing: -0.02em; }
+  .display-2 { font-family: 'ITCAvantGarde', sans-serif; font-weight: 300; line-height: 1.0;  letter-spacing: -0.01em; }
 
   /* Hide scrollbars on marquee */
   .no-scrollbar::-webkit-scrollbar { display: none; }
@@ -505,10 +533,9 @@
     text-transform: uppercase; color: rgba(14,11,8,0.28);
   }
   .pfm-name {
-    font-family: 'Fraunces', serif; font-weight: 300;
+    font-family: 'ITCAvantGarde', sans-serif; font-weight: 300;
     font-size: clamp(1.75rem, 3vw, 2.5rem); letter-spacing: -0.02em;
     line-height: 1.05; color: #191919; margin-bottom: 1rem;
-    font-variation-settings: "opsz" 144;
   }
   .pfm-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 1.25rem; }
   .pfm-tag {
@@ -605,9 +632,8 @@
 <!-- ============ NAV ============ -->
 <header class="fixed top-0 inset-x-0 z-50 backdrop-blur bg-cream/80 border-b border-ink/10">
   <div class="max-w-7xl mx-auto px-5 md:px-8 h-16 flex items-center justify-between">
-    <a href="#top" class="flex items-center gap-2.5">
-      <span class="re-dot w-9 h-9 text-base">re:</span>
-      <span class="font-extrabold tracking-tight text-[0.95rem]">re:ach studio</span>
+    <a href="#top" class="flex items-center">
+      <svg height="32" viewBox="25 470 1035 145" xmlns="http://www.w3.org/2000/svg" style="fill:#191919;display:block;" aria-label="re:ach studio"><path d="M157.52,586.37v-79.47h22.34v8.45h.29c4.15-8.45,10.74-11.17,19.9-11.17v23.91c-14.18.14-18.76,5.44-18.76,14.46v43.81h-23.77Z"/><path d="M224.1,553.87c1.29,9.02,8.88,15.03,18.61,15.03,6.44,0,10.6-2.43,14.46-7.45h24.34c-7.59,17.33-22.05,27.49-38.8,27.49-22.91,0-42.1-18.47-42.1-42.1s18.33-42.67,41.67-42.67,41.95,18.76,41.95,43.38c0,2.29-.14,4.15-.57,6.3h-59.57ZM260.47,537.83c-1.86-8.16-9.02-13.6-18.18-13.6-8.59,0-16.04,5.15-17.9,13.6h36.08Z"/><path d="M394.93,586.37v-8.59h-.29c-3.44,7.02-12.89,11.31-23.34,11.31-23.48,0-39.81-18.47-39.81-42.53s17.04-42.38,39.81-42.38c9.74,0,18.76,3.87,23.34,11.17h.29v-8.45h23.77v79.47h-23.77ZM394.93,546.57c0-11.17-9.02-20.19-20.19-20.19s-19.47,9.02-19.47,20.48,8.73,20.05,19.76,20.05,19.9-8.88,19.9-20.33Z"/><path d="M488.57,537.55c-3.44-7.44-9.59-11.17-17.75-11.17-10.88,0-18.33,9.02-18.33,20.19s7.88,20.19,18.9,20.19c8.02,0,13.6-3.72,17.18-10.6h24.2c-4.73,19.9-21.76,32.79-42.1,32.79-23.48,0-42.1-19.04-42.1-42.52s18.76-42.24,41.67-42.24c20.91,0,37.94,13.17,42.38,33.36h-24.06Z"/><path d="M569.9,586.37v-43.67c0-10.31-4.01-16.18-12.74-16.18s-13.32,5.3-13.32,15.18v44.67h-23.77v-105.96h23.77v34.08c3.44-6.44,11.17-10.31,20.62-10.31,18.18,0,29.21,11.45,29.21,32.22v49.97h-23.77Z"/><path d="M666.25,529.24c-.14-4.58-3.44-6.01-7.3-6.01s-6.87,2.29-6.87,5.3c0,4.3,3.87,6.44,14.89,9.31,18.9,5.01,25.06,12.6,25.06,24.2,0,16.61-14.32,27.06-32.36,27.06s-30.64-10.17-32.36-26.35h23.63c.72,5.01,4.3,7.3,9.02,7.3,4.15,0,8.3-2.43,8.3-6.16,0-4.44-2.72-6.73-14.6-10.45-20.05-6.16-25.34-14.03-25.34-23.34,0-15.75,14.75-25.92,30.78-25.92,17.18,0,29.35,9.45,30.5,25.06h-23.34Z"/><path d="M705.05,586.37v-61.43h-11.74v-18.04h11.74v-26.49h23.77v26.49h11.46v18.04h-11.46v61.43h-23.77Z"/><path d="M798.12,586.37v-8.45h-.29c-3.44,7.3-9.74,11.02-20.47,11.02-16.75,0-30.64-10.02-30.64-32.64v-49.4h23.77v44.53c0,10.45,3.72,15.32,12.74,15.32s13.6-6.01,13.6-15.75v-44.1h23.77v79.47h-22.48Z"/><path d="M894.34,586.37v-8.59h-.29c-4.44,7.3-12.46,11.17-23.77,11.17-24.05,0-39.81-18.47-39.81-42.52s16.18-42.24,39.38-42.24c9.16,0,16.61,2.72,23.34,9.45v-33.22h23.77v105.96h-22.62ZM894.48,546.28c0-11.02-8.45-19.9-20.19-19.9s-20.05,8.3-20.05,19.9,8.45,20.48,19.9,20.48,20.33-8.73,20.33-20.48Z"/><path d="M930.57,586.37v-79.47h23.77v79.47h-23.77Z"/><path d="M1007.03,588.81c-24.2,0-42.81-17.9-42.81-42.24s19.04-42.24,42.81-42.24,42.81,17.9,42.81,41.95-18.9,42.53-42.81,42.53ZM1026.07,546.57c0-10.59-8.02-20.05-19.19-20.05-10.45,0-18.9,9.16-18.9,20.05s8.3,20.05,19.04,20.05,19.04-9.45,19.04-20.05Z"/><circle cx="942.45" cy="486.57" r="11.88"/><circle cx="307.8" cy="519.08" r="11.88"/><circle cx="307.8" cy="574.2" r="11.88"/><circle cx="100.71" cy="542.25" r="18.47"/><path d="M66.86,604.74c0-12.75,7.05-23.84,17.46-29.61,1.48-.82,1.5-2.93.05-3.8-9.44-5.66-15.71-16.08-15.71-27.96,0-18.56,13.92-33.17,31.54-33.17.17,0,.33.01.5.01v-35.64c-2-.21-4.02-.32-6.07-.32-36.88,0-64.48,30.62-64.48,68.65,0,28.54,14.19,52.21,36.73,62.85,0-.34-.03-.67-.03-1.01Z"/></svg>
     </a>
     <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-ink/80">
       <a href="#servicios"  class="hover:text-ink">Services</a>
@@ -861,43 +887,42 @@
         <p class="text-ink/70 text-sm leading-relaxed">Conocemos tu marca, objetivos y necesidades para entender cómo podemos ayudarte.</p>
       </div>
       <div class="p-6 rounded-2xl border border-ink/10 bg-cream2 reveal">
-        <div class="re-dot w-10 h-10 text-sm mb-5 bg-burg">02</div>
+        <div class="re-dot w-10 h-10 text-sm mb-5">02</div>
         <h4 class="font-serif text-2xl mb-2">Cotización</h4>
         <p class="text-ink/70 text-sm leading-relaxed">Preparamos una propuesta personalizada con los servicios que realmente necesita tu proyecto.</p>
       </div>
       <div class="p-6 rounded-2xl border border-ink/10 bg-cream2 reveal">
-        <div class="re-dot w-10 h-10 text-sm mb-5 bg-red">03</div>
+        <div class="re-dot w-10 h-10 text-sm mb-5">03</div>
         <h4 class="font-serif text-2xl mb-2">Aprobación</h4>
         <p class="text-ink/70 text-sm leading-relaxed">Revisamos juntos el alcance, tiempos y entregables antes de comenzar.</p>
       </div>
       <div class="p-6 rounded-2xl border border-ink/10 bg-cream2 reveal">
-        <div class="re-dot w-10 h-10 text-sm mb-5 bg-pink">04</div>
+        <div class="re-dot w-10 h-10 text-sm mb-5">04</div>
         <h4 class="font-serif text-2xl mb-2">Brief creativo</h4>
         <p class="text-ink/70 text-sm leading-relaxed">Recopilamos toda la información necesaria para desarrollar la estrategia y la dirección creativa.</p>
       </div>
-      <div class="p-6 rounded-2xl border border-ink/10 bg-ink text-cream reveal">
-        <div class="re-dot w-10 h-10 text-sm mb-5 bg-burg2">05</div>
+      <div class="p-6 rounded-2xl border border-ink/10 bg-cream2 reveal">
+        <div class="re-dot w-10 h-10 text-sm mb-5">05</div>
         <h4 class="font-serif text-2xl mb-2">Inicio del proyecto</h4>
-        <p class="text-cream/70 text-sm leading-relaxed">Comenzamos el proyecto y te mantenemos al tanto de cada avance durante todo el proceso.</p>
+        <p class="text-ink/70 text-sm leading-relaxed">Comenzamos el proyecto y te mantenemos al tanto de cada avance durante todo el proceso.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ============ PORTAFOLIO ============ -->
-<section id="portafolio" class="py-20 md:py-32 text-cream relative overflow-hidden">
-  <div class="pf-bg" aria-hidden="true"></div>
-  <div class="max-w-7xl mx-auto px-5 md:px-8 relative z-10">
+<section id="portafolio" class="py-20 md:py-32 relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-5 md:px-8 relative">
 
     <div class="flex flex-wrap items-end justify-between gap-6 mb-12 reveal">
       <div>
-        <span class="pill pill--cream">Recent work</span>
+        <span class="pill pill--burg">Recent work</span>
         <h2 class="display-2 text-5xl md:text-6xl mt-5">
           Brands we've worked with.
         </h2>
       </div>
       <a href="https://www.instagram.com/reachstudio__/" target="_blank" rel="noopener"
-         class="ul-link text-sm font-medium text-cream/70 hover:text-cream transition-colors">
+         class="ul-link text-sm font-medium text-ink/60 hover:text-ink transition-colors">
         Ver más en Instagram →
       </a>
     </div>
@@ -929,14 +954,14 @@
           <div style="position:relative;z-index:1;">
             <div style="font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(185,212,229,0.55);font-weight:600;margin-bottom:1.4rem;">Identidad visual</div>
             <div style="display:flex;align-items:baseline;gap:0.3rem;justify-content:center;">
-              <span style="font-family:'Fraunces',serif;font-size:clamp(1.5rem,3.2vw,2rem);font-weight:300;color:#F6EAC7;letter-spacing:-0.01em;line-height:1;">travel</span>
-              <span style="font-family:'Fraunces',serif;font-style:italic;font-weight:300;font-size:clamp(1.7rem,3.8vw,2.3rem);color:#F6EAC7;line-height:1;letter-spacing:-0.02em;">diaries</span>
+              <span style="font-family:'ITCAvantGarde',sans-serif;font-size:clamp(1.5rem,3.2vw,2rem);font-weight:300;color:#F6EAC7;letter-spacing:-0.01em;line-height:1;">travel</span>
+              <span style="font-family:'ITCAvantGarde',sans-serif;font-style:italic;font-weight:300;font-size:clamp(1.7rem,3.8vw,2.3rem);color:#F6EAC7;line-height:1;letter-spacing:-0.02em;">diaries</span>
             </div>
             <div style="width:2rem;height:1px;background:rgba(185,212,229,0.3);margin:1.2rem auto;"></div>
             <div style="display:inline-flex;align-items:center;justify-content:center;border:1px solid rgba(185,212,229,0.28);border-radius:50%;width:2rem;height:2rem;margin-bottom:1.1rem;">
-              <span style="font-family:'Fraunces',serif;font-style:italic;font-weight:300;font-size:0.75rem;color:rgba(185,212,229,0.65);letter-spacing:-0.02em;">td</span>
+              <span style="font-family:'ITCAvantGarde',sans-serif;font-style:italic;font-weight:300;font-size:0.75rem;color:rgba(185,212,229,0.65);letter-spacing:-0.02em;">td</span>
             </div>
-            <div style="font-size:0.6rem;letter-spacing:0.07em;color:rgba(246,234,199,0.35);font-family:serif;font-style:italic;">Agencia de viajes · Branding · 2026</div>
+            <div style="font-size:0.6rem;letter-spacing:0.07em;color:rgba(246,234,199,0.35);font-family:'ITCAvantGarde',sans-serif;">Agencia de viajes · Branding · 2026</div>
           </div>
         </div>
       </article>
@@ -1064,7 +1089,7 @@
           <span class="faq-icon text-red text-2xl leading-none flex-shrink-0 transition-transform duration-300">+</span>
         </button>
         <div class="faq-body max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
-          <p class="px-7 pb-6 text-ink/70 leading-relaxed">Sí, trabajamos con una amplia variedad de negocios — restaurantes, clínicas, marcas de producto, servicios profesionales y más. Lo único que pedimos es que haya una visión clara de hacia dónde quieren ir. Nos funciona mejor colaborar con marcas que están dispuestas a crecer con estrategia.</p>
+          <p class="px-7 pb-6 text-ink/70 leading-relaxed">Sí, trabajamos con una amplia variedad de negocios: restaurantes, clínicas, marcas de productos, servicios profesionales y más. Creemos que las mejores estrategias se construyen en conjunto, por eso te acompañamos a definir el rumbo de tu marca y a crear un plan que impulse su crecimiento.</p>
         </div>
       </div>
 
@@ -1074,7 +1099,7 @@
           <span class="faq-icon text-red text-2xl leading-none flex-shrink-0 transition-transform duration-300">+</span>
         </button>
         <div class="faq-body max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
-          <p class="px-7 pb-6 text-ink/70 leading-relaxed">Un proyecto de branding completo (identidad visual, manual de marca, aplicaciones) toma entre 4 y 5 semanas. Los tiempos dependen de la complejidad del proyecto y de qué tan ágiles seamos en las aprobaciones. Te damos un timeline detallado desde el inicio para que siempre sepas dónde estamos.</p>
+          <p class="px-7 pb-6 text-ink/70 leading-relaxed">Un proyecto de branding completo (logotipo, identidad visual, manual de marca y aplicaciones) suele tomar entre 4 y 5 semanas. Desde el inicio te compartimos un plan de trabajo con las fechas estimadas y trabajamos de la mano contigo para realizar los ajustes necesarios durante todo el proceso.</p>
         </div>
       </div>
 
@@ -1084,7 +1109,7 @@
           <span class="faq-icon text-red text-2xl leading-none flex-shrink-0 transition-transform duration-300">+</span>
         </button>
         <div class="faq-body max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
-          <p class="px-7 pb-6 text-ink/70 leading-relaxed">Sí. Diseñamos y gestionamos campañas de pauta en Meta (Facebook e Instagram) con foco en resultados comerciales: leads, mensajes, citas o ventas. Nos encargamos de la estrategia, creatividades, segmentación y optimización continua — no solo de "subir el anuncio".</p>
+          <p class="px-7 pb-6 text-ink/70 leading-relaxed">Sí. Diseñamos y gestionamos campañas en Meta (Facebook e Instagram) adaptadas a los objetivos de tu negocio. Nos encargamos de la estrategia, las creatividades, la segmentación y la optimización constante, no solo de publicar anuncios.</p>
         </div>
       </div>
 
@@ -1094,7 +1119,7 @@
           <span class="faq-icon text-red text-2xl leading-none flex-shrink-0 transition-transform duration-300">+</span>
         </button>
         <div class="faq-body max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
-          <p class="px-7 pb-6 text-ink/70 leading-relaxed">Sí. Contamos con equipo y colaboradores para sesiones de foto y video, dirección creativa, edición y diseño. Producimos contenido pensado para redes sociales, campañas y sitios web — con estética editorial y foco en lo que comunica y convierte.</p>
+          <p class="px-7 pb-6 text-ink/70 leading-relaxed">Sí. Contamos con equipo y colaboradores para sesiones de foto y video, edición y diseño. Creamos contenido para redes sociales, campañas y otros materiales que ayuden a comunicar tu marca.</p>
         </div>
       </div>
 
@@ -1104,7 +1129,7 @@
           <span class="faq-icon text-red text-2xl leading-none flex-shrink-0 transition-transform duration-300">+</span>
         </button>
         <div class="faq-body max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
-          <p class="px-7 pb-6 text-ink/70 leading-relaxed">No trabajamos con paquetes cerrados porque cada proyecto tiene necesidades distintas. Después de una llamada inicial, te enviamos una cotización personalizada con exactamente lo que necesitas — sin pagar por cosas que no te sirven. Escríbenos y con gusto platicamos.</p>
+          <p class="px-7 pb-6 text-ink/70 leading-relaxed">No manejamos paquetes fijos, ya que cada negocio tiene necesidades diferentes. Primero platicamos contigo para conocer tu proyecto y después te enviamos una propuesta personalizada con lo que realmente necesita tu marca. Escríbenos y juntos encontraremos la mejor opción para tu negocio.</p>
         </div>
       </div>
 
@@ -1157,25 +1182,24 @@
   <div class="max-w-7xl mx-auto px-5 md:px-8">
     <div class="grid md:grid-cols-12 gap-10">
       <div class="md:col-span-5">
-        <div class="flex items-center gap-2.5">
-          <span class="re-dot w-12 h-12 text-lg">re:</span>
-          <span class="font-extrabold text-xl tracking-tight">re:ach studio</span>
+        <div class="flex items-center">
+          <svg height="38" viewBox="25 470 1035 145" xmlns="http://www.w3.org/2000/svg" style="fill:#191919;display:block;" aria-label="re:ach studio"><path d="M157.52,586.37v-79.47h22.34v8.45h.29c4.15-8.45,10.74-11.17,19.9-11.17v23.91c-14.18.14-18.76,5.44-18.76,14.46v43.81h-23.77Z"/><path d="M224.1,553.87c1.29,9.02,8.88,15.03,18.61,15.03,6.44,0,10.6-2.43,14.46-7.45h24.34c-7.59,17.33-22.05,27.49-38.8,27.49-22.91,0-42.1-18.47-42.1-42.1s18.33-42.67,41.67-42.67,41.95,18.76,41.95,43.38c0,2.29-.14,4.15-.57,6.3h-59.57ZM260.47,537.83c-1.86-8.16-9.02-13.6-18.18-13.6-8.59,0-16.04,5.15-17.9,13.6h36.08Z"/><path d="M394.93,586.37v-8.59h-.29c-3.44,7.02-12.89,11.31-23.34,11.31-23.48,0-39.81-18.47-39.81-42.53s17.04-42.38,39.81-42.38c9.74,0,18.76,3.87,23.34,11.17h.29v-8.45h23.77v79.47h-23.77ZM394.93,546.57c0-11.17-9.02-20.19-20.19-20.19s-19.47,9.02-19.47,20.48,8.73,20.05,19.76,20.05,19.9-8.88,19.9-20.33Z"/><path d="M488.57,537.55c-3.44-7.44-9.59-11.17-17.75-11.17-10.88,0-18.33,9.02-18.33,20.19s7.88,20.19,18.9,20.19c8.02,0,13.6-3.72,17.18-10.6h24.2c-4.73,19.9-21.76,32.79-42.1,32.79-23.48,0-42.1-19.04-42.1-42.52s18.76-42.24,41.67-42.24c20.91,0,37.94,13.17,42.38,33.36h-24.06Z"/><path d="M569.9,586.37v-43.67c0-10.31-4.01-16.18-12.74-16.18s-13.32,5.3-13.32,15.18v44.67h-23.77v-105.96h23.77v34.08c3.44-6.44,11.17-10.31,20.62-10.31,18.18,0,29.21,11.45,29.21,32.22v49.97h-23.77Z"/><path d="M666.25,529.24c-.14-4.58-3.44-6.01-7.3-6.01s-6.87,2.29-6.87,5.3c0,4.3,3.87,6.44,14.89,9.31,18.9,5.01,25.06,12.6,25.06,24.2,0,16.61-14.32,27.06-32.36,27.06s-30.64-10.17-32.36-26.35h23.63c.72,5.01,4.3,7.3,9.02,7.3,4.15,0,8.3-2.43,8.3-6.16,0-4.44-2.72-6.73-14.6-10.45-20.05-6.16-25.34-14.03-25.34-23.34,0-15.75,14.75-25.92,30.78-25.92,17.18,0,29.35,9.45,30.5,25.06h-23.34Z"/><path d="M705.05,586.37v-61.43h-11.74v-18.04h11.74v-26.49h23.77v26.49h11.46v18.04h-11.46v61.43h-23.77Z"/><path d="M798.12,586.37v-8.45h-.29c-3.44,7.3-9.74,11.02-20.47,11.02-16.75,0-30.64-10.02-30.64-32.64v-49.4h23.77v44.53c0,10.45,3.72,15.32,12.74,15.32s13.6-6.01,13.6-15.75v-44.1h23.77v79.47h-22.48Z"/><path d="M894.34,586.37v-8.59h-.29c-4.44,7.3-12.46,11.17-23.77,11.17-24.05,0-39.81-18.47-39.81-42.52s16.18-42.24,39.38-42.24c9.16,0,16.61,2.72,23.34,9.45v-33.22h23.77v105.96h-22.62ZM894.48,546.28c0-11.02-8.45-19.9-20.19-19.9s-20.05,8.3-20.05,19.9,8.45,20.48,19.9,20.48,20.33-8.73,20.33-20.48Z"/><path d="M930.57,586.37v-79.47h23.77v79.47h-23.77Z"/><path d="M1007.03,588.81c-24.2,0-42.81-17.9-42.81-42.24s19.04-42.24,42.81-42.24,42.81,17.9,42.81,41.95-18.9,42.53-42.81,42.53ZM1026.07,546.57c0-10.59-8.02-20.05-19.19-20.05-10.45,0-18.9,9.16-18.9,20.05s8.3,20.05,19.04,20.05,19.04-9.45,19.04-20.05Z"/><circle cx="942.45" cy="486.57" r="11.88"/><circle cx="307.8" cy="519.08" r="11.88"/><circle cx="307.8" cy="574.2" r="11.88"/><circle cx="100.71" cy="542.25" r="18.47"/><path d="M66.86,604.74c0-12.75,7.05-23.84,17.46-29.61,1.48-.82,1.5-2.93.05-3.8-9.44-5.66-15.71-16.08-15.71-27.96,0-18.56,13.92-33.17,31.54-33.17.17,0,.33.01.5.01v-35.64c-2-.21-4.02-.32-6.07-.32-36.88,0-64.48,30.62-64.48,68.65,0,28.54,14.19,52.21,36.73,62.85,0-.34-.03-.67-.03-1.01Z"/></svg>
         </div>
         <p class="mt-5 text-ink/70 max-w-sm">
           Agencia de branding, marketing y diseño. Creamos estrategias e identidades visuales que ayudan a las marcas a destacar, conectar y crecer.
         </p>
-        <p class="mt-4 text-xl text-burg" style="font-family:'Fraunces',serif;font-weight:300;font-variation-settings:'opsz' 144;">we help brands re:ach with purpose.</p>
+        <p class="mt-4 text-xl text-burg" style="font-family:'ITCAvantGarde',sans-serif;font-weight:300;">we help brands re:ach with purpose.</p>
       </div>
 
       <div class="md:col-span-3">
         <div class="text-xs uppercase tracking-widest text-ink/50 font-bold mb-4">Servicios</div>
         <ul class="space-y-2 text-sm text-ink/80">
-          <li>Branding &amp; Rebranding</li>
-          <li>Social Media Management</li>
-          <li>Meta Ads</li>
-          <li>Producción de Contenido</li>
-          <li>Diseño Gráfico</li>
-          <li>Landing Pages</li>
+          <li>Diseño gráfico</li>
+          <li>Branding</li>
+          <li>Gestión de redes sociales</li>
+          <li>Estrategia y línea gráfica</li>
+          <li>Pauta publicitaria</li>
+          <li>Fotografía y video</li>
         </ul>
       </div>
 
@@ -1254,14 +1278,14 @@
         <div style="position:relative;z-index:1;text-align:center;">
           <div style="font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(185,212,229,0.5);margin-bottom:1.5rem;font-weight:600;">Identidad visual · 2026</div>
           <div style="display:flex;align-items:baseline;gap:0.35rem;justify-content:center;margin-bottom:1rem;">
-            <span style="font-family:'Fraunces',serif;font-size:2.4rem;font-weight:300;color:#F6EAC7;line-height:1;">travel</span>
-            <span style="font-family:'Fraunces',serif;font-style:italic;font-weight:300;font-size:2.8rem;color:#F6EAC7;line-height:1;">diaries</span>
+            <span style="font-family:'ITCAvantGarde',sans-serif;font-size:2.4rem;font-weight:300;color:#F6EAC7;line-height:1;">travel</span>
+            <span style="font-family:'ITCAvantGarde',sans-serif;font-style:italic;font-weight:300;font-size:2.8rem;color:#F6EAC7;line-height:1;">diaries</span>
           </div>
           <div style="width:2rem;height:1px;background:rgba(185,212,229,0.25);margin:0 auto 1rem;"></div>
           <div style="display:inline-flex;align-items:center;justify-content:center;border:1px solid rgba(185,212,229,0.25);border-radius:50%;width:2.4rem;height:2.4rem;">
-            <span style="font-family:'Fraunces',serif;font-style:italic;font-weight:300;font-size:0.9rem;color:rgba(185,212,229,0.6);">td</span>
+            <span style="font-family:'ITCAvantGarde',sans-serif;font-style:italic;font-weight:300;font-size:0.9rem;color:rgba(185,212,229,0.6);">td</span>
           </div>
-          <div style="margin-top:1.25rem;font-size:0.58rem;letter-spacing:0.07em;color:rgba(246,234,199,0.3);font-family:serif;font-style:italic;">Agencia de viajes · Branding · 2026</div>
+          <div style="margin-top:1.25rem;font-size:0.58rem;letter-spacing:0.07em;color:rgba(246,234,199,0.3);font-family:'ITCAvantGarde',sans-serif;">Agencia de viajes · Branding · 2026</div>
         </div>
       </div>
     </div>
