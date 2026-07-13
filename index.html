@@ -191,12 +191,6 @@
     letter-spacing: .08em;
     line-height: 1;
   }
-  .svc-row:nth-child(1) .svc-num { color: #e2361f; }
-  .svc-row:nth-child(2) .svc-num { color: #dc5f86; }
-  .svc-row:nth-child(3) .svc-num { color: #56070e; }
-  .svc-row:nth-child(4) .svc-num { color: #dc5f86; }
-  .svc-row:nth-child(5) .svc-num { color: #e2361f; }
-  .svc-row:nth-child(6) .svc-num { color: #56070e; }
   .svc-titles { display: flex; align-items: baseline; gap: 1.2rem; flex-wrap: wrap; }
   .svc-name {
     font-family: 'ITCAvantGarde', sans-serif;
@@ -278,55 +272,69 @@
   .svc-list .svc-row:nth-child(6).open .svc-toggle { background: #dc5f86; border-color: #dc5f86; }
 
   /* Re:words animated section */
-  .reword-line {
-    border-top: 1px solid rgba(244,236,221,0.1);
-    padding: 1rem 0;
+  .reword-stage {
+    display: flex;
+    align-items: center;
+    min-height: clamp(140px, 24vw, 260px);
     overflow: hidden;
+    position: relative;
   }
-  .reword-line:last-child { border-bottom: 1px solid rgba(244,236,221,0.1); }
-
-  /* Portfolio background (decor) */
-  #portafolio {
-    background:
-      radial-gradient(ellipse 80% 60% at 15% 5%, rgba(226,54,31,0.22), transparent 60%),
-      radial-gradient(ellipse 70% 55% at 85% 95%, rgba(86,7,14,0.55), transparent 60%),
-      radial-gradient(circle at 60% 50%, rgba(226,54,31,0.08), transparent 45%),
-      #191919;
-  }
-  .pf-bg {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 0;
-    overflow: hidden;
-  }
-  .pf-bg::before {
-    content: "re:ach";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -52%);
+  .reword-prefix {
     font-family: 'ITCAvantGarde', sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: clamp(16rem, 42vw, 52rem);
-    letter-spacing: -0.05em;
-    line-height: 0.85;
-    color: rgba(244,236,221,0.045);
-    white-space: nowrap;
-    user-select: none;
+    font-weight: 300;
+    font-size: clamp(2.8rem, 10vw, 8rem);
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: #fffefa;
+    flex-shrink: 0;
   }
-  .pf-bg::after {
-    content: "";
+  .reword-suffix-wrap {
+    overflow: hidden;
+    position: relative;
+    flex: 1;
+  }
+  .reword-word {
+    display: block;
+    font-family: 'ITCAvantGarde', sans-serif;
+    font-weight: 300;
+    font-size: clamp(2.8rem, 10vw, 8rem);
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: #e2361f;
     position: absolute;
-    inset: 0;
-    background-image:
-      radial-gradient(rgba(244,236,221,0.06) 1px, transparent 1px),
-      radial-gradient(rgba(244,236,221,0.03) 1px, transparent 1px);
-    background-size: 3px 3px, 7px 7px;
-    background-position: 0 0, 1px 1px;
-    mix-blend-mode: overlay;
-    opacity: 0.7;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%) translateY(60px);
+    opacity: 0;
+    transition: transform 0.55s cubic-bezier(.22,1,.36,1), opacity 0.45s ease;
+    white-space: nowrap;
+  }
+  .reword-word.active {
+    opacity: 1;
+    transform: translateY(-50%) translateY(0);
+  }
+  .reword-word.exit {
+    opacity: 0;
+    transform: translateY(-50%) translateY(-60px);
+    transition: transform 0.4s ease-in, opacity 0.3s ease-in;
+  }
+  .reword-dots {
+    display: flex;
+    gap: 0.35rem;
+    margin-top: 2rem;
+  }
+  .reword-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: rgba(244,236,221,0.2);
+    transition: background 0.3s;
+  }
+  .reword-dot.active { background: #e2361f; }
+
+  /* Portfolio background — cream, no dark */
+  #portafolio {
+    background: #fffefa;
   }
 
   /* Portfolio card */
@@ -712,23 +720,25 @@
   </div>
 </section>
 
-<!-- ============ RE:WORDS ============ -->
-<section class="bg-ink text-cream overflow-hidden">
+<!-- ============ RE:WORDS (animated cycling) ============ -->
+<section class="bg-ink text-cream overflow-hidden py-16 md:py-20">
   <div class="max-w-7xl mx-auto px-5 md:px-8">
-    <div class="reword-line reveal">
-      <span class="display-1 text-[2.8rem] md:text-[5.5rem] lg:text-[7.5rem] text-cream/25">re:design</span>
+    <div class="reword-stage" id="reword-stage">
+      <span class="reword-prefix">re:</span>
+      <div class="reword-suffix-wrap" id="reword-suffix">
+        <span class="reword-word" data-index="0">design</span>
+        <span class="reword-word" data-index="1">create</span>
+        <span class="reword-word" data-index="2">define</span>
+        <span class="reword-word" data-index="3">connect</span>
+        <a href="#contacto" class="reword-word" data-index="4" style="text-decoration:none;">ach us →</a>
+      </div>
     </div>
-    <div class="reword-line reveal">
-      <span class="display-1 text-[2.8rem] md:text-[5.5rem] lg:text-[7.5rem] text-cream/45">re:create</span>
-    </div>
-    <div class="reword-line reveal">
-      <span class="display-1 text-[2.8rem] md:text-[5.5rem] lg:text-[7.5rem] text-cream/65">re:define</span>
-    </div>
-    <div class="reword-line reveal">
-      <span class="display-1 text-[2.8rem] md:text-[5.5rem] lg:text-[7.5rem] text-cream/85">re:connect</span>
-    </div>
-    <div class="reword-line reveal">
-      <a href="#contacto" class="display-1 text-[2.8rem] md:text-[5.5rem] lg:text-[7.5rem] text-red hover:text-pink transition-colors duration-300">re:ach us →</a>
+    <div class="reword-dots" id="reword-dots">
+      <div class="reword-dot active"></div>
+      <div class="reword-dot"></div>
+      <div class="reword-dot"></div>
+      <div class="reword-dot"></div>
+      <div class="reword-dot"></div>
     </div>
   </div>
 </section>
@@ -1549,6 +1559,36 @@
       if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); card.click(); }
     });
   });
+
+  // ===== RE:WORDS CYCLING ANIMATION =====
+  (function() {
+    const words = document.querySelectorAll('.reword-word');
+    const dots  = document.querySelectorAll('.reword-dot');
+    let current = 0;
+    const INTERVAL = 1600;
+
+    // Show first word immediately
+    words[0].classList.add('active');
+
+    setInterval(() => {
+      const prev = current;
+      current = (current + 1) % words.length;
+
+      // Exit current
+      words[prev].classList.remove('active');
+      words[prev].classList.add('exit');
+      dots[prev].classList.remove('active');
+
+      // After exit anim, reset
+      setTimeout(() => words[prev].classList.remove('exit'), 400);
+
+      // Enter next
+      setTimeout(() => {
+        words[current].classList.add('active');
+        dots[current].classList.add('active');
+      }, 120);
+    }, INTERVAL);
+  })();
 </script>
 
 </body>
