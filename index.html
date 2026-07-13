@@ -187,11 +187,16 @@
   .svc-num {
     font-family: 'Albert Sans', sans-serif;
     font-size: 0.7rem;
-    font-weight: 600;
-    color: rgba(14,11,8,0.35);
+    font-weight: 700;
     letter-spacing: .08em;
     line-height: 1;
   }
+  .svc-row:nth-child(1) .svc-num { color: #e2361f; }
+  .svc-row:nth-child(2) .svc-num { color: #dc5f86; }
+  .svc-row:nth-child(3) .svc-num { color: #56070e; }
+  .svc-row:nth-child(4) .svc-num { color: #dc5f86; }
+  .svc-row:nth-child(5) .svc-num { color: #e2361f; }
+  .svc-row:nth-child(6) .svc-num { color: #56070e; }
   .svc-titles { display: flex; align-items: baseline; gap: 1.2rem; flex-wrap: wrap; }
   .svc-name {
     font-family: 'ITCAvantGarde', sans-serif;
@@ -862,7 +867,7 @@
 
     </div>
 
-    <p class="mt-10 text-center text-ink/65 text-sm reveal font-semibold">
+    <p class="mt-10 text-center text-ink text-base reveal font-bold tracking-tight">
       Cada servicio se adapta a lo que tu marca necesita.
     </p>
 
@@ -931,7 +936,7 @@
 
       <!-- Maremoto -->
       <article class="pf-card reveal" onclick="openModal('maremoto')" role="button" tabindex="0" aria-label="Ver proyecto Maremoto">
-        <img src="img/maremoto.jpg" alt="Maremoto" class="pf-img" loading="lazy" style="object-position: center 30%;">
+        <img src="img/maremoto-f1.jpg" alt="Maremoto" class="pf-img" loading="lazy" style="object-position: center center;">
         <div class="pf-overlay">
           <div class="pf-tag">Fotografía · Identidad visual · Redes sociales</div>
           <div class="pf-name">Maremoto</div>
@@ -940,29 +945,12 @@
       </article>
 
       <!-- Travel Diaries -->
-      <article class="pf-card reveal" style="overflow:hidden;" onclick="openModal('travel')" role="button" tabindex="0" aria-label="Ver proyecto Travel Diaries">
-        <div class="pf-inner flex flex-col items-center justify-center text-center p-8" style="background:#193525;">
-          <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.18;pointer-events:none;" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="argyle-td" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
-                <polygon points="20,0 40,20 20,40 0,20" fill="none" stroke="#F6EAC7" stroke-width="0.7"/>
-                <polygon points="20,0 40,20 20,40 0,20" fill="#F6EAC7" fill-opacity="0.05"/>
-              </pattern>
-            </defs>
-            <rect width="200" height="250" fill="url(#argyle-td)"/>
-          </svg>
-          <div style="position:relative;z-index:1;">
-            <div style="font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(185,212,229,0.55);font-weight:600;margin-bottom:1.4rem;">Identidad visual</div>
-            <div style="display:flex;align-items:baseline;gap:0.3rem;justify-content:center;">
-              <span style="font-family:'ITCAvantGarde',sans-serif;font-size:clamp(1.5rem,3.2vw,2rem);font-weight:300;color:#F6EAC7;letter-spacing:-0.01em;line-height:1;">travel</span>
-              <span style="font-family:'ITCAvantGarde',sans-serif;font-style:italic;font-weight:300;font-size:clamp(1.7rem,3.8vw,2.3rem);color:#F6EAC7;line-height:1;letter-spacing:-0.02em;">diaries</span>
-            </div>
-            <div style="width:2rem;height:1px;background:rgba(185,212,229,0.3);margin:1.2rem auto;"></div>
-            <div style="display:inline-flex;align-items:center;justify-content:center;border:1px solid rgba(185,212,229,0.28);border-radius:50%;width:2rem;height:2rem;margin-bottom:1.1rem;">
-              <span style="font-family:'ITCAvantGarde',sans-serif;font-style:italic;font-weight:300;font-size:0.75rem;color:rgba(185,212,229,0.65);letter-spacing:-0.02em;">td</span>
-            </div>
-            <div style="font-size:0.6rem;letter-spacing:0.07em;color:rgba(246,234,199,0.35);font-family:'ITCAvantGarde',sans-serif;">Agencia de viajes · Branding · 2026</div>
-          </div>
+      <article class="pf-card reveal" onclick="openModal('travel')" role="button" tabindex="0" aria-label="Ver proyecto Travel Diaries">
+        <img src="img/td-maleta.jpg" alt="Travel Diaries" class="pf-img" loading="lazy" style="object-position: center center;">
+        <div class="pf-overlay">
+          <div class="pf-tag">Identidad visual · Branding · Lujo</div>
+          <div class="pf-name">Travel Diaries</div>
+          <div class="pf-arrow">Ver proyecto →</div>
         </div>
       </article>
 
@@ -1020,7 +1008,7 @@
       </h2>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-5">
+    <div class="grid md:grid-cols-2 gap-5 max-w-4xl">
 
       <!-- Requiem -->
       <div class="p-7 rounded-2xl bg-cream2 border border-ink/10 reveal">
@@ -1052,20 +1040,6 @@
         </div>
       </div>
 
-      <!-- Maremoto -->
-      <div class="p-7 rounded-2xl bg-cream2 border border-ink/10 reveal">
-        <div class="text-burg text-4xl font-serif leading-none mb-4">"</div>
-        <p class="text-[0.95rem] leading-relaxed">
-          Trabajar con su equipo para el branding y marketing de Maremoto fue y sigue siendo una excelente experiencia. Desde que empezó el proyecto siempre estuvieron disponibles para ayudar y responder cualquier duda. Cada vez que necesitaba algún cambio, lo tenían listo muy rápido y con muy buena actitud.
-        </p>
-        <div class="mt-6 pt-5 border-t border-ink/10 flex items-center gap-3">
-          <div class="w-10 h-10 rounded-full bg-burg text-cream flex items-center justify-center font-bold text-sm">M</div>
-          <div>
-            <div class="font-semibold text-sm">Cliente Maremoto</div>
-            <div class="text-ink/60 text-xs">Branding &amp; Marketing</div>
-          </div>
-        </div>
-      </div>
 
     </div>
   </div>
@@ -1214,17 +1188,17 @@
           </li>
           <li>
             <a href="https://www.instagram.com/reachstudio__/" target="_blank" rel="noopener" class="ul-link font-medium">
-              @reachstudio__ →
+              Instagram →
             </a>
           </li>
           <li>
             <a href="https://www.tiktok.com/@reach.studio1" target="_blank" rel="noopener" class="ul-link font-medium">
-              @reach.studio1 TikTok →
+              TikTok →
             </a>
           </li>
           <li>
             <a href="mailto:hola.reachstudio@gmail.com" class="ul-link font-medium">
-              hola.reachstudio@gmail.com
+              Correo electrónico →
             </a>
           </li>
           <li class="text-ink/60 pt-2">Monterrey, México</li>
@@ -1354,10 +1328,10 @@
       description: 'Complementamos la identidad visual de la marca mediante el desarrollo de aplicaciones gráficas, el diseño del menú, sesiones fotográficas profesionales de producto y la creación de contenido para redes sociales, construyendo una presencia visual sólida, consistente y alineada con el posicionamiento de la marca.',
       pdf: null,
       images: [
-        'img/maremoto-brand-slogan.jpg','img/maremoto-brand-bolsa.jpg',
-        'img/maremoto-brand-contenedor.jpg','img/maremoto-brand-menu.jpg',
         'img/maremoto-f1.jpg','img/maremoto-f2.jpg','img/maremoto-f3.jpg',
-        'img/maremoto-f4.jpg','img/maremoto-f5.jpg','img/maremoto-f6.jpg'
+        'img/maremoto-f4.jpg','img/maremoto-f5.jpg','img/maremoto-f6.jpg',
+        'img/maremoto-brand-slogan.jpg','img/maremoto-brand-bolsa.jpg',
+        'img/maremoto-brand-contenedor.jpg','img/maremoto-brand-menu.jpg'
       ]
     },
     livana: {
@@ -1416,7 +1390,10 @@
       tags: ['Identidad visual', 'Manual de marca', 'Branding completo'],
       description: 'Diseñamos la identidad visual de Travel Diaries, desarrollando un sistema de marca completo que incluye logotipo, isotipo, tipografía, paleta de color, aplicaciones y manual de identidad para una agencia de viajes de lujo.',
       pdf: null,
-      images: []
+      images: [
+        'img/td-maleta.jpg','img/td-businesscard.jpg','img/td-sobre.jpg',
+        'img/td-passport.png','img/td-cotizacion.jpg'
+      ]
     }
   };
 
@@ -1481,7 +1458,7 @@
       m.querySelector('.pfm-next').style.display = showNav ? 'flex' : 'none';
       updateGalleryUI();
     } else {
-      gal.style.background   = '#193525';
+      gal.style.background   = '#F7F4E8';
       imgEl.style.display    = 'none';
       brand.style.display    = 'flex';
       m.querySelector('.pfm-prev').style.display   = 'none';
