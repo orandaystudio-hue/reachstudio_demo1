@@ -502,9 +502,74 @@
   .no-scrollbar::-webkit-scrollbar { display: none; }
   .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-  /* Mobile nav */
-  @media (max-width: 768px){
-    .display-1 { font-size: clamp(3rem, 14vw, 6rem); }
+  /* ===== MOBILE (≤767px) ===== */
+  @media (max-width: 767px) {
+
+    /* --- Typography scale --- */
+    .display-1 { font-size: clamp(2.6rem, 12vw, 4rem); letter-spacing: -0.03em; }
+    .display-2 { font-size: clamp(2rem, 9vw, 3rem); }
+
+    /* --- Hero --- */
+    #top { padding-top: 5rem; padding-bottom: 3rem; }
+    #top h1 { font-size: clamp(2.4rem, 11vw, 3.6rem) !important; line-height: 1.08; }
+    #top p.text-lg { font-size: 1rem; }
+
+    /* --- Re:words --- */
+    .rw-label { font-size: 0.55rem; margin-bottom: 0.15rem; }
+    .rw-static,
+    .rw-word  { font-size: clamp(2.2rem, 10vw, 3.2rem) !important; }
+    .rw-slot  { height: clamp(50px, 12vw, 70px); }
+    .rw-static { height: clamp(50px, 12vw, 70px); }
+    section[style*="padding:2rem 0"] { padding: 1rem 0 1.5rem !important; }
+
+    /* --- Portfolio carousel --- */
+    .pf-card { flex: 0 0 200px; }
+    .pf-img-wrap { border-radius: 0.4rem; margin-bottom: 0.6rem; }
+
+    /* --- Portfolio section header --- */
+    #portafolio .flex.flex-wrap { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+
+    /* --- Modal two-up: 1 col stacked on mobile --- */
+    .pfm-gallery.two-up {
+      grid-template-columns: 1fr;
+      overflow-y: auto;
+    }
+    .pfm-gallery.two-up .pfm-tu-img {
+      height: 52vw;
+    }
+
+    /* --- Process: 2 columns instead of 1 --- */
+    #proceso .grid.md\:grid-cols-5 { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+    #proceso .grid.md\:grid-cols-5 > div:last-child { grid-column: span 2; }
+
+    /* --- Services --- */
+    #servicios h2 { font-size: clamp(1.9rem, 8.5vw, 2.6rem); }
+    .svc-name { font-size: 1.1rem; }
+
+    /* --- Testimonials: already 1 col, just tighten padding --- */
+    #proceso + section .p-7 { padding: 1.25rem; }
+
+    /* --- Contact CTA --- */
+    #contacto h2 { font-size: clamp(2.4rem, 11vw, 3.2rem) !important; }
+    #contacto p.text-2xl { font-size: 1.15rem; }
+    #contacto p.text-lg  { font-size: 0.9rem; }
+    #contacto .btn { font-size: 0.9rem; padding: 0.85rem 1rem; }
+
+    /* --- Footer: 2-col links grid --- */
+    footer .grid.md\:grid-cols-12 { display: flex; flex-direction: column; gap: 2rem; }
+    footer .md\:col-span-3,
+    footer .md\:col-span-4 { width: 100%; }
+
+    /* --- FAQ --- */
+    #faq h2 { font-size: clamp(1.9rem, 8.5vw, 2.6rem); }
+    .faq-btn { font-size: 0.95rem; padding: 1.1rem 1.25rem; }
+    .faq-body p { padding: 0 1.25rem 1.25rem; }
+
+    /* --- Spacing fix: sections breathe better on mobile --- */
+    .py-20 { padding-top: 3.5rem; padding-bottom: 3.5rem; }
+    .py-12 { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+    .mb-12 { margin-bottom: 2rem; }
+    .gap-10 { gap: 1.5rem; }
   }
 
   /* Hero word cycling */
