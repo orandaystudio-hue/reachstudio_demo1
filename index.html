@@ -285,10 +285,6 @@
     display: block;
   }
   /* clip wrapper — solo corta verticalmente la animación de slide */
-  .rw-clip {
-    overflow: hidden;
-    height: clamp(68px, 12.5vw, 185px);
-  }
   .rw-row {
     display: flex;
     align-items: center;
@@ -301,16 +297,17 @@
     line-height: 1;
     color: #191919;
     flex-shrink: 0;
-    height: clamp(68px, 12.5vw, 185px);
+    height: clamp(85px, 16vw, 230px);
     display: flex;
     align-items: center;
     margin-right: -0.04em;
   }
   .rw-slot {
     position: relative;
-    height: clamp(68px, 12.5vw, 185px);
+    height: clamp(85px, 16vw, 230px);
     flex: 1;
-    /* sin overflow:hidden — el clip lo maneja .rw-clip */
+    /* clip-path: corta la animación vertical pero deja pasar descenders y ancho libre */
+    clip-path: inset(0 -500px -50px -500px);
   }
   .rw-word {
     position: absolute;
@@ -773,7 +770,6 @@
 <section class="overflow-hidden" style="padding:3.5rem 0 3.75rem;background:#fffefa;">
   <div class="max-w-7xl mx-auto px-5 md:px-8">
     <span class="rw-label">we help brands</span>
-    <div class="rw-clip">
     <div class="rw-row">
       <span class="rw-static">re:</span>
       <div class="rw-slot" id="rw-slot">
@@ -783,7 +779,6 @@
         <span class="rw-word">connect</span>
         <a href="#contacto" class="rw-word rw-cta">ach us →</a>
       </div>
-    </div>
     </div>
     <div class="rw-bars" id="rw-bars">
       <div class="rw-bar on"></div>
