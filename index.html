@@ -272,65 +272,70 @@
   .svc-list .svc-row:nth-child(6).open .svc-toggle { background: #dc5f86; border-color: #dc5f86; }
 
   /* Re:words animated section */
-  .reword-stage {
+  /* Re:words — editorial cycling */
+  .rw-label {
+    font-family: 'Albert Sans', sans-serif;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,254,250,0.22);
+    margin-bottom: 0.6rem;
+    display: block;
+  }
+  .rw-slot {
+    position: relative;
+    height: clamp(68px, 12.5vw, 185px);
+    overflow: hidden;
+  }
+  .rw-word {
+    position: absolute;
+    inset: 0;
     display: flex;
     align-items: center;
-    min-height: clamp(140px, 24vw, 260px);
-    overflow: hidden;
-    position: relative;
-  }
-  .reword-prefix {
     font-family: 'ITCAvantGarde', sans-serif;
     font-weight: 300;
-    font-size: clamp(2.8rem, 10vw, 8rem);
-    letter-spacing: -0.02em;
+    font-size: clamp(3rem, 12vw, 11rem);
+    letter-spacing: -0.04em;
     line-height: 1;
     color: #fffefa;
-    flex-shrink: 0;
-  }
-  .reword-suffix-wrap {
-    overflow: hidden;
-    position: relative;
-    flex: 1;
-  }
-  .reword-word {
-    display: block;
-    font-family: 'ITCAvantGarde', sans-serif;
-    font-weight: 300;
-    font-size: clamp(2.8rem, 10vw, 8rem);
-    letter-spacing: -0.02em;
-    line-height: 1;
-    color: #e2361f;
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%) translateY(60px);
-    opacity: 0;
-    transition: transform 0.55s cubic-bezier(.22,1,.36,1), opacity 0.45s ease;
     white-space: nowrap;
-  }
-  .reword-word.active {
-    opacity: 1;
-    transform: translateY(-50%) translateY(0);
-  }
-  .reword-word.exit {
+    text-decoration: none;
     opacity: 0;
-    transform: translateY(-50%) translateY(-60px);
-    transition: transform 0.4s ease-in, opacity 0.3s ease-in;
+    transform: translateY(105%);
+    transition: opacity .52s ease, transform .56s cubic-bezier(.22,1,.36,1);
+    pointer-events: none;
+    will-change: transform, opacity;
   }
-  .reword-dots {
+  .rw-word.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  .rw-word.exit {
+    opacity: 0;
+    transform: translateY(-105%);
+    transition: opacity .26s ease-in, transform .28s ease-in;
+    pointer-events: none;
+  }
+  .rw-word.rw-cta { color: #e2361f; }
+  .rw-bars {
     display: flex;
-    gap: 0.35rem;
-    margin-top: 2rem;
+    gap: 5px;
+    margin-top: 1.5rem;
   }
-  .reword-dot {
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: rgba(244,236,221,0.2);
-    transition: background 0.3s;
+  .rw-bar {
+    height: 2px;
+    width: 22px;
+    border-radius: 2px;
+    background: rgba(255,254,250,0.12);
+    transition: background .3s ease, width .3s ease;
+    cursor: pointer;
   }
-  .reword-dot.active { background: #e2361f; }
+  .rw-bar.on { background: #e2361f; width: 38px; }
+  @media (prefers-reduced-motion: reduce) {
+    .rw-word { transition: opacity .1s; transform: translateY(0) !important; }
+  }
 
   /* Portfolio background — cream, no dark */
   #portafolio {
@@ -720,25 +725,23 @@
   </div>
 </section>
 
-<!-- ============ RE:WORDS (animated cycling) ============ -->
-<section class="bg-ink text-cream overflow-hidden py-16 md:py-20">
+<!-- ============ RE:WORDS — cycling editorial ============ -->
+<section class="bg-ink text-cream overflow-hidden" style="padding:3.5rem 0 3.75rem">
   <div class="max-w-7xl mx-auto px-5 md:px-8">
-    <div class="reword-stage" id="reword-stage">
-      <span class="reword-prefix">re:</span>
-      <div class="reword-suffix-wrap" id="reword-suffix">
-        <span class="reword-word" data-index="0">design</span>
-        <span class="reword-word" data-index="1">create</span>
-        <span class="reword-word" data-index="2">define</span>
-        <span class="reword-word" data-index="3">connect</span>
-        <a href="#contacto" class="reword-word" data-index="4" style="text-decoration:none;">ach us →</a>
-      </div>
+    <span class="rw-label">we help brands</span>
+    <div class="rw-slot" id="rw-slot">
+      <span class="rw-word">re:design</span>
+      <span class="rw-word">re:create</span>
+      <span class="rw-word">re:define</span>
+      <span class="rw-word">re:connect</span>
+      <a href="#contacto" class="rw-word rw-cta">re:ach us →</a>
     </div>
-    <div class="reword-dots" id="reword-dots">
-      <div class="reword-dot active"></div>
-      <div class="reword-dot"></div>
-      <div class="reword-dot"></div>
-      <div class="reword-dot"></div>
-      <div class="reword-dot"></div>
+    <div class="rw-bars" id="rw-bars">
+      <div class="rw-bar on"></div>
+      <div class="rw-bar"></div>
+      <div class="rw-bar"></div>
+      <div class="rw-bar"></div>
+      <div class="rw-bar"></div>
     </div>
   </div>
 </section>
@@ -1560,34 +1563,25 @@
     });
   });
 
-  // ===== RE:WORDS CYCLING ANIMATION =====
+  // ===== RE:WORDS CYCLING =====
   (function() {
-    const words = document.querySelectorAll('.reword-word');
-    const dots  = document.querySelectorAll('.reword-dot');
-    let current = 0;
-    const INTERVAL = 1600;
-
-    // Show first word immediately
+    const words = document.querySelectorAll('#rw-slot .rw-word');
+    const bars  = document.querySelectorAll('#rw-bars .rw-bar');
+    if (!words.length) return;
+    let cur = 0;
     words[0].classList.add('active');
-
     setInterval(() => {
-      const prev = current;
-      current = (current + 1) % words.length;
-
-      // Exit current
+      const prev = cur;
+      cur = (cur + 1) % words.length;
       words[prev].classList.remove('active');
       words[prev].classList.add('exit');
-      dots[prev].classList.remove('active');
-
-      // After exit anim, reset
-      setTimeout(() => words[prev].classList.remove('exit'), 400);
-
-      // Enter next
+      bars[prev].classList.remove('on');
+      setTimeout(() => words[prev].classList.remove('exit'), 300);
       setTimeout(() => {
-        words[current].classList.add('active');
-        dots[current].classList.add('active');
-      }, 120);
-    }, INTERVAL);
+        words[cur].classList.add('active');
+        bars[cur].classList.add('on');
+      }, 90);
+    }, 1800);
   })();
 </script>
 
