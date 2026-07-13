@@ -363,31 +363,24 @@
     background: #fffefa;
   }
 
-  /* Portfolio card */
+  /* Portfolio card — editorial below-image style */
   .pf-card {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    transition: transform .3s ease;
+  }
+  .pf-card:hover { transform: translateY(-5px); }
+
+  .pf-img-wrap {
     position: relative;
     overflow: hidden;
-    border-radius: 1.25rem;
-    aspect-ratio: 4/5;
-    cursor: pointer;
+    border-radius: 0.75rem;
+    aspect-ratio: 4/3;
+    background: #e8e4de;
   }
-  .pf-card.pf-wide {
-    aspect-ratio: 3/2;
-  }
-  @media (max-width: 768px) {
-    .pf-card.pf-wide { aspect-ratio: 4/3; }
-  }
-  .pf-card .pf-inner {
-    position: absolute;
-    inset: 0;
-    transition: transform .6s ease;
-  }
-  .pf-card:hover .pf-inner { transform: scale(1.04); }
-
-  /* Portfolio image */
   .pf-img {
-    position: absolute;
-    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -396,60 +389,35 @@
   }
   .pf-card:hover .pf-img { transform: scale(1.05); }
 
-  /* Portfolio overlay */
-  .pf-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      to top,
-      rgba(14,11,8,0.92) 0%,
-      rgba(14,11,8,0.35) 45%,
-      transparent 100%
-    );
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 1.75rem;
-    transition: background .4s ease;
-  }
-  .pf-card:hover .pf-overlay {
-    background: linear-gradient(
-      to top,
-      rgba(14,11,8,0.96) 0%,
-      rgba(14,11,8,0.5) 55%,
-      rgba(14,11,8,0.1) 100%
-    );
+  .pf-body {
+    padding: 1rem 0.1rem 0;
   }
   .pf-tag {
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: rgba(244,236,221,0.55);
-    margin-bottom: 0.4rem;
-    transform: translateY(4px);
-    transition: transform .4s ease, color .4s ease;
+    color: #e2361f;
+    margin-bottom: 0.35rem;
   }
-  .pf-card:hover .pf-tag { color: rgba(220,53,40,0.9); transform: translateY(0); }
   .pf-name {
-    color: #fffced;
     font-family: 'ITCAvantGarde', sans-serif;
-    font-weight: 400;
-    font-size: clamp(1.75rem, 3vw, 2.5rem);
-    line-height: 1.1;
-    letter-spacing: -0.01em;
-  }
-  .pf-arrow {
-    margin-top: 0.6rem;
-    font-size: 0.8rem;
     font-weight: 600;
-    color: rgba(220,53,40,0);
-    transition: color .35s ease, transform .35s ease;
-    transform: translateX(-6px);
+    font-size: 1.1rem;
+    color: #56070e;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.4rem;
   }
-  .pf-card:hover .pf-arrow {
-    color: rgba(220,53,40,1);
-    transform: translateX(0);
+  .pf-desc {
+    font-family: 'Albert Sans', sans-serif;
+    font-size: 0.8rem;
+    color: rgba(25,25,25,0.55);
+    line-height: 1.55;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   /* Underline link */
@@ -989,65 +957,77 @@
       </a>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-4 md:gap-5">
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-x-5 gap-y-10">
 
       <!-- Maremoto -->
       <article class="pf-card reveal" onclick="openModal('maremoto')" role="button" tabindex="0" aria-label="Ver proyecto Maremoto">
-        <img src="img/maremoto-f1.jpg" alt="Maremoto" class="pf-img" loading="lazy" style="object-position: center center;">
-        <div class="pf-overlay">
-          <div class="pf-tag">Fotografía · Identidad visual · Redes sociales</div>
+        <div class="pf-img-wrap">
+          <img src="img/maremoto-f1.jpg" alt="Maremoto" class="pf-img" loading="lazy">
+        </div>
+        <div class="pf-body">
+          <div class="pf-tag">Fotografía · Identidad visual · Redes</div>
           <div class="pf-name">Maremoto</div>
-          <div class="pf-arrow">Ver proyecto →</div>
+          <p class="pf-desc">Identidad visual, diseño de menú, fotografía de producto y contenido para redes sociales.</p>
         </div>
       </article>
 
       <!-- Travel Diaries -->
       <article class="pf-card reveal" onclick="openModal('travel')" role="button" tabindex="0" aria-label="Ver proyecto Travel Diaries">
-        <img src="img/td-maleta.jpg" alt="Travel Diaries" class="pf-img" loading="lazy" style="object-position: center center;">
-        <div class="pf-overlay">
-          <div class="pf-tag">Identidad visual · Branding · Lujo</div>
+        <div class="pf-img-wrap">
+          <img src="img/td-maleta.jpg" alt="Travel Diaries" class="pf-img" loading="lazy">
+        </div>
+        <div class="pf-body">
+          <div class="pf-tag">Branding · Identidad visual · Lujo</div>
           <div class="pf-name">Travel Diaries</div>
-          <div class="pf-arrow">Ver proyecto →</div>
+          <p class="pf-desc">Sistema de marca completo para agencia de viajes de lujo: logo, tipografía, paleta y manual de identidad.</p>
         </div>
       </article>
 
       <!-- Áurea -->
       <article class="pf-card reveal" onclick="openModal('aurea')" role="button" tabindex="0" aria-label="Ver proyecto Áurea">
-        <img src="img/aurea.jpg" alt="Áurea" class="pf-img" loading="lazy">
-        <div class="pf-overlay">
-          <div class="pf-tag">Identidad visual · Papelería · Packaging</div>
+        <div class="pf-img-wrap">
+          <img src="img/aurea.jpg" alt="Áurea" class="pf-img" loading="lazy">
+        </div>
+        <div class="pf-body">
+          <div class="pf-tag">Branding · Packaging · Papelería</div>
           <div class="pf-name">Áurea</div>
-          <div class="pf-arrow">Ver proyecto →</div>
+          <p class="pf-desc">Estrategia de marca, identidad visual, packaging y aplicaciones de marca para una experiencia sofisticada.</p>
         </div>
       </article>
 
       <!-- Asociación Violeta -->
       <article class="pf-card reveal" onclick="openModal('violeta')" role="button" tabindex="0" aria-label="Ver proyecto Asociación Violeta">
-        <img src="img/asociacion-violeta.jpg" alt="Asociación Violeta" class="pf-img" loading="lazy" style="object-position: center top;">
-        <div class="pf-overlay">
+        <div class="pf-img-wrap">
+          <img src="img/asociacion-violeta.jpg" alt="Asociación Violeta" class="pf-img" loading="lazy" style="object-position: center top;">
+        </div>
+        <div class="pf-body">
           <div class="pf-tag">Branding · Gestión de redes</div>
           <div class="pf-name">Asociación Violeta</div>
-          <div class="pf-arrow">Ver proyecto →</div>
+          <p class="pf-desc">Identidad visual sólida y gestión de redes con comunicación cercana, clara y profesional.</p>
         </div>
       </article>
 
       <!-- Livana -->
       <article class="pf-card reveal" onclick="openModal('livana')" role="button" tabindex="0" aria-label="Ver proyecto Livana">
-        <img src="img/livana.jpg" alt="Livana" class="pf-img" loading="lazy">
-        <div class="pf-overlay">
+        <div class="pf-img-wrap">
+          <img src="img/livana.jpg" alt="Livana" class="pf-img" loading="lazy">
+        </div>
+        <div class="pf-body">
           <div class="pf-tag">Branding · Packaging</div>
           <div class="pf-name">Livana</div>
-          <div class="pf-arrow">Ver proyecto →</div>
+          <p class="pf-desc">Identidad visual completa con packaging para velas y jabones de estética delicada y premium.</p>
         </div>
       </article>
 
       <!-- Beyond Human -->
       <article class="pf-card reveal" onclick="openModal('beyond')" role="button" tabindex="0" aria-label="Ver proyecto Beyond Human">
-        <img src="img/beyond-human.jpg" alt="Beyond Human" class="pf-img" loading="lazy" style="object-position: center 20%;">
-        <div class="pf-overlay">
+        <div class="pf-img-wrap">
+          <img src="img/beyond-human.jpg" alt="Beyond Human" class="pf-img" loading="lazy" style="object-position: center 20%;">
+        </div>
+        <div class="pf-body">
           <div class="pf-tag">Contenido · Meta Ads · Estrategia</div>
           <div class="pf-name">Beyond Human</div>
-          <div class="pf-arrow">Ver proyecto →</div>
+          <p class="pf-desc">Estrategia de marca, producción de contenido, Meta Ads y gestión de redes para presencia digital coherente.</p>
         </div>
       </article>
 
