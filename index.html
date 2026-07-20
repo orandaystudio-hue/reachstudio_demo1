@@ -415,6 +415,22 @@
   .pf-scrollbar-thumb:hover { background: #56070e; }
   .pf-scrollbar-thumb.dragging { cursor: grabbing; background: #56070e; }
 
+  /* Portfolio dots (mobile only) */
+  .pf-dots {
+    display: none;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 1.25rem;
+  }
+  .pf-dot {
+    width: 6px; height: 6px;
+    border-radius: 9999px;
+    background: rgba(25,25,25,0.18);
+    transition: background .2s, width .2s;
+    cursor: pointer;
+  }
+  .pf-dot.active { background: #56070e; width: 18px; }
+
   .pf-card {
     cursor: pointer;
     display: flex;
@@ -586,7 +602,9 @@
     section[style*="padding:1rem 0"] { padding: 0.75rem 0 1rem !important; }
 
     /* --- Portfolio carousel --- */
-    .pf-card { flex: 0 0 200px; }
+    .pf-card { flex: 0 0 78vw; }
+    .pf-scrollbar-wrap { display: none; }
+    .pf-dots { display: flex; }
     .pf-img-wrap { border-radius: 0.4rem; margin-bottom: 0.6rem; }
 
     /* --- Portfolio section header --- */
@@ -1191,11 +1209,21 @@
 
     </div>
 
-    <!-- Barra de scroll custom arrastrable -->
+    <!-- Barra de scroll custom arrastrable (desktop) -->
     <div class="pf-scrollbar-wrap">
       <div class="pf-scrollbar-track" id="pf-track">
         <div class="pf-scrollbar-thumb" id="pf-thumb"></div>
       </div>
+    </div>
+
+    <!-- Dots (mobile only) -->
+    <div class="pf-dots" id="pf-dots">
+      <div class="pf-dot active"></div>
+      <div class="pf-dot"></div>
+      <div class="pf-dot"></div>
+      <div class="pf-dot"></div>
+      <div class="pf-dot"></div>
+      <div class="pf-dot"></div>
     </div>
 
   </div>
@@ -1938,6 +1966,32 @@
       setTimeout(() => words[prev].classList.remove('exit'), 300);
       setTimeout(() => words[cur].classList.add('active'), 90);
     }, 1800);
+  })();
+
+  /* ===== PORTFOLIO DOTS ===== */
+  (function() {
+    const row  = document.querySelector('.pf-row');
+    const dots = document.querySelectorAll('#pf-dots .pf-dot');
+    if (!row || !dots.length) return;
+
+    function updateDots() {
+      const cards = row.querySelectorAll('.pf-card');
+      if (!cards.length) return;
+      const cardW = cards[0].offsetWidth + 20;
+      const idx   = Math.round(row.scrollLeft / cardW);
+      dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+    }
+
+    row.addEventListener('scroll', updateDots, { passive: true });
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        const cards = row.querySelectorAll('.pf-card');
+        if (!cards.length) return;
+        const cardW = cards[0].offsetWidth + 20;
+        row.scrollTo({ left: i * cardW, behavior: 'smooth' });
+      });
+    });
   })();
 
   /* ===== TESTIMONIALS DOTS ===== */
