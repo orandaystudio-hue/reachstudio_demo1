@@ -255,8 +255,10 @@
     padding: .25rem .7rem;
   }
   @media(max-width: 640px) {
-    .svc-row-top { grid-template-columns: 2.5rem 1fr 2.5rem; gap: .8rem; padding: 1rem 1rem; }
-    .svc-detail { padding: 0 1rem 0 4rem; }
+    .svc-row-top { grid-template-columns: 2rem 1fr 2rem; gap: .6rem; padding: 1rem 1rem; }
+    .svc-name { font-size: clamp(0.95rem, 3.8vw, 1.1rem) !important; }
+    .svc-toggle { width: 1.65rem; height: 1.65rem; flex-shrink: 0; }
+    .svc-detail { padding: 0 1rem 0 3.5rem; }
     .svc-row.open .svc-detail { padding: 0 1rem 1.2rem 4rem; }
   }
 
@@ -1156,7 +1158,7 @@
       <!-- Maremoto -->
       <article class="pf-card reveal" onclick="openModal('maremoto')" role="button" tabindex="0" aria-label="Ver proyecto Maremoto">
         <div class="pf-img-wrap">
-          <img src="img/maremoto-f2.jpg" alt="Maremoto" class="pf-img" loading="lazy">
+          <img src="img/maremoto-f2.jpg" alt="Maremoto" class="pf-img" loading="eager">
         </div>
         <div class="pf-name">Maremoto</div>
         <p class="pf-desc">Identidad visual, fotografía de producto y contenido para redes sociales.</p>
@@ -1165,7 +1167,7 @@
       <!-- Travel Diaries -->
       <article class="pf-card reveal" onclick="openModal('travel')" role="button" tabindex="0" aria-label="Ver proyecto Travel Diaries">
         <div class="pf-img-wrap">
-          <img src="img/td-maleta.jpg" alt="Travel Diaries" class="pf-img" loading="lazy">
+          <img src="img/td-maleta.jpg" alt="Travel Diaries" class="pf-img" loading="eager">
         </div>
         <div class="pf-name">Travel Diaries</div>
         <p class="pf-desc">Sistema de marca completo para agencia de viajes de lujo.</p>
@@ -1174,7 +1176,7 @@
       <!-- Auréa -->
       <article class="pf-card reveal" onclick="openModal('aurea')" role="button" tabindex="0" aria-label="Ver proyecto Auréa">
         <div class="pf-img-wrap">
-          <img src="img/aurea.jpg" alt="Auréa" class="pf-img" loading="lazy">
+          <img src="img/aurea.jpg" alt="Auréa" class="pf-img" loading="eager">
         </div>
         <div class="pf-name">Aur&#233;a</div>
         <p class="pf-desc">Branding, packaging y aplicaciones de marca para una experiencia sofisticada.</p>
@@ -1183,7 +1185,7 @@
       <!-- Asociación Violeta -->
       <article class="pf-card reveal" onclick="openModal('violeta')" role="button" tabindex="0" aria-label="Ver proyecto Asociación Violeta">
         <div class="pf-img-wrap">
-          <img src="img/asociacion-violeta.jpg" alt="Asociación Violeta" class="pf-img" loading="lazy" style="object-position: center top;">
+          <img src="img/asociacion-violeta.jpg" alt="Asociación Violeta" class="pf-img" loading="eager" style="object-position: center top;">
         </div>
         <div class="pf-name">Asociaci&#243;n Violeta</div>
         <p class="pf-desc">Branding y gestión de redes con comunicación cercana y profesional.</p>
@@ -1192,7 +1194,7 @@
       <!-- Livana -->
       <article class="pf-card reveal" onclick="openModal('livana')" role="button" tabindex="0" aria-label="Ver proyecto Livana">
         <div class="pf-img-wrap">
-          <img src="img/livana.jpg" alt="Livana" class="pf-img" loading="lazy">
+          <img src="img/livana.jpg" alt="Livana" class="pf-img" loading="eager">
         </div>
         <div class="pf-name">Livana</div>
         <p class="pf-desc">Identidad visual y packaging para velas y jabones de estética premium.</p>
@@ -1201,7 +1203,7 @@
       <!-- Beyond Human -->
       <article class="pf-card reveal" onclick="openModal('beyond')" role="button" tabindex="0" aria-label="Ver proyecto Beyond Human">
         <div class="pf-img-wrap">
-          <img src="img/beyond-human.jpg" alt="Beyond Human" class="pf-img" loading="lazy" style="object-position: center 20%;">
+          <img src="img/beyond-human.jpg" alt="Beyond Human" class="pf-img" loading="eager" style="object-position: center 20%;">
         </div>
         <div class="pf-name">Beyond Human</div>
         <p class="pf-desc">Estrategia de marca, contenido, Meta Ads y gestión de redes sociales.</p>
