@@ -512,11 +512,20 @@
   }
   .tm-track::-webkit-scrollbar { display: none; }
   .tm-card {
-    flex: 0 0 340px;
+    flex: 0 0 320px;
     scroll-snap-align: start;
   }
   @media (max-width: 767px) {
     .tm-card { flex: 0 0 88vw; }
+  }
+  @media (min-width: 1024px) {
+    .tm-track {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      overflow-x: visible;
+      scroll-snap-type: none;
+    }
+    .tm-card { flex: none; }
   }
 
   /* Tickets badge para hero */
@@ -1190,7 +1199,7 @@
           Trabajar con Re:ach ha sido un antes y un después para Requiem. Su creatividad, rapidez y compromiso se reflejan en cada proyecto. Están siempre presentes, aportando ideas extraordinarias y convirtiéndose en una verdadera extensión de nuestro equipo.
         </p>
         <div class="mt-6 pt-5 border-t border-ink/10 flex items-center gap-3">
-          <div class="w-10 h-10 rounded-full bg-burg text-cream flex items-center justify-center font-bold text-xs">R</div>
+          <div class="w-11 h-11 rounded-full bg-pink text-cream flex items-center justify-center font-bold text-xs">R</div>
           <div>
             <div class="font-semibold text-sm">Erika L. &amp; Balbina L.</div>
             <div class="text-ink/50 text-xs font-medium">Requiem — Pauta digital en Meta Ads</div>
@@ -1205,7 +1214,7 @@
           Estoy súper enamorada de su trabajo, branding, y todo el contenido de redes!, wooow impresionante, amo trabajar con ustedes! Sin duda el mejor equipo, mil gracias por todoooo
         </p>
         <div class="mt-6 pt-5 border-t border-ink/10 flex items-center gap-3">
-          <div class="w-10 h-10 rounded-full bg-pink text-cream flex items-center justify-center font-bold text-xs">AV</div>
+          <div class="w-11 h-11 rounded-full bg-pink text-cream flex items-center justify-center font-bold text-xs">AV</div>
           <div>
             <div class="font-semibold text-sm">Salma S.</div>
             <div class="text-ink/50 text-xs font-medium">Asociación Violeta — Branding &amp; contenido de redes sociales</div>
@@ -1220,7 +1229,7 @@
           Trabajar con su equipo para el branding y marketing de Maremoto fue y sigue siendo una excelente experiencia. Desde que empezó el proyecto siempre estuvieron disponibles para ayudar y responder cualquier duda. Cada vez que necesitaba algún cambio, lo tenían listo muy rápido y con muy buena actitud. Además, me ayudaron muchísimo a dirigir los photoshoots, ya que yo no tenía experiencia en esa parte, y lograron que todo el proceso fuera muy fácil.
         </p>
         <div class="mt-6 pt-5 border-t border-ink/10 flex items-center gap-3">
-          <div class="w-10 h-10 rounded-full bg-red text-cream flex items-center justify-center font-bold text-xs">M</div>
+          <div class="w-11 h-11 rounded-full bg-red text-cream flex items-center justify-center font-bold text-xs">M</div>
           <div>
             <div class="font-semibold text-sm">Sonia T.</div>
             <div class="text-ink/50 text-xs font-medium">Maremoto — Identidad visual, fotografía, contenido en redes sociales y materiales impresos</div>
@@ -1235,7 +1244,7 @@
           La verdad, fue un proceso súper ameno de principio a fin. Todo estuvo muy claro, desde el contrato de servicios hasta las fechas de entrega. Sentí mucha profesionalidad y, sobre todo, mucha atención y escucha durante todo el proceso. El branding quedó espectacular y no me lo paran de chulear. De verdad, ¡wow, wow, wow!
         </p>
         <div class="mt-6 pt-5 border-t border-ink/10 flex items-center gap-3">
-          <div class="w-10 h-10 rounded-full text-cream flex items-center justify-center font-bold text-xs" style="background:#56070e;">TD</div>
+          <div class="w-11 h-11 rounded-full bg-red text-cream flex items-center justify-center font-bold text-xs">TD</div>
           <div>
             <div class="font-semibold text-sm">Regina G.</div>
             <div class="text-ink/50 text-xs font-medium">Travel Diaries — Branding</div>
