@@ -582,9 +582,9 @@
       height: 52vw;
     }
 
-    /* --- Process: 2 columns instead of 1 --- */
-    #proceso .grid.md\:grid-cols-5 { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
-    #proceso .grid.md\:grid-cols-5 > div:last-child { grid-column: span 2; }
+    /* --- Process: single column on mobile --- */
+    #proceso .grid.md\:grid-cols-5 { grid-template-columns: 1fr; gap: 0.75rem; }
+    #proceso .grid.md\:grid-cols-5 > div:last-child { grid-column: span 1; }
 
     /* --- Services --- */
     #servicios h2 { font-size: clamp(1.9rem, 8.5vw, 2.6rem); }
