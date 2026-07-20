@@ -1878,7 +1878,6 @@
   // ===== RE:WORDS CYCLING =====
   (function() {
     const words = document.querySelectorAll('#rw-slot .rw-word');
-    const bars  = document.querySelectorAll('#rw-bars .rw-bar');
     if (!words.length) return;
     let cur = 0;
     words[0].classList.add('active');
@@ -1887,12 +1886,8 @@
       cur = (cur + 1) % words.length;
       words[prev].classList.remove('active');
       words[prev].classList.add('exit');
-      bars[prev].classList.remove('on');
       setTimeout(() => words[prev].classList.remove('exit'), 300);
-      setTimeout(() => {
-        words[cur].classList.add('active');
-        bars[cur].classList.add('on');
-      }, 90);
+      setTimeout(() => words[cur].classList.add('active'), 90);
     }, 1800);
   })();
 </script>
