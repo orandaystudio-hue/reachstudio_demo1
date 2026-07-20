@@ -518,7 +518,26 @@
     scroll-snap-align: start;
   }
   @media (max-width: 767px) {
-    .tm-card { flex: 0 0 88vw; }
+    .tm-card { flex: 0 0 82vw; }
+  }
+
+  /* Swipe dots */
+  .tm-dots {
+    display: none;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 1.25rem;
+  }
+  .tm-dot {
+    width: 6px; height: 6px;
+    border-radius: 9999px;
+    background: rgba(25,25,25,0.18);
+    transition: background .2s, width .2s;
+    cursor: pointer;
+  }
+  .tm-dot.active { background: #56070e; width: 18px; }
+  @media (max-width: 1023px) {
+    .tm-dots { display: flex; }
   }
   @media (min-width: 1024px) {
     .tm-track {
@@ -582,9 +601,7 @@
       height: 52vw;
     }
 
-    /* --- Process: single column on mobile --- */
-    #proceso .grid.md\:grid-cols-5 { grid-template-columns: 1fr; gap: 0.75rem; }
-    #proceso .grid.md\:grid-cols-5 > div:last-child { grid-column: span 1; }
+    /* --- Process: single column handled via grid-cols-1 in HTML --- */
 
     /* --- Services --- */
     #servicios h2 { font-size: clamp(1.9rem, 8.5vw, 2.6rem); }
@@ -1067,7 +1084,7 @@
       </h2>
     </div>
 
-    <div class="grid md:grid-cols-5 gap-4">
+    <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
       <div class="proceso-card p-6 rounded-2xl border border-ink/10 bg-cream2 reveal">
         <div class="re-dot w-10 h-10 text-sm mb-5">01</div>
         <h4 class="font-serif text-2xl mb-2">Llamada inicial</h4>
@@ -1257,6 +1274,15 @@
       </div>
 
     </div>
+
+    <!-- Swipe dots (mobile/tablet only) -->
+    <div class="tm-dots" id="tm-dots">
+      <div class="tm-dot active"></div>
+      <div class="tm-dot"></div>
+      <div class="tm-dot"></div>
+      <div class="tm-dot"></div>
+    </div>
+
   </div>
 </section>
 
@@ -1912,6 +1938,32 @@
       setTimeout(() => words[prev].classList.remove('exit'), 300);
       setTimeout(() => words[cur].classList.add('active'), 90);
     }, 1800);
+  })();
+
+  /* ===== TESTIMONIALS DOTS ===== */
+  (function() {
+    const track = document.querySelector('.tm-track');
+    const dots  = document.querySelectorAll('#tm-dots .tm-dot');
+    if (!track || !dots.length) return;
+
+    function updateDots() {
+      const cards = track.querySelectorAll('.tm-card');
+      if (!cards.length) return;
+      const cardW = cards[0].offsetWidth + 12; // card + gap
+      const idx   = Math.round(track.scrollLeft / cardW);
+      dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+    }
+
+    track.addEventListener('scroll', updateDots, { passive: true });
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        const cards = track.querySelectorAll('.tm-card');
+        if (!cards.length) return;
+        const cardW = cards[0].offsetWidth + 12;
+        track.scrollTo({ left: i * cardW, behavior: 'smooth' });
+      });
+    });
   })();
 </script>
 
